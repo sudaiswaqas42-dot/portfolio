@@ -1,0 +1,122 @@
+[
+  {
+    "slug": "ampli",
+    "title": "Ampli Brand &amp; Website",
+    "year": "2026",
+    "challenge": "Launch a blockchain startup with a premium brand and web presence ready for a high-stakes industry debut.",
+    "services": [],
+    "role": "Led full brand identity and site architecture, defining the visual language and art direction for a successful market entry.",
+    "liveLink": "https://ampli.net/",
+    "order": 1
+  },
+  {
+    "slug": "top-trader",
+    "title": "Top Trader Trading Simulation Game",
+    "year": "2025",
+    "challenge": "Create a high-engagement brand and platform for a daily crypto trading tournament that balances professional tools with a game-like vibe.",
+    "services": [],
+    "role": "Designed the end-to-end UX/UI and visual system, ensuring the interface was both intuitive for traders and addictive for players.",
+    "liveLink": "",
+    "order": 2
+  },
+  {
+    "slug": "maps",
+    "title": "Google Maps Landing page Refresh",
+    "year": "2022",
+    "challenge": "Redesign the marketing landing page to drive global user engagement through immersive storytelling and animation.",
+    "services": [],
+    "role": "Led the strategic narrative and structure, collaborating with motion teams to deliver a high-conversion experience.",
+    "liveLink": "https://maps.google.com/localguides/",
+    "order": 3
+  },
+  {
+    "slug": "apechain",
+    "title": "ApeChain Swap Widget",
+    "year": "2025",
+    "challenge": "Design a distinctive DeFi bridge widget that stands out through unique micro-interactions and a friction-free user experience.",
+    "services": [],
+    "role": "Led UX/UI and branding, focusing on elevating the visual quality of cross-chain transactions to drive user trust and adoption.",
+    "liveLink": "https://apechain.com/portal#bridge",
+    "order": 4
+  },
+  {
+    "slug": "alena",
+    "title": "alena",
+    "year": "2024",
+    "challenge": "Develop a safe, calming visual identity and app experience for a mental health platform focused on anxiety management.",
+    "services": [],
+    "role": "Design Director. Defined the brand ecosystem and app UI, using motion and soft aesthetics to create a welcoming &quot;safe space.&quot;",
+    "liveLink": "",
+    "order": 5
+  },
+  {
+    "slug": "googleai",
+    "title": "Google AI Interactive Timeline",
+    "year": "2023",
+    "challenge": "Tell Google’s AI history through an immersive digital experience highlighting decades of industry-leading milestones.",
+    "services": [],
+    "role": "Design Lead. Orchestrated the concept, structure, and cross-functional design to create a world-class brand narrative.",
+    "liveLink": "https://ai.google/our-ai-journey/?section=intro",
+    "order": 6
+  },
+  {
+    "slug": "lotm",
+    "title": "lotm",
+    "year": "2024",
+    "challenge": "Create a cohesive ecosystem of 7+ landing pages to drive NFT acquisition and engagement within a complex game economy.",
+    "services": [],
+    "role": "Design Director. Set the visual direction and UX strategy to ensure a seamless, high-converting bridge between gameplay and commerce.",
+    "liveLink": "",
+    "order": 7
+  },
+  {
+    "slug": "cryptopunks",
+    "title": "CryptoPunks Live Mosh Art experience",
+    "year": "2024",
+    "challenge": "Design an interactive live auction web experience for CryptoPunks, blending real-time participation with generative art.",
+    "services": [],
+    "role": "Led UI/UX and conceptual strategy, translating complex &quot;mosh pit&quot; mechanics into a clear, high-stakes auction interface.",
+    "liveLink": "",
+    "order": 8
+  },
+  {
+    "slug": "google-photos",
+    "title": "Google Photos Landing Page Refresh",
+    "year": "2022",
+    "challenge": "Refresh the marketing presence to educate users on new features and increase product adoption through engaging storytelling.",
+    "services": [],
+    "role": "Led concept, UX, and content structure, using advanced motion and narrative techniques to simplify complex product updates.",
+    "liveLink": "",
+    "order": 9
+  },
+  {
+    "slug": "rappi",
+    "title": "Rappi Credit Card Designs",
+    "year": "2023",
+    "challenge": "Refresh the visual identity of a credit card collection to drive excitement and adoption in a new digital banking sector.",
+    "services": [],
+    "role": "Art Director. Designed the visual system and custom illustrations to make financial products feel aspirational and modern.",
+    "liveLink": "",
+    "order": 10
+  },
+  {
+    "slug": "google-shopping",
+    "title": "Google Shopping Inmersive Shop Gallery",
+    "year": "2023",
+    "challenge": "Design a massive, immersive web showcase for the internet&#x27;s top 1,000 products to drive tool adoption and user discovery.",
+    "services": [],
+    "role": "Principal Designer. Led art direction and UX, ensuring a high-performance browsing experience for a high-volume product list.",
+    "liveLink": "https://blog.google/products-and-platforms/products/shopping/bestthings/",
+    "order": 11
+  },
+  {
+    "slug": "dino-runner-ar",
+    "title": "Google AR Dino Runner AR Game",
+    "year": "2019",
+    "challenge": "Showcase Google’s AR anchor-point technology through a high-traffic, interactive dinosaur racing game at Google I/O.",
+    "services": [],
+    "role": "Art Director. Led visual identity, character design, and UI, turning a technical demo into a memorable, fun brand experience.",
+    "liveLink": "https://www.youtube.com/watch?v=tVG9puVcNn4",
+    "order": 12
+  }
+]

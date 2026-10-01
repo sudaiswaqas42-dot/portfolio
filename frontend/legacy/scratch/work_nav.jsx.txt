@@ -1,0 +1,114 @@
+<div className="main-cont-nav-work">
+        <div className="wrapper-work-nav"></div>
+        <ul role="list" className="wrapper-work-nav w-list-unstyled">
+          <li className="wrapper-nav-work">
+            <div className="nav-dot off"></div>
+            <a href="#ampli" className="link-wrapper-project w-inline-block">
+              <div className="nav-dot"></div>
+              <div className="project-cont-nav">
+                <div className="text-block-4">Ampli</div><img src="/images/alena-app-design-juan-mora-3.webp" loading="lazy" sizes="(max-width: 2800px) 100vw, 2800px" srcSet="/images/alena-app-design-juan-mora-3-p-500.webp 500w, /images/alena-app-design-juan-mora-3-p-800.webp 800w, /images/alena-app-design-juan-mora-3-p-1080.webp 1080w, /images/alena-app-design-juan-mora-3-p-1600.webp 1600w, /images/alena-app-design-juan-mora-3-p-2000.webp 2000w, /images/alena-app-design-juan-mora-3-p-2600.webp 2600w, /images/alena-app-design-juan-mora-3.webp 2800w" alt="" className="img-project-nav" />
+              </div>
+            </a>
+          </li>
+          <li className="wrapper-nav-work">
+            <div className="nav-dot off"></div>
+            <a href="#top-trader" className="link-wrapper-project w-inline-block">
+              <div className="nav-dot"></div>
+              <div className="project-cont-nav">
+                <div>Top Trader</div><img src="/images/alena-app-design-juan-mora-3.webp" loading="lazy" sizes="(max-width: 2800px) 100vw, 2800px" srcSet="/images/alena-app-design-juan-mora-3-p-500.webp 500w, /images/alena-app-design-juan-mora-3-p-800.webp 800w, /images/alena-app-design-juan-mora-3-p-1080.webp 1080w, /images/alena-app-design-juan-mora-3-p-1600.webp 1600w, /images/alena-app-design-juan-mora-3-p-2000.webp 2000w, /images/alena-app-design-juan-mora-3-p-2600.webp 2600w, /images/alena-app-design-juan-mora-3.webp 2800w" alt="" className="img-project-nav" />
+              </div>
+            </a>
+          </li>
+          <li className="wrapper-nav-work">
+            <div className="nav-dot off"></div>
+            <a href="#maps" className="link-wrapper-project w-inline-block">
+              <div className="nav-dot"></div>
+              <div className="project-cont-nav">
+                <div>Google Maps</div><img src="/images/local-guides-google-maps-juan-mora-1.jpg" loading="lazy" sizes="(max-width: 2800px) 100vw, 2800px" srcSet="/images/local-guides-google-maps-juan-mora-1-p-500.jpg 500w, /images/local-guides-google-maps-juan-mora-1-p-800.jpg 800w, /images/local-guides-google-maps-juan-mora-1-p-1080.jpg 1080w, /images/local-guides-google-maps-juan-mora-1-p-1600.jpg 1600w, /images/local-guides-google-maps-juan-mora-1-p-2000.jpg 2000w, /images/local-guides-google-maps-juan-mora-1-p-2600.jpg 2600w, /images/local-guides-google-maps-juan-mora-1.jpg 2800w" alt="" className="img-project-nav" />
+              </div>
+            </a>
+          </li>
+          <li className="wrapper-nav-work">
+            <div className="nav-dot off"></div>
+            <a href="#apechain" className="link-wrapper-project w-inline-block">
+              <div className="nav-dot"></div>
+              <div className="project-cont-nav">
+                <div>Ape Chain</div><img src="/images/alena-app-design-juan-mora-3.webp" loading="lazy" sizes="(max-width: 2800px) 100vw, 2800px" srcSet="/images/alena-app-design-juan-mora-3-p-500.webp 500w, /images/alena-app-design-juan-mora-3-p-800.webp 800w, /images/alena-app-design-juan-mora-3-p-1080.webp 1080w, /images/alena-app-design-juan-mora-3-p-1600.webp 1600w, /images/alena-app-design-juan-mora-3-p-2000.webp 2000w, /images/alena-app-design-juan-mora-3-p-2600.webp 2600w, /images/alena-app-design-juan-mora-3.webp 2800w" alt="" className="img-project-nav" />
+              </div>
+            </a>
+          </li>
+          <li className="wrapper-nav-work">
+            <div className="nav-dot off"></div>
+            <a href="#alena" className="link-wrapper-project w-inline-block">
+              <div className="nav-dot"></div>
+              <div className="project-cont-nav">
+                <div>Alena App</div><img src="/images/alena-app-design-juan-mora-3.webp" loading="lazy" sizes="(max-width: 2800px) 100vw, 2800px" srcSet="/images/alena-app-design-juan-mora-3-p-500.webp 500w, /images/alena-app-design-juan-mora-3-p-800.webp 800w, /images/alena-app-design-juan-mora-3-p-1080.webp 1080w, /images/alena-app-design-juan-mora-3-p-1600.webp 1600w, /images/alena-app-design-juan-mora-3-p-2000.webp 2000w, /images/alena-app-design-juan-mora-3-p-2600.webp 2600w, /images/alena-app-design-juan-mora-3.webp 2800w" alt="" className="img-project-nav" />
+              </div>
+            </a>
+          </li>
+          <li className="wrapper-nav-work">
+            <div className="nav-dot off"></div>
+            <a href="#googleai" className="link-wrapper-project w-inline-block">
+              <div className="nav-dot"></div>
+              <div className="project-cont-nav">
+                <div>Google AI</div><img src="/images/google-ai-timeline-juan-mora-2.jpg" loading="lazy" sizes="(max-width: 2800px) 100vw, 2800px" srcSet="/images/google-ai-timeline-juan-mora-2-p-500.jpg 500w, /images/google-ai-timeline-juan-mora-2-p-800.jpg 800w, /images/google-ai-timeline-juan-mora-2-p-1080.jpg 1080w, /images/google-ai-timeline-juan-mora-2-p-1600.jpg 1600w, /images/google-ai-timeline-juan-mora-2-p-2000.jpg 2000w, /images/google-ai-timeline-juan-mora-2-p-2600.jpg 2600w, /images/google-ai-timeline-juan-mora-2.jpg 2800w" alt="" className="img-project-nav" />
+              </div>
+            </a>
+          </li>
+          <li className="wrapper-nav-work">
+            <div className="nav-dot off"></div>
+            <a href="#lotm" className="link-wrapper-project w-inline-block">
+              <div className="nav-dot"></div>
+              <div className="project-cont-nav">
+                <div>Yuga Labs</div><img src="/images/yuga-otherside-juan-mora-1.jpg" loading="lazy" sizes="(max-width: 2800px) 100vw, 2800px" srcSet="/images/yuga-otherside-juan-mora-1-p-500.jpg 500w, /images/yuga-otherside-juan-mora-1-p-800.jpg 800w, /images/yuga-otherside-juan-mora-1-p-1080.jpg 1080w, /images/yuga-otherside-juan-mora-1-p-1600.jpg 1600w, /images/yuga-otherside-juan-mora-1-p-2000.jpg 2000w, /images/yuga-otherside-juan-mora-1-p-2600.jpg 2600w, /images/yuga-otherside-juan-mora-1.jpg 2800w" alt="" className="img-project-nav" />
+              </div>
+            </a>
+          </li>
+          <li className="wrapper-nav-work">
+            <a href="#cryptopunks" className="link-wrapper-project w-inline-block">
+              <div className="nav-dot"></div>
+              <div className="project-cont-nav">
+                <div>CryptoPunks</div><img src="/images/cryptopunks-mosh-juan-mora-6.jpg" loading="lazy" sizes="(max-width: 2500px) 100vw, 2500px" srcSet="/images/cryptopunks-mosh-juan-mora-6-p-500.jpg 500w, /images/cryptopunks-mosh-juan-mora-6-p-800.jpg 800w, /images/cryptopunks-mosh-juan-mora-6-p-1080.jpg 1080w, /images/cryptopunks-mosh-juan-mora-6-p-1600.jpg 1600w, /images/cryptopunks-mosh-juan-mora-6-p-2000.jpg 2000w, /images/cryptopunks-mosh-juan-mora-6.jpg 2500w" alt="" className="img-project-nav" />
+              </div>
+            </a>
+            <div className="nav-dot off"></div>
+          </li>
+          <li className="wrapper-nav-work">
+            <div className="nav-dot off"></div>
+            <a href="#google-photos" className="link-wrapper-project w-inline-block">
+              <div className="nav-dot"></div>
+              <div className="project-cont-nav">
+                <div>Google Photos</div><img src="/images/google-photos-design-juan-mora-4.png" loading="lazy" sizes="(max-width: 2800px) 100vw, 2800px" srcSet="/images/google-photos-design-juan-mora-4-p-500.png 500w, /images/google-photos-design-juan-mora-4-p-800.png 800w, /images/google-photos-design-juan-mora-4-p-1080.png 1080w, /images/google-photos-design-juan-mora-4-p-1600.png 1600w, /images/google-photos-design-juan-mora-4-p-2000.png 2000w, /images/google-photos-design-juan-mora-4.png 2800w" alt="" className="img-project-nav" />
+              </div>
+            </a>
+          </li>
+          <li className="wrapper-nav-work">
+            <div className="nav-dot off"></div>
+            <a href="#rappi" className="link-wrapper-project w-inline-block">
+              <div className="nav-dot"></div>
+              <div className="project-cont-nav">
+                <div>Rappi<br /></div><img src="/images/Rappi-credit-card-juan-mora-4.jpg" loading="lazy" sizes="(max-width: 1400px) 100vw, 1400px" srcSet="/images/Rappi-credit-card-juan-mora-4-p-500.jpg 500w, /images/Rappi-credit-card-juan-mora-4-p-800.jpg 800w, /images/Rappi-credit-card-juan-mora-4-p-1080.jpg 1080w, /images/Rappi-credit-card-juan-mora-4.jpg 1400w" alt="" className="img-project-nav" />
+              </div>
+            </a>
+          </li>
+          <li className="wrapper-nav-work">
+            <div className="nav-dot off"></div>
+            <a href="#google-shopping" className="link-wrapper-project w-inline-block">
+              <div className="nav-dot"></div>
+              <div className="project-cont-nav">
+                <div>Google Shopping</div><img src="/images/best-things-for-everything-google-shopping-juan-mora4.jpg" loading="lazy" sizes="(max-width: 2800px) 100vw, 2800px" srcSet="/images/best-things-for-everything-google-shopping-juan-mora4-p-500.jpg 500w, /images/best-things-for-everything-google-shopping-juan-mora4-p-800.jpg 800w, /images/best-things-for-everything-google-shopping-juan-mora4-p-1080.jpg 1080w, /images/best-things-for-everything-google-shopping-juan-mora4-p-1600.jpg 1600w, /images/best-things-for-everything-google-shopping-juan-mora4-p-2000.jpg 2000w, /images/best-things-for-everything-google-shopping-juan-mora4-p-2600.jpg 2600w, /images/best-things-for-everything-google-shopping-juan-mora4.jpg 2800w" alt="" className="img-project-nav" />
+              </div>
+            </a>
+          </li>
+          <li className="wrapper-nav-work">
+            <div className="nav-dot off"></div>
+            <a href="#dino-runner-ar" className="link-wrapper-project w-inline-block">
+              <div className="nav-dot"></div>
+              <div className="project-cont-nav">
+                <div>Google AR</div><img src="/images/Dino-runner-juan-mora-1.png" loading="lazy" sizes="(max-width: 1600px) 100vw, 1600px" srcSet="/images/Dino-runner-juan-mora-1-p-500.png 500w, /images/Dino-runner-juan-mora-1-p-800.png 800w, /images/Dino-runner-juan-mora-1-p-1080.png 1080w, /images/Dino-runner-juan-mora-1.png 1600w" alt="" className="img-project-nav" />
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      

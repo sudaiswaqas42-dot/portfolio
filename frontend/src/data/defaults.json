@@ -1,0 +1,1013 @@
+{
+  "settings": {
+    "id": 1,
+    "first_name": "Usman",
+    "last_name": "Ghani",
+    "title": "Brand & Web Design Specialist",
+    "role": "Freelance Design Director",
+    "headline": "16 years making users click and scroll my designs",
+    "email": "sudais@morable.co",
+    "linkedin_url": "https://www.linkedin.com/in/juanmmora/",
+    "twitter_url": "https://x.com/ByMorable",
+    "behance_url": "https://www.behance.net/juanmora2",
+    "footer_video": "/videos-work/desk_jm3.mp4",
+    "footer_video_poster": "/videos-work/juan-video-loading.jpg",
+    "footer_heading": "MR USMAN GHANI",
+    "footer_subheading": "Morable Design Studio [Coming Soon]",
+    "footer_tech_label": "Website made using:",
+    "footer_technologies": ["Figma", "React / Vite", "Node.js / Express", "MySQL Database", "GSAP", "Lenis Scroll"],
+    "updated_at": "2026-09-21T15:36:36.000Z"
+  },
+  "services": [
+    {
+      "id": 1,
+      "service_key": "websites",
+      "title": "Websites & Landing pages",
+      "description": "Creating high-end and beautiful websites built to perform and convert.",
+      "images_json": "[\"/images/home-work1.jpg\",\"/images/home-work2.jpg\"]",
+      "videos_json": "[\"/videos-work/home/home-ampli.mp4\",\"/videos-work/home/home-shopping.mp4\"]",
+      "sort_order": 1,
+      "images": [
+        "/images/home-work1.jpg",
+        "/images/home-work2.jpg"
+      ],
+      "videos": [
+        "/videos-work/home/home-ampli.mp4",
+        "/videos-work/home/home-shopping.mp4"
+      ]
+    },
+    {
+      "id": 2,
+      "service_key": "branding",
+      "title": "Visual Branding",
+      "description": "Helping brands find a distinctive visual language that truly stands out.",
+      "images_json": "[\"/images/home-work7.jpg\",\"/images/home-work8.jpg\"]",
+      "videos_json": "[\"/videos-work/home/home-ampli-brand.mp4\",\"/videos-work/home/home-brudget1.mp4\"]",
+      "sort_order": 2,
+      "images": [
+        "/images/home-work7.jpg",
+        "/images/home-work8.jpg"
+      ],
+      "videos": [
+        "/videos-work/home/home-ampli-brand.mp4",
+        "/videos-work/home/home-brudget1.mp4"
+      ]
+    },
+    {
+      "id": 3,
+      "service_key": "product-design",
+      "title": "Product Design Enhancement",
+      "description": "Bringing fresh ideas to turn complex products into intuitive experiences with an elevated visual layer.",
+      "images_json": "[\"/images/home-work5.jpg\",\"/images/home-work6.jpg\"]",
+      "videos_json": "[\"/videos-work/home/home-alena.mp4\",\"/videos-work/home/home-apechain.mp4\"]",
+      "sort_order": 3,
+      "images": [
+        "/images/home-work5.jpg",
+        "/images/home-work6.jpg"
+      ],
+      "videos": [
+        "/videos-work/home/home-alena.mp4",
+        "/videos-work/home/home-apechain.mp4"
+      ]
+    }
+  ],
+  "philosophy": [
+    "I bring a premium and unique visual direction that makes your brand stand out.",
+    "I care about the craft, from concept to final product.",
+    "I define scalable design systems that keep your brand consistent.",
+    "I align your goals with my experience to make the right design decisions for your brand."
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "slug": "ampli",
+      "title": "Ampli Brand & Website",
+      "nav_title": "Ampli",
+      "year": "2026",
+      "challenge": "Launch a blockchain startup with a premium brand and web presence ready for a high-stakes industry debut.",
+      "services_text": "Visual Branding, Website Design, Webflow development",
+      "role_text": "Led full brand identity and site architecture, defining the visual language and art direction for a successful market entry.",
+      "live_link": "https://ampli.net/",
+      "sort_order": 1,
+      "gallery_class": "cont-project-imgs ampli",
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/ampli-juan-mora-cover.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-d58a27b9-6103-39c0-b0b8-6cda406bcb68-402b81ee",
+          "poster": "",
+          "srcSet": "/images/ampli-juan-mora-cover-p-500.jpg 500w, /images/ampli-juan-mora-cover-p-800.jpg 800w, /images/ampli-juan-mora-cover-p-1080.jpg 1080w, /images/ampli-juan-mora-cover-p-1600.jpg 1600w, /images/ampli-juan-mora-cover-p-2000.jpg 2000w, /images/ampli-juan-mora-cover.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/ampli-juan-mora-1.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_921e00fe-4549-f680-97fe-72f51cff2bc2-402b81ee",
+          "poster": "",
+          "srcSet": "/images/ampli-juan-mora-1-p-500.jpg 500w, /images/ampli-juan-mora-1-p-800.jpg 800w, /images/ampli-juan-mora-1-p-1080.jpg 1080w, /images/ampli-juan-mora-1-p-1600.jpg 1600w, /images/ampli-juan-mora-1-p-2000.jpg 2000w, /images/ampli-juan-mora-1.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/ampli-juan-mora-2.jpg",
+          "alt": "",
+          "className": "img-project hide",
+          "id": "w-node-_22b50ec1-e5ed-41b3-7a61-49b94331ef9c-402b81ee",
+          "poster": "",
+          "srcSet": "/images/ampli-juan-mora-2-p-500.jpg 500w, /images/ampli-juan-mora-2-p-800.jpg 800w, /images/ampli-juan-mora-2-p-1080.jpg 1080w, /images/ampli-juan-mora-2-p-1600.jpg 1600w, /images/ampli-juan-mora-2-p-2000.jpg 2000w, /images/ampli-juan-mora-2.jpg 2800w"
+        },
+        {
+          "type": "video",
+          "src": "/videos-work/logo-ampli-blue-juan-mora.mp4",
+          "alt": "",
+          "className": "video-cont-p2 small",
+          "id": "w-node-_72faa237-4a24-8476-8fea-33e829f49f82-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-ampli1.jpg",
+          "srcSet": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/ampli-juan-mora-3.jpg",
+          "alt": "",
+          "className": "img-project small",
+          "id": "w-node-_921e00fe-4549-f680-97fe-72f51cff2bc3-402b81ee",
+          "poster": "",
+          "srcSet": "/images/ampli-juan-mora-3-p-500.jpg 500w, /images/ampli-juan-mora-3-p-800.jpg 800w, /images/ampli-juan-mora-3-p-1080.jpg 1080w, /images/ampli-juan-mora-3-p-1600.jpg 1600w, /images/ampli-juan-mora-3-p-2000.jpg 2000w, /images/ampli-juan-mora-3.jpg 2800w"
+        },
+        {
+          "type": "video",
+          "src": "/videos-work/logo-ampli-event-juan-mora.mp4",
+          "alt": "",
+          "className": "video-cont-p2 big",
+          "id": "w-node-_81b84ff9-648b-03be-df68-bb3d2ad47f24-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-ampli3.jpg",
+          "srcSet": ""
+        },
+        {
+          "type": "video",
+          "src": "/videos-work/logo-ampli-icon-juan-mora.mp4",
+          "alt": "",
+          "className": "video-cont-p2",
+          "id": "w-node-f1ebedc6-6548-a5d0-b5a1-372a1a2efab4-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-ampli2.jpg",
+          "srcSet": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/ampli-juan-mora-8.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_1d0d9080-225f-994c-9a5d-b361acc203be-402b81ee",
+          "poster": "",
+          "srcSet": "/images/ampli-juan-mora-8-p-500.jpg 500w, /images/ampli-juan-mora-8-p-800.jpg 800w, /images/ampli-juan-mora-8-p-1080.jpg 1080w, /images/ampli-juan-mora-8-p-1600.jpg 1600w, /images/ampli-juan-mora-8.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/ampli-juan-mora-7.jpg",
+          "alt": "",
+          "className": "img-project hide",
+          "id": "w-node-_921e00fe-4549-f680-97fe-72f51cff2bc6-402b81ee",
+          "poster": "",
+          "srcSet": "/images/ampli-juan-mora-7-p-500.jpg 500w, /images/ampli-juan-mora-7-p-800.jpg 800w, /images/ampli-juan-mora-7-p-1080.jpg 1080w, /images/ampli-juan-mora-7-p-1600.jpg 1600w, /images/ampli-juan-mora-7-p-2000.jpg 2000w, /images/ampli-juan-mora-7.jpg 2800w"
+        },
+        {
+          "type": "video",
+          "src": "/videos-work/ampli-web-juan-mora-1.mp4",
+          "alt": "",
+          "className": "video-cont-p2 big",
+          "id": "w-node-_29a76b67-c33e-ccc7-ec15-730a9677663c-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-ampli4.jpg",
+          "srcSet": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/ampli-juan-mora-10.jpg",
+          "alt": "",
+          "className": "img-project hide",
+          "id": "w-node-_59117b89-b8ee-43d3-e365-44ddb1ce583d-402b81ee",
+          "poster": "",
+          "srcSet": "/images/ampli-juan-mora-10-p-500.jpg 500w, /images/ampli-juan-mora-10-p-800.jpg 800w, /images/ampli-juan-mora-10-p-1080.jpg 1080w, /images/ampli-juan-mora-10-p-1600.jpg 1600w, /images/ampli-juan-mora-10-p-2000.jpg 2000w, /images/ampli-juan-mora-10.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/ampli-juan-mora-11.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_027785c5-844e-a083-94a6-6d8fe1166e8a-402b81ee",
+          "poster": "",
+          "srcSet": "/images/ampli-juan-mora-11-p-500.jpg 500w, /images/ampli-juan-mora-11-p-800.jpg 800w, /images/ampli-juan-mora-11-p-1080.jpg 1080w, /images/ampli-juan-mora-11-p-1600.jpg 1600w, /images/ampli-juan-mora-11.jpg 2800w"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "top-trader",
+      "title": "Top Trader Trading Simulation Game",
+      "nav_title": "Top Trader",
+      "year": "2025",
+      "challenge": "Create a high-engagement brand and platform for a daily crypto trading tournament that balances professional tools with a game-like vibe.",
+      "services_text": "Art direction, Visual Branding, Game Design",
+      "role_text": "Designed the end-to-end UX/UI and visual system, ensuring the interface was both intuitive for traders and addictive for players.",
+      "live_link": "",
+      "sort_order": 2,
+      "gallery_class": "cont-project-imgs top-trader",
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/top-trader-juan-mora-1.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_6f0d4641-7d35-6c8b-6bb9-ef9e0288730c-402b81ee",
+          "poster": "",
+          "srcSet": "/images/top-trader-juan-mora-1-p-500.jpg 500w, /images/top-trader-juan-mora-1-p-800.jpg 800w, /images/top-trader-juan-mora-1-p-1080.jpg 1080w, /images/top-trader-juan-mora-1-p-1600.jpg 1600w, /images/top-trader-juan-mora-1-p-2000.jpg 2000w, /images/top-trader-juan-mora-1.jpg 2500w"
+        },
+        {
+          "type": "image",
+          "src": "/images/top-trader-juan-mora-2.jpg",
+          "alt": "",
+          "className": "img-project small",
+          "id": "w-node-_6f0d4641-7d35-6c8b-6bb9-ef9e0288730f-402b81ee",
+          "poster": "",
+          "srcSet": "/images/top-trader-juan-mora-2-p-500.jpg 500w, /images/top-trader-juan-mora-2-p-800.jpg 800w, /images/top-trader-juan-mora-2-p-1080.jpg 1080w, /images/top-trader-juan-mora-2-p-1600.jpg 1600w, /images/top-trader-juan-mora-2-p-2000.jpg 2000w, /images/top-trader-juan-mora-2.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/top-trader-juan-mora-3.jpg",
+          "alt": "",
+          "className": "img-project small",
+          "id": "w-node-c9b05119-c903-40f6-70c1-a4498ffa9b55-402b81ee",
+          "poster": "",
+          "srcSet": "/images/top-trader-juan-mora-3-p-500.jpg 500w, /images/top-trader-juan-mora-3-p-800.jpg 800w, /images/top-trader-juan-mora-3-p-1080.jpg 1080w, /images/top-trader-juan-mora-3-p-1600.jpg 1600w, /images/top-trader-juan-mora-3-p-2000.jpg 2000w, /images/top-trader-juan-mora-3.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/top-trader-juan-mora-5.jpg",
+          "alt": "",
+          "className": "img-project hide",
+          "id": "w-node-_6f0d4641-7d35-6c8b-6bb9-ef9e02887311-402b81ee",
+          "poster": "",
+          "srcSet": "/images/top-trader-juan-mora-5-p-500.jpg 500w, /images/top-trader-juan-mora-5-p-800.jpg 800w, /images/top-trader-juan-mora-5-p-1080.jpg 1080w, /images/top-trader-juan-mora-5-p-1600.jpg 1600w, /images/top-trader-juan-mora-5-p-2000.jpg 2000w, /images/top-trader-juan-mora-5.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/top-trader-juan-mora-4.jpg",
+          "alt": "",
+          "className": "img-project hide",
+          "id": "w-node-_6f0d4641-7d35-6c8b-6bb9-ef9e02887310-402b81ee",
+          "poster": "",
+          "srcSet": "/images/top-trader-juan-mora-4-p-500.jpg 500w, /images/top-trader-juan-mora-4-p-800.jpg 800w, /images/top-trader-juan-mora-4-p-1080.jpg 1080w, /images/top-trader-juan-mora-4-p-1600.jpg 1600w, /images/top-trader-juan-mora-4-p-2000.jpg 2000w, /images/top-trader-juan-mora-4.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/top-trader-juan-mora-6.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_6f0d4641-7d35-6c8b-6bb9-ef9e02887312-402b81ee",
+          "poster": "",
+          "srcSet": "/images/top-trader-juan-mora-6-p-500.jpg 500w, /images/top-trader-juan-mora-6-p-800.jpg 800w, /images/top-trader-juan-mora-6-p-1080.jpg 1080w, /images/top-trader-juan-mora-6-p-1600.jpg 1600w, /images/top-trader-juan-mora-6-p-2000.jpg 2000w, /images/top-trader-juan-mora-6.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/top-trader-juan-mora-7.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_6f0d4641-7d35-6c8b-6bb9-ef9e02887313-402b81ee",
+          "poster": "",
+          "srcSet": "/images/top-trader-juan-mora-7-p-500.jpg 500w, /images/top-trader-juan-mora-7-p-800.jpg 800w, /images/top-trader-juan-mora-7-p-1080.jpg 1080w, /images/top-trader-juan-mora-7-p-1600.jpg 1600w, /images/top-trader-juan-mora-7-p-2000.jpg 2000w, /images/top-trader-juan-mora-7.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/top-trader-juan-mora-8.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_31bf58f8-f407-fd38-cc2c-36d8f6ac57d3-402b81ee",
+          "poster": "",
+          "srcSet": "/images/top-trader-juan-mora-8-p-500.jpg 500w, /images/top-trader-juan-mora-8-p-800.jpg 800w, /images/top-trader-juan-mora-8-p-1080.jpg 1080w, /images/top-trader-juan-mora-8-p-1600.jpg 1600w, /images/top-trader-juan-mora-8-p-2000.jpg 2000w, /images/top-trader-juan-mora-8.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/top-trader-juan-mora-9.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-fc34ac37-61bb-7223-cc4d-2ad815993b4f-402b81ee",
+          "poster": "",
+          "srcSet": "/images/top-trader-juan-mora-9-p-500.jpg 500w, /images/top-trader-juan-mora-9-p-800.jpg 800w, /images/top-trader-juan-mora-9-p-1080.jpg 1080w, /images/top-trader-juan-mora-9-p-1600.jpg 1600w, /images/top-trader-juan-mora-9-p-2000.jpg 2000w, /images/top-trader-juan-mora-9.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/top-trader-juan-mora-10.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_82179034-e315-3391-ee23-2842cf1219fe-402b81ee",
+          "poster": "",
+          "srcSet": "/images/top-trader-juan-mora-10-p-500.jpg 500w, /images/top-trader-juan-mora-10-p-800.jpg 800w, /images/top-trader-juan-mora-10-p-1080.jpg 1080w, /images/top-trader-juan-mora-10-p-1600.jpg 1600w, /images/top-trader-juan-mora-10-p-2000.jpg 2000w, /images/top-trader-juan-mora-10.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/top-trader-juan-mora-11.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_1d40d967-2714-05e6-e214-7fe17d0876db-402b81ee",
+          "poster": "",
+          "srcSet": "/images/top-trader-juan-mora-11-p-500.jpg 500w, /images/top-trader-juan-mora-11-p-800.jpg 800w, /images/top-trader-juan-mora-11-p-1080.jpg 1080w, /images/top-trader-juan-mora-11-p-1600.jpg 1600w, /images/top-trader-juan-mora-11-p-2000.jpg 2000w, /images/top-trader-juan-mora-11.jpg 2800w"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "maps",
+      "title": "Google Maps Landing page Refresh",
+      "nav_title": "Google Maps",
+      "year": "2022",
+      "challenge": "Redesign the marketing landing page to drive global user engagement through immersive storytelling and animation.",
+      "services_text": "Concept & Narrative, Interactive Design, Animation Systems",
+      "role_text": "Led the strategic narrative and structure, collaborating with motion teams to deliver a high-conversion experience.",
+      "live_link": "https://maps.google.com/localguides/",
+      "sort_order": 3,
+      "gallery_class": "cont-project-imgs maps",
+      "media": [
+        {
+          "type": "video",
+          "src": "/videos-work/local-guides-google-maps-juan-mora-1.mp4",
+          "alt": "",
+          "className": "video-cont-p2",
+          "id": "w-node-dea3e635-b140-b8ce-726d-5cc1faf3e193-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-local1.jpg",
+          "srcSet": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/local-guides-google-maps-juan-mora-1.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-dea3e635-b140-b8ce-726d-5cc1faf3e192-402b81ee",
+          "poster": "",
+          "srcSet": "/images/local-guides-google-maps-juan-mora-1-p-500.jpg 500w, /images/local-guides-google-maps-juan-mora-1-p-800.jpg 800w, /images/local-guides-google-maps-juan-mora-1-p-1080.jpg 1080w, /images/local-guides-google-maps-juan-mora-1-p-1600.jpg 1600w, /images/local-guides-google-maps-juan-mora-1-p-2000.jpg 2000w, /images/local-guides-google-maps-juan-mora-1-p-2600.jpg 2600w, /images/local-guides-google-maps-juan-mora-1.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/local-guides-google-maps-juan-mora-6.jpg",
+          "alt": "",
+          "className": "img-project small",
+          "id": "w-node-dea3e635-b140-b8ce-726d-5cc1faf3e198-402b81ee",
+          "poster": "",
+          "srcSet": "/images/local-guides-google-maps-juan-mora-6-p-500.jpg 500w, /images/local-guides-google-maps-juan-mora-6-p-800.jpg 800w, /images/local-guides-google-maps-juan-mora-6-p-1080.jpg 1080w, /images/local-guides-google-maps-juan-mora-6-p-1600.jpg 1600w, /images/local-guides-google-maps-juan-mora-6-p-2000.jpg 2000w, /images/local-guides-google-maps-juan-mora-6-p-2600.jpg 2600w, /images/local-guides-google-maps-juan-mora-6.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/local-guides-google-maps-juan-mora-3.jpg",
+          "alt": "",
+          "className": "img-project small",
+          "id": "w-node-dea3e635-b140-b8ce-726d-5cc1faf3e196-402b81ee",
+          "poster": "",
+          "srcSet": "/images/local-guides-google-maps-juan-mora-3-p-500.jpg 500w, /images/local-guides-google-maps-juan-mora-3-p-800.jpg 800w, /images/local-guides-google-maps-juan-mora-3-p-1080.jpg 1080w, /images/local-guides-google-maps-juan-mora-3-p-1600.jpg 1600w, /images/local-guides-google-maps-juan-mora-3-p-2000.jpg 2000w, /images/local-guides-google-maps-juan-mora-3-p-2600.jpg 2600w, /images/local-guides-google-maps-juan-mora-3.jpg 2800w"
+        },
+        {
+          "type": "video",
+          "src": "/videos-work/local-guides-google-maps-juan-mora-2.mp4",
+          "alt": "",
+          "className": "video-cont-p2",
+          "id": "w-node-_3f4cf327-4d0c-240e-3a3d-826b451d21e7-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-local2.jpg",
+          "srcSet": ""
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "apechain",
+      "title": "ApeChain Swap Widget",
+      "nav_title": "Ape Chain",
+      "year": "2025",
+      "challenge": "Design a distinctive DeFi bridge widget that stands out through unique micro-interactions and a friction-free user experience.",
+      "services_text": "UI/UX Design, Visual Design, Micro-interactions",
+      "role_text": "Led UX/UI and branding, focusing on elevating the visual quality of cross-chain transactions to drive user trust and adoption.",
+      "live_link": "https://apechain.com/portal#bridge",
+      "sort_order": 4,
+      "gallery_class": "cont-project-imgs ape",
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/apechain-apeportal-juan-mora-1.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_6a9488d2-8cc0-98b9-b17f-33d4787e732d-402b81ee",
+          "poster": "",
+          "srcSet": "/images/apechain-apeportal-juan-mora-1-p-500.jpg 500w, /images/apechain-apeportal-juan-mora-1-p-800.jpg 800w, /images/apechain-apeportal-juan-mora-1-p-1080.jpg 1080w, /images/apechain-apeportal-juan-mora-1-p-1600.jpg 1600w, /images/apechain-apeportal-juan-mora-1-p-2000.jpg 2000w, /images/apechain-apeportal-juan-mora-1-p-2600.jpg 2600w, /images/apechain-apeportal-juan-mora-1.jpg 2800w"
+        },
+        {
+          "type": "video",
+          "src": "/videos-work/ape-chain-holo.mp4",
+          "alt": "",
+          "className": "video-cont-p2",
+          "id": "w-node-_6a9488d2-8cc0-98b9-b17f-33d4787e732e-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-apechain1.jpg",
+          "srcSet": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/apechain-apeportal-juan-mora-2.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_6a9488d2-8cc0-98b9-b17f-33d4787e7330-402b81ee",
+          "poster": "",
+          "srcSet": "/images/apechain-apeportal-juan-mora-2-p-500.jpg 500w, /images/apechain-apeportal-juan-mora-2-p-800.jpg 800w, /images/apechain-apeportal-juan-mora-2-p-1080.jpg 1080w, /images/apechain-apeportal-juan-mora-2-p-1600.jpg 1600w, /images/apechain-apeportal-juan-mora-2-p-2000.jpg 2000w, /images/apechain-apeportal-juan-mora-2.jpg 2800w"
+        },
+        {
+          "type": "video",
+          "src": "/videos-work/ape-chain-approved.mp4",
+          "alt": "",
+          "className": "video-cont-p2",
+          "id": "w-node-f9f5f3fd-defd-8ce8-7205-1f47ded89167-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-apechain2.jpg",
+          "srcSet": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/apechain-apeportal-juan-mora-5.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_6a9488d2-8cc0-98b9-b17f-33d4787e7331-402b81ee",
+          "poster": "",
+          "srcSet": "/images/apechain-apeportal-juan-mora-5-p-500.jpg 500w, /images/apechain-apeportal-juan-mora-5-p-800.jpg 800w, /images/apechain-apeportal-juan-mora-5-p-1080.jpg 1080w, /images/apechain-apeportal-juan-mora-5-p-1600.jpg 1600w, /images/apechain-apeportal-juan-mora-5-p-2000.jpg 2000w, /images/apechain-apeportal-juan-mora-5.jpg 2800w"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "alena",
+      "title": "Alena Mental Health App",
+      "nav_title": "Alena App",
+      "year": "2024",
+      "challenge": "Develop a safe, calming visual identity and app experience for a mental health platform focused on anxiety management.",
+      "services_text": "Visual Identity, Mobile App Design, Brand Strategy",
+      "role_text": "Design Director. Defined the brand ecosystem and app UI, using motion and soft aesthetics to create a welcoming safe space.",
+      "live_link": "",
+      "sort_order": 5,
+      "gallery_class": "cont-project-imgs alena",
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/alena-app-design-juan-mora-1.webp",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_4019b603-df60-99a8-827a-4302e8efb671-402b81ee",
+          "poster": "",
+          "srcSet": "/images/alena-app-design-juan-mora-1-p-500.webp 500w, /images/alena-app-design-juan-mora-1-p-800.webp 800w, /images/alena-app-design-juan-mora-1-p-1080.webp 1080w, /images/alena-app-design-juan-mora-1-p-1600.webp 1600w, /images/alena-app-design-juan-mora-1-p-2000.webp 2000w, /images/alena-app-design-juan-mora-1-p-2600.webp 2600w, /images/alena-app-design-juan-mora-1.webp 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/alena-app-design-juan-mora-2.webp",
+          "alt": "",
+          "className": "img-project hide",
+          "id": "w-node-_7088d1d6-404c-1ee5-1e5d-d7336c52db65-402b81ee",
+          "poster": "",
+          "srcSet": "/images/alena-app-design-juan-mora-2-p-500.webp 500w, /images/alena-app-design-juan-mora-2-p-800.webp 800w, /images/alena-app-design-juan-mora-2-p-1080.webp 1080w, /images/alena-app-design-juan-mora-2-p-1600.webp 1600w, /images/alena-app-design-juan-mora-2-p-2000.webp 2000w, /images/alena-app-design-juan-mora-2-p-2600.webp 2600w, /images/alena-app-design-juan-mora-2.webp 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/alena-app-design-juan-mora-3.webp",
+          "alt": "",
+          "className": "img-project small",
+          "id": "w-node-_10ec20ae-67d8-6e83-fefb-924a82b65d95-402b81ee",
+          "poster": "",
+          "srcSet": "/images/alena-app-design-juan-mora-3-p-500.webp 500w, /images/alena-app-design-juan-mora-3-p-800.webp 800w, /images/alena-app-design-juan-mora-3-p-1080.webp 1080w, /images/alena-app-design-juan-mora-3-p-1600.webp 1600w, /images/alena-app-design-juan-mora-3-p-2000.webp 2000w, /images/alena-app-design-juan-mora-3-p-2600.webp 2600w, /images/alena-app-design-juan-mora-3.webp 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/alena-app-design-juan-mora-4.webp",
+          "alt": "",
+          "className": "img-project hide",
+          "id": "w-node-aab30b27-21e9-312d-2dc2-ce72063618d5-402b81ee",
+          "poster": "",
+          "srcSet": "/images/alena-app-design-juan-mora-4-p-500.webp 500w, /images/alena-app-design-juan-mora-4-p-800.webp 800w, /images/alena-app-design-juan-mora-4-p-1080.webp 1080w, /images/alena-app-design-juan-mora-4-p-1600.webp 1600w, /images/alena-app-design-juan-mora-4-p-2000.webp 2000w, /images/alena-app-design-juan-mora-4-p-2600.webp 2600w, /images/alena-app-design-juan-mora-4.webp 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/alena-app-design-juan-mora-5.webp",
+          "alt": "",
+          "className": "img-project small",
+          "id": "w-node-f806496d-f386-4308-68d4-609101ba630e-402b81ee",
+          "poster": "",
+          "srcSet": "/images/alena-app-design-juan-mora-5-p-500.webp 500w, /images/alena-app-design-juan-mora-5-p-800.webp 800w, /images/alena-app-design-juan-mora-5-p-1080.webp 1080w, /images/alena-app-design-juan-mora-5.webp 1600w"
+        },
+        {
+          "type": "video",
+          "src": "/videos-work/alena-app-design-juan-mora.mp4",
+          "alt": "",
+          "className": "video-cont-p2",
+          "id": "w-node-_3890a1b6-4e1d-c0af-5b06-17b71d90a117-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-alena1.jpg",
+          "srcSet": ""
+        },
+        {
+          "type": "video",
+          "src": "/videos-work/alena-app-website-juan-mora.mp4",
+          "alt": "",
+          "className": "video-cont-p2",
+          "id": "w-node-d9913f41-4e58-43d9-e030-6c1570b614ab-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-alena2.jpg",
+          "srcSet": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/alena-app-design-juan-mora-8.webp",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_3fd01f04-fa09-73b5-cc44-cfe6d347dc69-402b81ee",
+          "poster": "",
+          "srcSet": "/images/alena-app-design-juan-mora-8-p-500.webp 500w, /images/alena-app-design-juan-mora-8-p-800.webp 800w, /images/alena-app-design-juan-mora-8-p-1080.webp 1080w, /images/alena-app-design-juan-mora-8-p-1600.webp 1600w, /images/alena-app-design-juan-mora-8-p-2000.webp 2000w, /images/alena-app-design-juan-mora-8-p-2600.webp 2600w, /images/alena-app-design-juan-mora-8.webp 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/alena-app-design-juan-mora-10.webp",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_08340886-f14d-c7d7-d977-ce0137aa1b68-402b81ee",
+          "poster": "",
+          "srcSet": "/images/alena-app-design-juan-mora-10-p-500.webp 500w, /images/alena-app-design-juan-mora-10-p-800.webp 800w, /images/alena-app-design-juan-mora-10-p-1080.webp 1080w, /images/alena-app-design-juan-mora-10-p-1600.webp 1600w, /images/alena-app-design-juan-mora-10-p-2000.webp 2000w, /images/alena-app-design-juan-mora-10-p-2600.webp 2600w, /images/alena-app-design-juan-mora-10.webp 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/alena-app-design-juan-mora-11.webp",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-ad5b8db8-e0ac-ab9c-0ed0-c0b0fc608190-402b81ee",
+          "poster": "",
+          "srcSet": "/images/alena-app-design-juan-mora-11-p-500.webp 500w, /images/alena-app-design-juan-mora-11-p-800.webp 800w, /images/alena-app-design-juan-mora-11-p-1080.webp 1080w, /images/alena-app-design-juan-mora-11-p-1600.webp 1600w, /images/alena-app-design-juan-mora-11-p-2000.webp 2000w, /images/alena-app-design-juan-mora-11-p-2600.webp 2600w, /images/alena-app-design-juan-mora-11.webp 2800w"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "googleai",
+      "title": "Google AI Interactive Timeline",
+      "nav_title": "Google AI",
+      "year": "2023",
+      "challenge": "Tell Google’s AI history through an immersive digital experience highlighting decades of industry-leading milestones.",
+      "services_text": "Art Direction, Interactive Storytelling, Motion Systems",
+      "role_text": "Design Lead. Orchestrated the concept, structure, and cross-functional design to create a world-class brand narrative.",
+      "live_link": "https://ai.google/our-ai-journey/?section=intro",
+      "sort_order": 6,
+      "gallery_class": "cont-project-imgs ai-google",
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/Google-ai-timeline-juan-mora-1.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-e05814a9-bf12-a780-d65c-8380e57f0932-402b81ee",
+          "poster": "",
+          "srcSet": "/images/Google-ai-timeline-juan-mora-1-p-500.jpg 500w, /images/Google-ai-timeline-juan-mora-1-p-800.jpg 800w, /images/Google-ai-timeline-juan-mora-1-p-1080.jpg 1080w, /images/Google-ai-timeline-juan-mora-1-p-1600.jpg 1600w, /images/Google-ai-timeline-juan-mora-1-p-2000.jpg 2000w, /images/Google-ai-timeline-juan-mora-1-p-2600.jpg 2600w, /images/Google-ai-timeline-juan-mora-1.jpg 2800w"
+        },
+        {
+          "type": "video",
+          "src": "/videos-work/google-ai-timeline-juan-mora.mp4",
+          "alt": "",
+          "className": "video-cont-p2",
+          "id": "w-node-e05814a9-bf12-a780-d65c-8380e57f0935-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-googleai.jpg",
+          "srcSet": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/google-ai-timeline-juan-mora-2.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-e05814a9-bf12-a780-d65c-8380e57f0937-402b81ee",
+          "poster": "",
+          "srcSet": "/images/google-ai-timeline-juan-mora-2-p-500.jpg 500w, /images/google-ai-timeline-juan-mora-2-p-800.jpg 800w, /images/google-ai-timeline-juan-mora-2-p-1080.jpg 1080w, /images/google-ai-timeline-juan-mora-2-p-1600.jpg 1600w, /images/google-ai-timeline-juan-mora-2-p-2000.jpg 2000w, /images/google-ai-timeline-juan-mora-2-p-2600.jpg 2600w, /images/google-ai-timeline-juan-mora-2.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/google-ai-timeline-juan-mora-3.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-e05814a9-bf12-a780-d65c-8380e57f0938-402b81ee",
+          "poster": "",
+          "srcSet": "/images/google-ai-timeline-juan-mora-3-p-500.jpg 500w, /images/google-ai-timeline-juan-mora-3-p-800.jpg 800w, /images/google-ai-timeline-juan-mora-3-p-1080.jpg 1080w, /images/google-ai-timeline-juan-mora-3-p-1600.jpg 1600w, /images/google-ai-timeline-juan-mora-3-p-2000.jpg 2000w, /images/google-ai-timeline-juan-mora-3-p-2600.jpg 2600w, /images/google-ai-timeline-juan-mora-3.jpg 2800w"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "lotm",
+      "title": "Yuga Labs Legends of the Mara",
+      "nav_title": "Yuga Labs",
+      "year": "2023",
+      "challenge": "Build the digital portal and gaming experience for Yuga Labs’ 2D stand-alone game within the Otherside universe.",
+      "services_text": "Game Interface, Visual System, Web3 Integration",
+      "role_text": "Designed interface and gameplay screens, bringing vibrant art and lore into a seamless web game.",
+      "live_link": "https://lotm.otherside.xyz/",
+      "sort_order": 7,
+      "gallery_class": "cont-project-imgs mara",
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/yuga-otherside-juan-mora-1.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_4b96279f-c8e1-313b-d599-808907f01917-402b81ee",
+          "poster": "",
+          "srcSet": "/images/yuga-otherside-juan-mora-1-p-500.jpg 500w, /images/yuga-otherside-juan-mora-1-p-800.jpg 800w, /images/yuga-otherside-juan-mora-1-p-1080.jpg 1080w, /images/yuga-otherside-juan-mora-1-p-1600.jpg 1600w, /images/yuga-otherside-juan-mora-1-p-2000.jpg 2000w, /images/yuga-otherside-juan-mora-1-p-2600.jpg 2600w, /images/yuga-otherside-juan-mora-1.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/yuga-otherside-juan-mora-4.jpg",
+          "alt": "",
+          "className": "img-project hide",
+          "id": "w-node-_4b96279f-c8e1-313b-d599-808907f01918-402b81ee",
+          "poster": "",
+          "srcSet": "/images/yuga-otherside-juan-mora-4-p-500.jpg 500w, /images/yuga-otherside-juan-mora-4-p-800.jpg 800w, /images/yuga-otherside-juan-mora-4-p-1080.jpg 1080w, /images/yuga-otherside-juan-mora-4-p-1600.jpg 1600w, /images/yuga-otherside-juan-mora-4-p-2000.jpg 2000w, /images/yuga-otherside-juan-mora-4-p-2600.jpg 2600w, /images/yuga-otherside-juan-mora-4.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/yuga-otherside-juan-mora-5.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_4b96279f-c8e1-313b-d599-808907f01919-402b81ee",
+          "poster": "",
+          "srcSet": "/images/yuga-otherside-juan-mora-5-p-500.jpg 500w, /images/yuga-otherside-juan-mora-5-p-800.jpg 800w, /images/yuga-otherside-juan-mora-5-p-1080.jpg 1080w, /images/yuga-otherside-juan-mora-5-p-1600.jpg 1600w, /images/yuga-otherside-juan-mora-5-p-2000.jpg 2000w, /images/yuga-otherside-juan-mora-5-p-2600.jpg 2600w, /images/yuga-otherside-juan-mora-5.jpg 2800w"
+        },
+        {
+          "type": "video",
+          "src": "/videos-work/loot.mp4",
+          "alt": "",
+          "className": "video-cont-p2",
+          "id": "w-node-_4b96279f-c8e1-313b-d599-808907f0191c-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-yuga1.jpg",
+          "srcSet": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/yuga-otherside-juan-mora-11.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_4b96279f-c8e1-313b-d599-808907f0191a-402b81ee",
+          "poster": "",
+          "srcSet": "/images/yuga-otherside-juan-mora-11-p-500.jpg 500w, /images/yuga-otherside-juan-mora-11-p-800.jpg 800w, /images/yuga-otherside-juan-mora-11-p-1080.jpg 1080w, /images/yuga-otherside-juan-mora-11-p-1600.jpg 1600w, /images/yuga-otherside-juan-mora-11-p-2000.jpg 2000w, /images/yuga-otherside-juan-mora-11-p-2600.jpg 2600w, /images/yuga-otherside-juan-mora-11.jpg 2800w"
+        },
+        {
+          "type": "video",
+          "src": "/videos-work/kodamara.mp4",
+          "alt": "",
+          "className": "video-cont-p2",
+          "id": "w-node-_4b96279f-c8e1-313b-d599-808907f0191e-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-yuga2.jpg",
+          "srcSet": ""
+        },
+        {
+          "type": "video",
+          "src": "/videos-work/transaction.mp4",
+          "alt": "",
+          "className": "video-cont-p2 hide",
+          "id": "w-node-_5f125df2-feec-a8e9-ac23-3921e05a495e-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-yuga3.jpg",
+          "srcSet": ""
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "cryptopunks",
+      "title": "CryptoPunks Brand Revival",
+      "nav_title": "CryptoPunks",
+      "year": "2023",
+      "challenge": "Celebrate the iconic NFT pioneers by elevating their cultural footprint and visual identity for modern platforms.",
+      "services_text": "Brand Identity, Digital Direction, Web Design",
+      "role_text": "Led design and narrative, creating high-impact visuals honoring Web3 heritage while exploring new frontiers.",
+      "live_link": "",
+      "sort_order": 8,
+      "gallery_class": "cont-project-imgs",
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/cryptopunks-mosh-juan-mora-1.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_14464d04-1544-abb0-0307-af58ffe65fdb-402b81ee",
+          "poster": "",
+          "srcSet": "/images/cryptopunks-mosh-juan-mora-1-p-500.jpg 500w, /images/cryptopunks-mosh-juan-mora-1-p-800.jpg 800w, /images/cryptopunks-mosh-juan-mora-1-p-1080.jpg 1080w, /images/cryptopunks-mosh-juan-mora-1-p-1600.jpg 1600w, /images/cryptopunks-mosh-juan-mora-1-p-2000.jpg 2000w, /images/cryptopunks-mosh-juan-mora-1-p-2600.jpg 2600w, /images/cryptopunks-mosh-juan-mora-1.jpg 3188w"
+        },
+        {
+          "type": "video",
+          "src": "/videos-work/cryptopunks-mosh-juan-mora.mp4",
+          "alt": "",
+          "className": "video-cont-p2",
+          "id": "w-node-_14464d04-1544-abb0-0307-af58ffe65fdc-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-cryptopunks.jpg",
+          "srcSet": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/cryptopunks-mosh-juan-mora-3.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_14464d04-1544-abb0-0307-af58ffe65fde-402b81ee",
+          "poster": "",
+          "srcSet": "/images/cryptopunks-mosh-juan-mora-3-p-500.jpg 500w, /images/cryptopunks-mosh-juan-mora-3-p-800.jpg 800w, /images/cryptopunks-mosh-juan-mora-3-p-1080.jpg 1080w, /images/cryptopunks-mosh-juan-mora-3-p-1600.jpg 1600w, /images/cryptopunks-mosh-juan-mora-3-p-2000.jpg 2000w, /images/cryptopunks-mosh-juan-mora-3-p-2600.jpg 2600w, /images/cryptopunks-mosh-juan-mora-3.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/cryptopunks-mosh-juan-mora-4.jpg",
+          "alt": "",
+          "className": "img-project small",
+          "id": "w-node-_14464d04-1544-abb0-0307-af58ffe65fdf-402b81ee",
+          "poster": "",
+          "srcSet": "/images/cryptopunks-mosh-juan-mora-4-p-500.jpg 500w, /images/cryptopunks-mosh-juan-mora-4-p-800.jpg 800w, /images/cryptopunks-mosh-juan-mora-4-p-1080.jpg 1080w, /images/cryptopunks-mosh-juan-mora-4-p-1600.jpg 1600w, /images/cryptopunks-mosh-juan-mora-4-p-2000.jpg 2000w, /images/cryptopunks-mosh-juan-mora-4-p-2600.jpg 2600w, /images/cryptopunks-mosh-juan-mora-4.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/cryptopunks-mosh-juan-mora-5.jpg",
+          "alt": "",
+          "className": "img-project small",
+          "id": "w-node-_14464d04-1544-abb0-0307-af58ffe65fe0-402b81ee",
+          "poster": "",
+          "srcSet": "/images/cryptopunks-mosh-juan-mora-5-p-500.jpg 500w, /images/cryptopunks-mosh-juan-mora-5-p-800.jpg 800w, /images/cryptopunks-mosh-juan-mora-5-p-1080.jpg 1080w, /images/cryptopunks-mosh-juan-mora-5-p-1600.jpg 1600w, /images/cryptopunks-mosh-juan-mora-5-p-2000.jpg 2000w, /images/cryptopunks-mosh-juan-mora-5-p-2600.jpg 2600w, /images/cryptopunks-mosh-juan-mora-5.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/cryptopunks-mosh-juan-mora-6.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_14464d04-1544-abb0-0307-af58ffe65fe1-402b81ee",
+          "poster": "",
+          "srcSet": "/images/cryptopunks-mosh-juan-mora-6-p-500.jpg 500w, /images/cryptopunks-mosh-juan-mora-6-p-800.jpg 800w, /images/cryptopunks-mosh-juan-mora-6-p-1080.jpg 1080w, /images/cryptopunks-mosh-juan-mora-6-p-1600.jpg 1600w, /images/cryptopunks-mosh-juan-mora-6-p-2000.jpg 2000w, /images/cryptopunks-mosh-juan-mora-6.jpg 2500w"
+        },
+        {
+          "type": "image",
+          "src": "/images/cryptopunks-mosh-juan-mora-7.jpg",
+          "alt": "",
+          "className": "img-project hide",
+          "id": "w-node-_14464d04-1544-abb0-0307-af58ffe65fe2-402b81ee",
+          "poster": "",
+          "srcSet": "/images/cryptopunks-mosh-juan-mora-7-p-500.jpg 500w, /images/cryptopunks-mosh-juan-mora-7-p-800.jpg 800w, /images/cryptopunks-mosh-juan-mora-7-p-1080.jpg 1080w, /images/cryptopunks-mosh-juan-mora-7-p-1600.jpg 1600w, /images/cryptopunks-mosh-juan-mora-7-p-2000.jpg 2000w, /images/cryptopunks-mosh-juan-mora-7-p-2600.jpg 2600w, /images/cryptopunks-mosh-juan-mora-7.jpg 2800w"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "slug": "google-photos",
+      "title": "Google Photos Memories Campaign",
+      "nav_title": "Google Photos",
+      "year": "2022",
+      "challenge": "Showcase powerful machine learning features that resurface personal memories with warmth and clarity.",
+      "services_text": "Campaign Design, Interactive Storytelling, Motion Design",
+      "role_text": "Led interactive design and narrative pacing for key product feature launches.",
+      "live_link": "",
+      "sort_order": 9,
+      "gallery_class": "cont-project-imgs photos",
+      "media": [
+        {
+          "type": "video",
+          "src": "/videos-work/google-photos-design-juan-mora.mp4",
+          "alt": "",
+          "className": "video-cont-p2",
+          "id": "w-node-_01d4aced-0fdd-7d61-21ef-e3a7079bc750-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-google-photos.jpg",
+          "srcSet": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/google-photos-design-juan-mora-2.png",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_01d4aced-0fdd-7d61-21ef-e3a7079bc752-402b81ee",
+          "poster": "",
+          "srcSet": "/images/google-photos-design-juan-mora-2-p-500.png 500w, /images/google-photos-design-juan-mora-2-p-800.png 800w, /images/google-photos-design-juan-mora-2-p-1080.png 1080w, /images/google-photos-design-juan-mora-2-p-1600.png 1600w, /images/google-photos-design-juan-mora-2-p-2000.png 2000w, /images/google-photos-design-juan-mora-2-p-2600.png 2600w, /images/google-photos-design-juan-mora-2.png 3200w"
+        },
+        {
+          "type": "image",
+          "src": "/images/google-photos-design-juan-mora-6.png",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_01d4aced-0fdd-7d61-21ef-e3a7079bc74f-402b81ee",
+          "poster": "",
+          "srcSet": "/images/google-photos-design-juan-mora-6-p-500.png 500w, /images/google-photos-design-juan-mora-6-p-800.png 800w, /images/google-photos-design-juan-mora-6-p-1080.png 1080w, /images/google-photos-design-juan-mora-6-p-1600.png 1600w, /images/google-photos-design-juan-mora-6-p-2000.png 2000w, /images/google-photos-design-juan-mora-6-p-2600.png 2600w, /images/google-photos-design-juan-mora-6.png 3200w"
+        },
+        {
+          "type": "image",
+          "src": "/images/google-photos-design-juan-mora-7.png",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_01d4aced-0fdd-7d61-21ef-e3a7079bc753-402b81ee",
+          "poster": "",
+          "srcSet": "/images/google-photos-design-juan-mora-7-p-500.png 500w, /images/google-photos-design-juan-mora-7-p-800.png 800w, /images/google-photos-design-juan-mora-7-p-1080.png 1080w, /images/google-photos-design-juan-mora-7-p-1600.png 1600w, /images/google-photos-design-juan-mora-7-p-2000.png 2000w, /images/google-photos-design-juan-mora-7-p-2600.png 2600w, /images/google-photos-design-juan-mora-7.png 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/google-photos-design-juan-mora-4.png",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_01d4aced-0fdd-7d61-21ef-e3a7079bc754-402b81ee",
+          "poster": "",
+          "srcSet": "/images/google-photos-design-juan-mora-4-p-500.png 500w, /images/google-photos-design-juan-mora-4-p-800.png 800w, /images/google-photos-design-juan-mora-4-p-1080.png 1080w, /images/google-photos-design-juan-mora-4-p-1600.png 1600w, /images/google-photos-design-juan-mora-4-p-2000.png 2000w, /images/google-photos-design-juan-mora-4.png 2800w"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "slug": "rappi",
+      "title": "Rappi Credit Card & Financial Ecosystem",
+      "nav_title": "Rappi",
+      "year": "2021",
+      "challenge": "Reimagine financial services for Latin America’s largest delivery and lifestyle super-app.",
+      "services_text": "Fintech UI/UX, Product Architecture, Card Identity",
+      "role_text": "Design Director. Led product design for card issuance, security features, and digital wallet integrations.",
+      "live_link": "",
+      "sort_order": 10,
+      "gallery_class": "cont-project-imgs rappi",
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/Rappi-credit-card-juan-mora-1.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_8784f743-b849-603b-b882-9f6d6e85e24c-402b81ee",
+          "poster": "",
+          "srcSet": "/images/Rappi-credit-card-juan-mora-1-p-500.jpg 500w, /images/Rappi-credit-card-juan-mora-1-p-800.jpg 800w, /images/Rappi-credit-card-juan-mora-1-p-1080.jpg 1080w, /images/Rappi-credit-card-juan-mora-1.jpg 1400w"
+        },
+        {
+          "type": "image",
+          "src": "/images/Rappi-credit-card-juan-mora-3.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_8784f743-b849-603b-b882-9f6d6e85e24d-402b81ee",
+          "poster": "",
+          "srcSet": "/images/Rappi-credit-card-juan-mora-3-p-500.jpg 500w, /images/Rappi-credit-card-juan-mora-3-p-800.jpg 800w, /images/Rappi-credit-card-juan-mora-3-p-1080.jpg 1080w, /images/Rappi-credit-card-juan-mora-3.jpg 1400w"
+        },
+        {
+          "type": "image",
+          "src": "/images/Rappi-credit-card-thor-juan-mora.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_8784f743-b849-603b-b882-9f6d6e85e250-402b81ee",
+          "poster": "",
+          "srcSet": "/images/Rappi-credit-card-thor-juan-mora-p-500.jpg 500w, /images/Rappi-credit-card-thor-juan-mora-p-800.jpg 800w, /images/Rappi-credit-card-thor-juan-mora-p-1080.jpg 1080w, /images/Rappi-credit-card-thor-juan-mora.jpg 1400w"
+        },
+        {
+          "type": "image",
+          "src": "/images/Rappi-credit-card-juan-mora-2.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-c09a455a-959c-ef3a-d4db-9554dda549d0-402b81ee",
+          "poster": "",
+          "srcSet": "/images/Rappi-credit-card-juan-mora-2-p-500.jpg 500w, /images/Rappi-credit-card-juan-mora-2-p-800.jpg 800w, /images/Rappi-credit-card-juan-mora-2-p-1080.jpg 1080w, /images/Rappi-credit-card-juan-mora-2.jpg 1400w"
+        },
+        {
+          "type": "image",
+          "src": "/images/Rappi-credit-card-juan-mora-4.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-_8784f743-b849-603b-b882-9f6d6e85e251-402b81ee",
+          "poster": "",
+          "srcSet": "/images/Rappi-credit-card-juan-mora-4-p-500.jpg 500w, /images/Rappi-credit-card-juan-mora-4-p-800.jpg 800w, /images/Rappi-credit-card-juan-mora-4-p-1080.jpg 1080w, /images/Rappi-credit-card-juan-mora-4.jpg 1400w"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "slug": "google-shopping",
+      "title": "Best Things for Everything by Google",
+      "nav_title": "Google Shopping",
+      "year": "2021",
+      "challenge": "Curate and present the top 1000 highest-rated products online with intuitive categorization and fluid filtering.",
+      "services_text": "E-commerce Architecture, Interactive Guides, Art Direction",
+      "role_text": "Led visual design and interactive product layout across multi-device formats.",
+      "live_link": "",
+      "sort_order": 11,
+      "gallery_class": "cont-project-imgs _1000",
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/best-things-for-everything-google-shopping-juan-mora1.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-cecf9322-2783-6881-94a6-abdcbb5c2011-402b81ee",
+          "poster": "",
+          "srcSet": "/images/best-things-for-everything-google-shopping-juan-mora1-p-500.jpg 500w, /images/best-things-for-everything-google-shopping-juan-mora1-p-800.jpg 800w, /images/best-things-for-everything-google-shopping-juan-mora1-p-1080.jpg 1080w, /images/best-things-for-everything-google-shopping-juan-mora1-p-1600.jpg 1600w, /images/best-things-for-everything-google-shopping-juan-mora1-p-2000.jpg 2000w, /images/best-things-for-everything-google-shopping-juan-mora1-p-2600.jpg 2600w, /images/best-things-for-everything-google-shopping-juan-mora1.jpg 2800w"
+        },
+        {
+          "type": "video",
+          "src": "/videos-work/best-things-for-everything-google-shopping-juan-mora.mp4",
+          "alt": "",
+          "className": "video-cont-p2",
+          "id": "w-node-cecf9322-2783-6881-94a6-abdcbb5c2013-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-bestthings.jpg",
+          "srcSet": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/best-things-for-everything-google-shopping-juan-mora2.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-ce26c8a1-2aa6-3893-228c-8b16d3a330e2-402b81ee",
+          "poster": "",
+          "srcSet": "/images/best-things-for-everything-google-shopping-juan-mora2-p-500.jpg 500w, /images/best-things-for-everything-google-shopping-juan-mora2-p-800.jpg 800w, /images/best-things-for-everything-google-shopping-juan-mora2-p-1080.jpg 1080w, /images/best-things-for-everything-google-shopping-juan-mora2-p-1600.jpg 1600w, /images/best-things-for-everything-google-shopping-juan-mora2-p-2000.jpg 2000w, /images/best-things-for-everything-google-shopping-juan-mora2-p-2600.jpg 2600w, /images/best-things-for-everything-google-shopping-juan-mora2.jpg 2800w"
+        },
+        {
+          "type": "image",
+          "src": "/images/best-things-for-everything-google-shopping-juan-mora3-1.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-cecf9322-2783-6881-94a6-abdcbb5c2012-402b81ee",
+          "poster": "",
+          "srcSet": "/images/best-things-for-everything-google-shopping-juan-mora3-1-p-500.jpg 500w, /images/best-things-for-everything-google-shopping-juan-mora3-1-p-800.jpg 800w, /images/best-things-for-everything-google-shopping-juan-mora3-1-p-1080.jpg 1080w, /images/best-things-for-everything-google-shopping-juan-mora3-1-p-1600.jpg 1600w, /images/best-things-for-everything-google-shopping-juan-mora3-1-p-2000.jpg 2000w, /images/best-things-for-everything-google-shopping-juan-mora3-1-p-2600.jpg 2600w, /images/best-things-for-everything-google-shopping-juan-mora3-1.jpg 2800w"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "slug": "dino-runner-ar",
+      "title": "Google Dino Runner AR Experience",
+      "nav_title": "Google AR",
+      "year": "2020",
+      "challenge": "Bring Google’s beloved offline chrome dinosaur game into augmented reality for mobile users worldwide.",
+      "services_text": "Augmented Reality Design, 3D Prototyping, Game Mechanics",
+      "role_text": "Art Director and UI Designer, crafting interactive AR obstacles and responsive touchscreen mechanics.",
+      "live_link": "",
+      "sort_order": 12,
+      "gallery_class": "cont-project-imgs dino",
+      "media": [
+        {
+          "type": "image",
+          "src": "/images/Dino-runner-juan-mora-1.png",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-adc84455-2cc8-44bc-4217-76a2b9e98e0f-402b81ee",
+          "poster": "",
+          "srcSet": "/images/Dino-runner-juan-mora-1-p-500.png 500w, /images/Dino-runner-juan-mora-1-p-800.png 800w, /images/Dino-runner-juan-mora-1-p-1080.png 1080w, /images/Dino-runner-juan-mora-1.png 1600w"
+        },
+        {
+          "type": "image",
+          "src": "/images/Dino-runner-juan-mora-2.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-adc84455-2cc8-44bc-4217-76a2b9e98e0e-402b81ee",
+          "poster": "",
+          "srcSet": "/images/Dino-runner-juan-mora-2-p-500.jpg 500w, /images/Dino-runner-juan-mora-2-p-800.jpg 800w, /images/Dino-runner-juan-mora-2-p-1080.jpg 1080w, /images/Dino-runner-juan-mora-2.jpg 1600w"
+        },
+        {
+          "type": "image",
+          "src": "/images/Dino-runner-juan-mora-3.jpg",
+          "alt": "",
+          "className": "img-project",
+          "id": "w-node-adc84455-2cc8-44bc-4217-76a2b9e98e13-402b81ee",
+          "poster": "",
+          "srcSet": "/images/Dino-runner-juan-mora-3-p-500.jpg 500w, /images/Dino-runner-juan-mora-3-p-800.jpg 800w, /images/Dino-runner-juan-mora-3-p-1080.jpg 1080w, /images/Dino-runner-juan-mora-3.jpg 1400w"
+        },
+        {
+          "type": "video",
+          "src": "/videos-work/dino-runner.mp4",
+          "alt": "",
+          "className": "video-cont-p2",
+          "id": "w-node-adc84455-2cc8-44bc-4217-76a2b9e98e10-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-dino1.jpg",
+          "srcSet": ""
+        },
+        {
+          "type": "video",
+          "src": "/videos-work/dino-runner2.mp4",
+          "alt": "",
+          "className": "video-cont-p2",
+          "id": "w-node-_09db5005-4816-1c05-897e-77f84030b552-402b81ee",
+          "poster": "/videos-work/thumbnail/thumbnail-dino2.jpg",
+          "srcSet": ""
+        },
+        {
+          "type": "image",
+          "src": "/images/arrow-grey.svg",
+          "alt": "",
+          "className": "arrow-cta",
+          "id": "",
+          "poster": "",
+          "srcSet": ""
+        }
+      ]
+    }
+  ],
+  "about": {
+    "id": 1,
+    "headline": "Designer based in Miami, working globally",
+    "who_i_am": "I’m Sudais Waqas, a Design Director focused on Web, Branding, and Product for the last 16 years.\n\nSince the beginning, I’ve been passionate with learning and refining the craft — exploring different styles, techniques, and ways to apply them depending on what each brand actually needs.\n\nI’m from Bogota, Colombia and moved to the U.S. about 10 years ago. I spent my first years between LA and San Francisco, leading projects for Google, and later moved to Miami where I continued working leading design projects.\n\nNow I’m building Morable — a Design Studio focused on helping brands create work that feels more artistic, human, and intentional.",
+    "approach": "I like to start with little context, I look at your brand through the user’s eyes first, then from the inside out, focusing on understanding the product, the audience, and the real problem behind the brief.\n\nFrom there, I help define the direction and bring ideas, not just to make things look better, but to make them work better.\n\nI like work closely with different departments to align on goals, my role is not just execution — it’s bringing clarity, perspective, and elevate the outcome.",
+    "philosophy": "I don’t follow trends blindly, I use them when they make sense. My goal is always to create something distinctive, something people actually remember.\n\nEvery project, no matter the size, deserves the same level of care, something that feels thoughtful, well-crafted, and built to last.\n\nAnd yes, I believe humor is a design tool.",
+    "awards": "2x Webby Awards\n7x Awwwards\n5x FWA\n4x CSS Design Awards\n6x Behance Featured",
+    "news1_title": "Running my own Design Studio",
+    "news1_desc": "Morable is a Design Studio with an artistic approach to brand building, using technology to push boundaries. We have our network of the most talented freelancers to tackle ambitious projects.",
+    "news1_link": "https://morable.co/",
+    "news2_title": "Enjoy my online course",
+    "news2_desc": "I partnered with Domestika to teach designers and marketers how to create landing pages that stand out through storytelling.",
+    "news2_link": "https://www.domestika.org/en/courses/4542-ux-ui-design-for-landing-pages-tell-an-original-story/juanmora_mdg",
+    "news2_img1": "/images/domestika-juan-mora-1.png",
+    "news2_img2": "/images/domestika2.jpg",
+    "news2_img3": "/images/domestika-juan-mora-3.png",
+    "news3_title": "Don't Scroll Down",
+    "news3_desc": "An award-winning reverse-psychology experience created in 2020 to play with humor to share a deep reflection I learned during my darkest days.",
+    "news3_link": "https://juanmora.co/dontscrolldown/",
+    "news3_img1": "/images/dont-scroll-down-juanmora1.png",
+    "news3_img2": "/images/dont-scroll-down-juanmora2.png"
+  }
+}

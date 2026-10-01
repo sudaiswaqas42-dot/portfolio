@@ -1,0 +1,70 @@
+{
+  "juanMora": {
+    "id": "juanMora",
+    "name": "Juan Mora Original",
+    "tag": "Original Reference",
+    "description": "Exact Juan Mora original design system: warm bg (#FAF6EF), cobalt blue (#2E54FE), peach (#FFBC95), grey (#F4F4F4), and text grey (#96908C).",
+    "mode": "light",
+    "light": {
+      "background": "#FAF6EF",
+      "surface": "#FFFFFF",
+      "surface-alt": "#F4F4F4",
+      "border": "#E8E9EF",
+      "muted": "#96908C",
+      "text-secondary": "#96908C",
+      "ink": "#0E0E0E"
+    },
+    "dark": {
+      "background": "#0F0F0F",
+      "surface": "#1A1A19",
+      "surface-alt": "#1A1A19",
+      "border": "#2A2A28",
+      "muted": "#96908C",
+      "text-secondary": "#A8A7A2",
+      "ink": "#FAF6EF"
+    },
+    "accent": {
+      "signal-tint": "#FFBC95",
+      "signal-hover-dark": "#F99E76",
+      "signal": "#2E54FE",
+      "signal-hover": "#1D44E0",
+      "signal-pressed": "#1432AC",
+      "signal-text": "#FFFFFF",
+      "ribbon-accent": "#FFBC95"
+    }
+  },
+  "customOrange": {
+    "id": "customOrange",
+    "name": "Customize Palette (Warm Orange)",
+    "tag": "Customized",
+    "description": "Your customized warm signal orange (#FF4D2E) palette with peach highlights and coral accents.",
+    "mode": "light",
+    "light": {
+      "background": "#FAF6EF",
+      "surface": "#FFFFFF",
+      "surface-alt": "#F4F4F4",
+      "border": "#E8E9EF",
+      "muted": "#96908C",
+      "text-secondary": "#4A4A47",
+      "ink": "#0E0E0E"
+    },
+    "dark": {
+      "background": "#0F0F0F",
+      "surface": "#1A1A19",
+      "surface-alt": "#1A1A19",
+      "border": "#2A2A28",
+      "muted": "#8A8A86",
+      "text-secondary": "#A8A7A2",
+      "ink": "#FAF6EF"
+    },
+    "accent": {
+      "signal-tint": "#FFE4DD",
+      "signal-hover-dark": "#FF6A4F",
+      "signal": "#FF4D2E",
+      "signal-hover": "#E63E20",
+      "signal-pressed": "#C9331A",
+      "signal-text": "#A8321C",
+      "ribbon-accent": "#FFBC95"
+    }
+  }
+}

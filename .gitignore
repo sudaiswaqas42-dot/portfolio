@@ -1,0 +1,11 @@
+node_modules/
+frontend/dist/
+backend/.env
+*.env
+*.env.*
+backend/uploads/
+frontend/legacy/scratch/before-repair/
+*.log
+.vercel
+vite.config.js.timestamp-*
+

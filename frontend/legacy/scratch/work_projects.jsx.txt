@@ -1,0 +1,463 @@
+<div className="main-wrapper-work">
+        <div className="header-work-copy">
+          <h1 className="text-headline-work"><span className="text-span-6">T--.</span>Passionate about the craft and little details</h1><img src="/images/folder-juanmora.png" loading="lazy" alt="" className="folder-work" />
+        </div>
+        <div id="ampli" className="main-project-wrapper">
+          <div className="cont-project-content">
+            <div id="w-node-_921e00fe-4549-f680-97fe-72f51cff2ba4-402b81ee" className="content-project-info first">
+              <h3 className="headline-project">Ampli<br />Brand &amp; Website</h3>
+              <div className="pill-year">2026</div>
+              <div className="dot-project"></div>
+              <div className="cont-cta-work">
+                <a data-wf--cta-big--variant="work" href="https://ampli.net/" target="_blank" className="main-cont-button w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd w-inline-block">
+                  <div className="icon-wrapper-cta-first w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd"><img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd" /></div>
+                  <div className="text-wrapper-cta w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd">See it live</div>
+                  <div className="icon-wrapper-cta w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd"><img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd" /></div>
+                </a>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Challenge:</p>
+              <p className="body-copy black">Launch a blockchain startup with a premium brand and web presence ready for a high-stakes industry debut.</p>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Services:</p>
+              <div className="pill-services-cont">
+                <div className="pill-service">Visual Branding</div>
+                <div className="pill-service">Website Design</div>
+                <div className="pill-service">Webflow development</div>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Role:</p>
+              <p className="body-copy black">Led full brand identity and site architecture, defining the visual language and art direction for a successful market entry.</p>
+            </div>
+          </div>
+          <div className="cont-project-imgs ampli"><img src="/images/ampli-juan-mora-cover.jpg" loading="lazy" id="w-node-d58a27b9-6103-39c0-b0b8-6cda406bcb68-402b81ee" sizes="100vw" alt="" srcSet="/images/ampli-juan-mora-cover-p-500.jpg 500w, /images/ampli-juan-mora-cover-p-800.jpg 800w, /images/ampli-juan-mora-cover-p-1080.jpg 1080w, /images/ampli-juan-mora-cover-p-1600.jpg 1600w, /images/ampli-juan-mora-cover-p-2000.jpg 2000w, /images/ampli-juan-mora-cover.jpg 2800w" className="img-project" /><img src="/images/ampli-juan-mora-1.jpg" loading="lazy" id="w-node-_921e00fe-4549-f680-97fe-72f51cff2bc2-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/ampli-juan-mora-1-p-500.jpg 500w, /images/ampli-juan-mora-1-p-800.jpg 800w, /images/ampli-juan-mora-1-p-1080.jpg 1080w, /images/ampli-juan-mora-1-p-1600.jpg 1600w, /images/ampli-juan-mora-1-p-2000.jpg 2000w, /images/ampli-juan-mora-1.jpg 2800w" className="img-project" /><img src="/images/ampli-juan-mora-2.jpg" loading="lazy" id="w-node-_22b50ec1-e5ed-41b3-7a61-49b94331ef9c-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/ampli-juan-mora-2-p-500.jpg 500w, /images/ampli-juan-mora-2-p-800.jpg 800w, /images/ampli-juan-mora-2-p-1080.jpg 1080w, /images/ampli-juan-mora-2-p-1600.jpg 1600w, /images/ampli-juan-mora-2-p-2000.jpg 2000w, /images/ampli-juan-mora-2.jpg 2800w" className="img-project hide" />
+            <div id="w-node-_72faa237-4a24-8476-8fea-33e829f49f82-402b81ee" className="video-cont-p2 small">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-ampli1.jpg">
+                  <source src="/videos-work/logo-ampli-blue-juan-mora.mp4" type="video/mp4" />
+                </video></div>
+            </div><img src="/images/ampli-juan-mora-3.jpg" loading="lazy" id="w-node-_921e00fe-4549-f680-97fe-72f51cff2bc3-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/ampli-juan-mora-3-p-500.jpg 500w, /images/ampli-juan-mora-3-p-800.jpg 800w, /images/ampli-juan-mora-3-p-1080.jpg 1080w, /images/ampli-juan-mora-3-p-1600.jpg 1600w, /images/ampli-juan-mora-3-p-2000.jpg 2000w, /images/ampli-juan-mora-3.jpg 2800w" className="img-project small" />
+            <div id="w-node-_81b84ff9-648b-03be-df68-bb3d2ad47f24-402b81ee" className="video-cont-p2 big">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-ampli3.jpg">
+                  <source src="/videos-work/logo-ampli-event-juan-mora.mp4" type="video/mp4" />
+                </video></div>
+            </div>
+            <div id="w-node-f1ebedc6-6548-a5d0-b5a1-372a1a2efab4-402b81ee" className="video-cont-p2">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-ampli2.jpg">
+                  <source src="/videos-work/logo-ampli-icon-juan-mora.mp4" type="video/mp4" />
+                </video></div>
+            </div><img src="/images/ampli-juan-mora-8.jpg" loading="lazy" id="w-node-_1d0d9080-225f-994c-9a5d-b361acc203be-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/ampli-juan-mora-8-p-500.jpg 500w, /images/ampli-juan-mora-8-p-800.jpg 800w, /images/ampli-juan-mora-8-p-1080.jpg 1080w, /images/ampli-juan-mora-8-p-1600.jpg 1600w, /images/ampli-juan-mora-8.jpg 2800w" className="img-project" /><img src="/images/ampli-juan-mora-7.jpg" loading="lazy" id="w-node-_921e00fe-4549-f680-97fe-72f51cff2bc6-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/ampli-juan-mora-7-p-500.jpg 500w, /images/ampli-juan-mora-7-p-800.jpg 800w, /images/ampli-juan-mora-7-p-1080.jpg 1080w, /images/ampli-juan-mora-7-p-1600.jpg 1600w, /images/ampli-juan-mora-7-p-2000.jpg 2000w, /images/ampli-juan-mora-7.jpg 2800w" className="img-project hide" />
+            <div id="w-node-_29a76b67-c33e-ccc7-ec15-730a9677663c-402b81ee" className="video-cont-p2 big">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-ampli4.jpg">
+                  <source src="/videos-work/ampli-web-juan-mora-1.mp4" type="video/mp4" />
+                </video></div>
+            </div><img src="/images/ampli-juan-mora-10.jpg" loading="lazy" id="w-node-_59117b89-b8ee-43d3-e365-44ddb1ce583d-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/ampli-juan-mora-10-p-500.jpg 500w, /images/ampli-juan-mora-10-p-800.jpg 800w, /images/ampli-juan-mora-10-p-1080.jpg 1080w, /images/ampli-juan-mora-10-p-1600.jpg 1600w, /images/ampli-juan-mora-10-p-2000.jpg 2000w, /images/ampli-juan-mora-10.jpg 2800w" className="img-project hide" /><img src="/images/ampli-juan-mora-11.jpg" loading="lazy" id="w-node-_027785c5-844e-a083-94a6-6d8fe1166e8a-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/ampli-juan-mora-11-p-500.jpg 500w, /images/ampli-juan-mora-11-p-800.jpg 800w, /images/ampli-juan-mora-11-p-1080.jpg 1080w, /images/ampli-juan-mora-11-p-1600.jpg 1600w, /images/ampli-juan-mora-11.jpg 2800w" className="img-project" />
+          </div>
+        </div>
+        <div id="top-trader" className="main-project-wrapper">
+          <div className="cont-project-content">
+            <div id="w-node-d7ca8e57-b54f-0460-e15f-3a6110a39470-402b81ee" className="content-project-info first">
+              <h3 className="headline-project">Top Trader<br />Trading Simulation Game</h3>
+              <div className="pill-year">2025</div>
+              <div className="dot-project"></div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Challenge:</p>
+              <p className="body-copy black">Create a high-engagement brand and platform for a daily crypto trading tournament that balances professional tools with a game-like vibe.</p>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Services:</p>
+              <div className="pill-services-cont">
+                <div className="pill-service">Art direction</div>
+                <div className="pill-service">Visual Branding</div>
+                <div className="pill-service">Game Design</div>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Role:</p>
+              <p className="body-copy black">Designed the end-to-end UX/UI and visual system, ensuring the interface was both intuitive for traders and addictive for players.</p>
+            </div>
+          </div>
+          <div className="cont-project-imgs top-trader"><img src="/images/top-trader-juan-mora-1.jpg" loading="lazy" id="w-node-_6f0d4641-7d35-6c8b-6bb9-ef9e0288730c-402b81ee" sizes="(max-width: 2500px) 100vw, 2500px" alt="" srcSet="/images/top-trader-juan-mora-1-p-500.jpg 500w, /images/top-trader-juan-mora-1-p-800.jpg 800w, /images/top-trader-juan-mora-1-p-1080.jpg 1080w, /images/top-trader-juan-mora-1-p-1600.jpg 1600w, /images/top-trader-juan-mora-1-p-2000.jpg 2000w, /images/top-trader-juan-mora-1.jpg 2500w" className="img-project" /><img src="/images/top-trader-juan-mora-2.jpg" loading="lazy" id="w-node-_6f0d4641-7d35-6c8b-6bb9-ef9e0288730f-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/top-trader-juan-mora-2-p-500.jpg 500w, /images/top-trader-juan-mora-2-p-800.jpg 800w, /images/top-trader-juan-mora-2-p-1080.jpg 1080w, /images/top-trader-juan-mora-2-p-1600.jpg 1600w, /images/top-trader-juan-mora-2-p-2000.jpg 2000w, /images/top-trader-juan-mora-2.jpg 2800w" className="img-project small" /><img src="/images/top-trader-juan-mora-3.jpg" loading="lazy" id="w-node-c9b05119-c903-40f6-70c1-a4498ffa9b55-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/top-trader-juan-mora-3-p-500.jpg 500w, /images/top-trader-juan-mora-3-p-800.jpg 800w, /images/top-trader-juan-mora-3-p-1080.jpg 1080w, /images/top-trader-juan-mora-3-p-1600.jpg 1600w, /images/top-trader-juan-mora-3-p-2000.jpg 2000w, /images/top-trader-juan-mora-3.jpg 2800w" className="img-project small" /><img src="/images/top-trader-juan-mora-5.jpg" loading="lazy" id="w-node-_6f0d4641-7d35-6c8b-6bb9-ef9e02887311-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/top-trader-juan-mora-5-p-500.jpg 500w, /images/top-trader-juan-mora-5-p-800.jpg 800w, /images/top-trader-juan-mora-5-p-1080.jpg 1080w, /images/top-trader-juan-mora-5-p-1600.jpg 1600w, /images/top-trader-juan-mora-5-p-2000.jpg 2000w, /images/top-trader-juan-mora-5.jpg 2800w" className="img-project hide" /><img src="/images/top-trader-juan-mora-4.jpg" loading="lazy" id="w-node-_6f0d4641-7d35-6c8b-6bb9-ef9e02887310-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/top-trader-juan-mora-4-p-500.jpg 500w, /images/top-trader-juan-mora-4-p-800.jpg 800w, /images/top-trader-juan-mora-4-p-1080.jpg 1080w, /images/top-trader-juan-mora-4-p-1600.jpg 1600w, /images/top-trader-juan-mora-4-p-2000.jpg 2000w, /images/top-trader-juan-mora-4.jpg 2800w" className="img-project hide" /><img src="/images/top-trader-juan-mora-6.jpg" loading="lazy" id="w-node-_6f0d4641-7d35-6c8b-6bb9-ef9e02887312-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/top-trader-juan-mora-6-p-500.jpg 500w, /images/top-trader-juan-mora-6-p-800.jpg 800w, /images/top-trader-juan-mora-6-p-1080.jpg 1080w, /images/top-trader-juan-mora-6-p-1600.jpg 1600w, /images/top-trader-juan-mora-6-p-2000.jpg 2000w, /images/top-trader-juan-mora-6.jpg 2800w" className="img-project" /><img src="/images/top-trader-juan-mora-7.jpg" loading="lazy" id="w-node-_6f0d4641-7d35-6c8b-6bb9-ef9e02887313-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/top-trader-juan-mora-7-p-500.jpg 500w, /images/top-trader-juan-mora-7-p-800.jpg 800w, /images/top-trader-juan-mora-7-p-1080.jpg 1080w, /images/top-trader-juan-mora-7-p-1600.jpg 1600w, /images/top-trader-juan-mora-7-p-2000.jpg 2000w, /images/top-trader-juan-mora-7.jpg 2800w" className="img-project" /><img src="/images/top-trader-juan-mora-8.jpg" loading="lazy" id="w-node-_31bf58f8-f407-fd38-cc2c-36d8f6ac57d3-402b81ee" sizes="100vw" alt="" srcSet="/images/top-trader-juan-mora-8-p-500.jpg 500w, /images/top-trader-juan-mora-8-p-800.jpg 800w, /images/top-trader-juan-mora-8-p-1080.jpg 1080w, /images/top-trader-juan-mora-8-p-1600.jpg 1600w, /images/top-trader-juan-mora-8-p-2000.jpg 2000w, /images/top-trader-juan-mora-8.jpg 2800w" className="img-project" /><img src="/images/top-trader-juan-mora-9.jpg" loading="lazy" id="w-node-fc34ac37-61bb-7223-cc4d-2ad815993b4f-402b81ee" sizes="100vw" alt="" srcSet="/images/top-trader-juan-mora-9-p-500.jpg 500w, /images/top-trader-juan-mora-9-p-800.jpg 800w, /images/top-trader-juan-mora-9-p-1080.jpg 1080w, /images/top-trader-juan-mora-9-p-1600.jpg 1600w, /images/top-trader-juan-mora-9-p-2000.jpg 2000w, /images/top-trader-juan-mora-9.jpg 2800w" className="img-project" /><img src="/images/top-trader-juan-mora-10.jpg" loading="lazy" id="w-node-_82179034-e315-3391-ee23-2842cf1219fe-402b81ee" sizes="100vw" alt="" srcSet="/images/top-trader-juan-mora-10-p-500.jpg 500w, /images/top-trader-juan-mora-10-p-800.jpg 800w, /images/top-trader-juan-mora-10-p-1080.jpg 1080w, /images/top-trader-juan-mora-10-p-1600.jpg 1600w, /images/top-trader-juan-mora-10-p-2000.jpg 2000w, /images/top-trader-juan-mora-10.jpg 2800w" className="img-project" /><img src="/images/top-trader-juan-mora-11.jpg" loading="lazy" id="w-node-_1d40d967-2714-05e6-e214-7fe17d0876db-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/top-trader-juan-mora-11-p-500.jpg 500w, /images/top-trader-juan-mora-11-p-800.jpg 800w, /images/top-trader-juan-mora-11-p-1080.jpg 1080w, /images/top-trader-juan-mora-11-p-1600.jpg 1600w, /images/top-trader-juan-mora-11-p-2000.jpg 2000w, /images/top-trader-juan-mora-11.jpg 2800w" className="img-project" /></div>
+        </div>
+        <div id="maps" className="main-project-wrapper">
+          <div className="cont-project-content">
+            <div id="w-node-dea3e635-b140-b8ce-726d-5cc1faf3e174-402b81ee" className="content-project-info first">
+              <div className="dot-project"></div>
+              <h3 className="headline-project">Google Maps<br />Landing page Refresh</h3>
+              <div className="pill-year">2022</div>
+              <div className="cont-cta-work">
+                <a data-wf--cta-big--variant="work" href="https://maps.google.com/localguides/" target="_blank" className="main-cont-button w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd w-inline-block">
+                  <div className="icon-wrapper-cta-first w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd"><img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd" /></div>
+                  <div className="text-wrapper-cta w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd">See it live</div>
+                  <div className="icon-wrapper-cta w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd"><img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd" /></div>
+                </a>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Challenge:</p>
+              <p className="body-copy black">Redesign the marketing landing page to drive global user engagement through immersive storytelling and animation.</p>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Services:</p>
+              <div className="pill-services-cont">
+                <div className="pill-service">Art Direction</div>
+                <div className="pill-service">Web Design</div>
+                <div className="pill-service">Illustration</div>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Role:</p>
+              <p className="body-copy black">Led the strategic narrative and structure, collaborating with motion teams to deliver a high-conversion experience.</p>
+            </div>
+          </div>
+          <div className="cont-project-imgs maps">
+            <div id="w-node-dea3e635-b140-b8ce-726d-5cc1faf3e193-402b81ee" className="video-cont-p2">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-local1.jpg">
+                  <source src="/videos-work/local-guides-google-maps-juan-mora-1.mp4" type="video/mp4" />
+                </video></div>
+            </div><img src="/images/local-guides-google-maps-juan-mora-1.jpg" loading="lazy" id="w-node-dea3e635-b140-b8ce-726d-5cc1faf3e192-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/local-guides-google-maps-juan-mora-1-p-500.jpg 500w, /images/local-guides-google-maps-juan-mora-1-p-800.jpg 800w, /images/local-guides-google-maps-juan-mora-1-p-1080.jpg 1080w, /images/local-guides-google-maps-juan-mora-1-p-1600.jpg 1600w, /images/local-guides-google-maps-juan-mora-1-p-2000.jpg 2000w, /images/local-guides-google-maps-juan-mora-1-p-2600.jpg 2600w, /images/local-guides-google-maps-juan-mora-1.jpg 2800w" className="img-project" /><img src="/images/local-guides-google-maps-juan-mora-6.jpg" loading="lazy" id="w-node-dea3e635-b140-b8ce-726d-5cc1faf3e198-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/local-guides-google-maps-juan-mora-6-p-500.jpg 500w, /images/local-guides-google-maps-juan-mora-6-p-800.jpg 800w, /images/local-guides-google-maps-juan-mora-6-p-1080.jpg 1080w, /images/local-guides-google-maps-juan-mora-6-p-1600.jpg 1600w, /images/local-guides-google-maps-juan-mora-6-p-2000.jpg 2000w, /images/local-guides-google-maps-juan-mora-6-p-2600.jpg 2600w, /images/local-guides-google-maps-juan-mora-6.jpg 2800w" className="img-project small" /><img src="/images/local-guides-google-maps-juan-mora-3.jpg" loading="lazy" id="w-node-dea3e635-b140-b8ce-726d-5cc1faf3e196-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/local-guides-google-maps-juan-mora-3-p-500.jpg 500w, /images/local-guides-google-maps-juan-mora-3-p-800.jpg 800w, /images/local-guides-google-maps-juan-mora-3-p-1080.jpg 1080w, /images/local-guides-google-maps-juan-mora-3-p-1600.jpg 1600w, /images/local-guides-google-maps-juan-mora-3-p-2000.jpg 2000w, /images/local-guides-google-maps-juan-mora-3-p-2600.jpg 2600w, /images/local-guides-google-maps-juan-mora-3.jpg 2800w" className="img-project small" />
+            <div id="w-node-_3f4cf327-4d0c-240e-3a3d-826b451d21e7-402b81ee" className="video-cont-p2">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-local2.jpg">
+                  <source src="/videos-work/local-guides-google-maps-juan-mora-2.mp4" type="video/mp4" />
+                </video></div>
+            </div>
+          </div>
+        </div>
+        <div id="apechain" className="main-project-wrapper">
+          <div className="cont-project-content">
+            <div id="w-node-_6a9488d2-8cc0-98b9-b17f-33d4787e7312-402b81ee" className="content-project-info first">
+              <h3 className="headline-project">ApeChain<br />Swap Widget</h3>
+              <div className="pill-year">2025</div>
+              <div className="dot-project"></div>
+              <div className="cont-cta-work">
+                <a data-wf--cta-big--variant="work" href="https://apechain.com/portal#bridge" target="_blank" className="main-cont-button w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd w-inline-block">
+                  <div className="icon-wrapper-cta-first w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd"><img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd" /></div>
+                  <div className="text-wrapper-cta w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd">See it live</div>
+                  <div className="icon-wrapper-cta w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd"><img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd" /></div>
+                </a>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Challenge:</p>
+              <p className="body-copy black">Design a distinctive DeFi bridge widget that stands out through unique micro-interactions and a friction-free user experience.</p>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Services:</p>
+              <div className="pill-services-cont">
+                <div className="pill-service">Art Direction</div>
+                <div className="pill-service">Product Design</div>
+                <div className="pill-service">Motion interactions</div>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Role:</p>
+              <p className="body-copy black">Led UX/UI and branding, focusing on elevating the visual quality of cross-chain transactions to drive user trust and adoption.</p>
+            </div>
+          </div>
+          <div className="cont-project-imgs ape"><img src="/images/apechain-apeportal-juan-mora-1.jpg" loading="lazy" id="w-node-_6a9488d2-8cc0-98b9-b17f-33d4787e732d-402b81ee" sizes="100vw" alt="" srcSet="/images/apechain-apeportal-juan-mora-1-p-500.jpg 500w, /images/apechain-apeportal-juan-mora-1-p-800.jpg 800w, /images/apechain-apeportal-juan-mora-1-p-1080.jpg 1080w, /images/apechain-apeportal-juan-mora-1-p-1600.jpg 1600w, /images/apechain-apeportal-juan-mora-1-p-2000.jpg 2000w, /images/apechain-apeportal-juan-mora-1-p-2600.jpg 2600w, /images/apechain-apeportal-juan-mora-1.jpg 2800w" className="img-project" />
+            <div id="w-node-_6a9488d2-8cc0-98b9-b17f-33d4787e732e-402b81ee" className="video-cont-p2">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-apechain1.jpg">
+                  <source src="/videos-work/ape-chain-holo.mp4" type="video/mp4" />
+                </video></div>
+            </div><img src="/images/apechain-apeportal-juan-mora-2.jpg" loading="lazy" id="w-node-_6a9488d2-8cc0-98b9-b17f-33d4787e7330-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/apechain-apeportal-juan-mora-2-p-500.jpg 500w, /images/apechain-apeportal-juan-mora-2-p-800.jpg 800w, /images/apechain-apeportal-juan-mora-2-p-1080.jpg 1080w, /images/apechain-apeportal-juan-mora-2-p-1600.jpg 1600w, /images/apechain-apeportal-juan-mora-2-p-2000.jpg 2000w, /images/apechain-apeportal-juan-mora-2.jpg 2800w" className="img-project" />
+            <div id="w-node-f9f5f3fd-defd-8ce8-7205-1f47ded89167-402b81ee" className="video-cont-p2">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-apechain2.jpg">
+                  <source src="/videos-work/ape-chain-approved.mp4" type="video/mp4" />
+                </video></div>
+            </div><img src="/images/apechain-apeportal-juan-mora-5.jpg" loading="lazy" id="w-node-_6a9488d2-8cc0-98b9-b17f-33d4787e7331-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/apechain-apeportal-juan-mora-5-p-500.jpg 500w, /images/apechain-apeportal-juan-mora-5-p-800.jpg 800w, /images/apechain-apeportal-juan-mora-5-p-1080.jpg 1080w, /images/apechain-apeportal-juan-mora-5-p-1600.jpg 1600w, /images/apechain-apeportal-juan-mora-5-p-2000.jpg 2000w, /images/apechain-apeportal-juan-mora-5.jpg 2800w" className="img-project" />
+          </div>
+        </div>
+        <div id="alena" className="main-project-wrapper">
+          <div className="cont-project-content">
+            <div className="content-project-info first">
+              <h3 className="headline-project">Alena App &amp; <br />Brand design<br /></h3>
+              <div className="pill-year">2024</div>
+              <div className="dot-project"></div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Challenge:</p>
+              <p className="body-copy black">Develop a safe, calming visual identity and app experience for a mental health platform focused on anxiety management.</p>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Services:</p>
+              <div className="pill-services-cont">
+                <div className="pill-service">Art Direction</div>
+                <div className="pill-service">Visual Branding</div>
+                <div className="pill-service">Product Design</div>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Role:</p>
+              <p className="body-copy black">Design Director. Defined the brand ecosystem and app UI, using motion and soft aesthetics to create a welcoming &quot;safe space.&quot;</p>
+            </div>
+          </div>
+          <div className="cont-project-imgs alena"><img src="/images/alena-app-design-juan-mora-1.webp" loading="lazy" id="w-node-_4019b603-df60-99a8-827a-4302e8efb671-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/alena-app-design-juan-mora-1-p-500.webp 500w, /images/alena-app-design-juan-mora-1-p-800.webp 800w, /images/alena-app-design-juan-mora-1-p-1080.webp 1080w, /images/alena-app-design-juan-mora-1-p-1600.webp 1600w, /images/alena-app-design-juan-mora-1-p-2000.webp 2000w, /images/alena-app-design-juan-mora-1-p-2600.webp 2600w, /images/alena-app-design-juan-mora-1.webp 2800w" className="img-project" /><img src="/images/alena-app-design-juan-mora-2.webp" loading="lazy" id="w-node-_7088d1d6-404c-1ee5-1e5d-d7336c52db65-402b81ee" sizes="100vw" alt="" srcSet="/images/alena-app-design-juan-mora-2-p-500.webp 500w, /images/alena-app-design-juan-mora-2-p-800.webp 800w, /images/alena-app-design-juan-mora-2-p-1080.webp 1080w, /images/alena-app-design-juan-mora-2-p-1600.webp 1600w, /images/alena-app-design-juan-mora-2-p-2000.webp 2000w, /images/alena-app-design-juan-mora-2-p-2600.webp 2600w, /images/alena-app-design-juan-mora-2.webp 2800w" className="img-project hide" /><img src="/images/alena-app-design-juan-mora-3.webp" loading="lazy" id="w-node-_10ec20ae-67d8-6e83-fefb-924a82b65d95-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/alena-app-design-juan-mora-3-p-500.webp 500w, /images/alena-app-design-juan-mora-3-p-800.webp 800w, /images/alena-app-design-juan-mora-3-p-1080.webp 1080w, /images/alena-app-design-juan-mora-3-p-1600.webp 1600w, /images/alena-app-design-juan-mora-3-p-2000.webp 2000w, /images/alena-app-design-juan-mora-3-p-2600.webp 2600w, /images/alena-app-design-juan-mora-3.webp 2800w" className="img-project small" /><img src="/images/alena-app-design-juan-mora-4.webp" loading="lazy" id="w-node-aab30b27-21e9-312d-2dc2-ce72063618d5-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/alena-app-design-juan-mora-4-p-500.webp 500w, /images/alena-app-design-juan-mora-4-p-800.webp 800w, /images/alena-app-design-juan-mora-4-p-1080.webp 1080w, /images/alena-app-design-juan-mora-4-p-1600.webp 1600w, /images/alena-app-design-juan-mora-4-p-2000.webp 2000w, /images/alena-app-design-juan-mora-4-p-2600.webp 2600w, /images/alena-app-design-juan-mora-4.webp 2800w" className="img-project hide" /><img src="/images/alena-app-design-juan-mora-5.webp" loading="lazy" id="w-node-f806496d-f386-4308-68d4-609101ba630e-402b81ee" sizes="100vw" alt="" srcSet="/images/alena-app-design-juan-mora-5-p-500.webp 500w, /images/alena-app-design-juan-mora-5-p-800.webp 800w, /images/alena-app-design-juan-mora-5-p-1080.webp 1080w, /images/alena-app-design-juan-mora-5.webp 1600w" className="img-project small" />
+            <div id="w-node-_3890a1b6-4e1d-c0af-5b06-17b71d90a117-402b81ee" className="video-cont-p2">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-alena1.jpg">
+                  <source src="/videos-work/alena-app-design-juan-mora.mp4" type="video/mp4" />
+                </video></div>
+            </div>
+            <div id="w-node-d9913f41-4e58-43d9-e030-6c1570b614ab-402b81ee" className="video-cont-p2">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-alena2.jpg">
+                  <source src="/videos-work/alena-app-website-juan-mora.mp4" type="video/mp4" />
+                </video></div>
+            </div><img src="/images/alena-app-design-juan-mora-8.webp" loading="lazy" id="w-node-_3fd01f04-fa09-73b5-cc44-cfe6d347dc69-402b81ee" sizes="100vw" alt="" srcSet="/images/alena-app-design-juan-mora-8-p-500.webp 500w, /images/alena-app-design-juan-mora-8-p-800.webp 800w, /images/alena-app-design-juan-mora-8-p-1080.webp 1080w, /images/alena-app-design-juan-mora-8-p-1600.webp 1600w, /images/alena-app-design-juan-mora-8-p-2000.webp 2000w, /images/alena-app-design-juan-mora-8-p-2600.webp 2600w, /images/alena-app-design-juan-mora-8.webp 2800w" className="img-project" /><img src="/images/alena-app-design-juan-mora-10.webp" loading="lazy" id="w-node-_08340886-f14d-c7d7-d977-ce0137aa1b68-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/alena-app-design-juan-mora-10-p-500.webp 500w, /images/alena-app-design-juan-mora-10-p-800.webp 800w, /images/alena-app-design-juan-mora-10-p-1080.webp 1080w, /images/alena-app-design-juan-mora-10-p-1600.webp 1600w, /images/alena-app-design-juan-mora-10-p-2000.webp 2000w, /images/alena-app-design-juan-mora-10-p-2600.webp 2600w, /images/alena-app-design-juan-mora-10.webp 2800w" className="img-project" /><img src="/images/alena-app-design-juan-mora-11.webp" loading="lazy" id="w-node-ad5b8db8-e0ac-ab9c-0ed0-c0b0fc608190-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/alena-app-design-juan-mora-11-p-500.webp 500w, /images/alena-app-design-juan-mora-11-p-800.webp 800w, /images/alena-app-design-juan-mora-11-p-1080.webp 1080w, /images/alena-app-design-juan-mora-11-p-1600.webp 1600w, /images/alena-app-design-juan-mora-11-p-2000.webp 2000w, /images/alena-app-design-juan-mora-11-p-2600.webp 2600w, /images/alena-app-design-juan-mora-11.webp 2800w" className="img-project" />
+          </div>
+        </div>
+        <div id="googleai" className="main-project-wrapper">
+          <div className="cont-project-content">
+            <div id="w-node-e05814a9-bf12-a780-d65c-8380e57f0916-402b81ee" className="content-project-info first">
+              <h3 className="headline-project">Google AI<br />Interactive Timeline</h3>
+              <div className="pill-year">2023</div>
+              <div className="dot-project"></div>
+              <div className="cont-cta-work">
+                <a data-wf--cta-big--variant="work" href="https://ai.google/our-ai-journey/?section=intro" target="_blank" className="main-cont-button w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd w-inline-block">
+                  <div className="icon-wrapper-cta-first w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd"><img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd" /></div>
+                  <div className="text-wrapper-cta w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd">See it live</div>
+                  <div className="icon-wrapper-cta w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd"><img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd" /></div>
+                </a>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Challenge:</p>
+              <p className="body-copy black">Tell Google’s AI history through an immersive digital experience highlighting decades of industry-leading milestones.</p>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Services:</p>
+              <div className="pill-services-cont">
+                <div className="pill-service">Art Direction</div>
+                <div className="pill-service">UX/UI</div>
+                <div className="pill-service">Web Design</div>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Role:</p>
+              <p className="body-copy black">Design Lead. Orchestrated the concept, structure, and cross-functional design to create a world-class brand narrative.</p>
+            </div>
+          </div>
+          <div className="cont-project-imgs ai-google"><img src="/images/Google-ai-timeline-juan-mora-1.jpg" loading="lazy" id="w-node-e05814a9-bf12-a780-d65c-8380e57f0932-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/Google-ai-timeline-juan-mora-1-p-500.jpg 500w, /images/Google-ai-timeline-juan-mora-1-p-800.jpg 800w, /images/Google-ai-timeline-juan-mora-1-p-1080.jpg 1080w, /images/Google-ai-timeline-juan-mora-1-p-1600.jpg 1600w, /images/Google-ai-timeline-juan-mora-1-p-2000.jpg 2000w, /images/Google-ai-timeline-juan-mora-1-p-2600.jpg 2600w, /images/Google-ai-timeline-juan-mora-1.jpg 2800w" className="img-project" />
+            <div id="w-node-e05814a9-bf12-a780-d65c-8380e57f0935-402b81ee" className="video-cont-p2">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-googleai.jpg">
+                  <source src="/videos-work/google-ai-timeline-juan-mora.mp4" type="video/mp4" />
+                </video></div>
+            </div><img src="/images/google-ai-timeline-juan-mora-2.jpg" loading="lazy" id="w-node-e05814a9-bf12-a780-d65c-8380e57f0937-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/google-ai-timeline-juan-mora-2-p-500.jpg 500w, /images/google-ai-timeline-juan-mora-2-p-800.jpg 800w, /images/google-ai-timeline-juan-mora-2-p-1080.jpg 1080w, /images/google-ai-timeline-juan-mora-2-p-1600.jpg 1600w, /images/google-ai-timeline-juan-mora-2-p-2000.jpg 2000w, /images/google-ai-timeline-juan-mora-2-p-2600.jpg 2600w, /images/google-ai-timeline-juan-mora-2.jpg 2800w" className="img-project" /><img src="/images/google-ai-timeline-juan-mora-3.jpg" loading="lazy" id="w-node-e05814a9-bf12-a780-d65c-8380e57f0938-402b81ee" sizes="100vw" alt="" srcSet="/images/google-ai-timeline-juan-mora-3-p-500.jpg 500w, /images/google-ai-timeline-juan-mora-3-p-800.jpg 800w, /images/google-ai-timeline-juan-mora-3-p-1080.jpg 1080w, /images/google-ai-timeline-juan-mora-3-p-1600.jpg 1600w, /images/google-ai-timeline-juan-mora-3-p-2000.jpg 2000w, /images/google-ai-timeline-juan-mora-3-p-2600.jpg 2600w, /images/google-ai-timeline-juan-mora-3.jpg 2800w" className="img-project" />
+          </div>
+        </div>
+        <div id="lotm" className="main-project-wrapper">
+          <div className="cont-project-content">
+            <div id="w-node-_4b96279f-c8e1-313b-d599-808907f018fb-402b81ee" className="content-project-info first">
+              <h3 className="headline-project">Yuga Labs <br />Game Landing Pages<br /></h3>
+              <div className="pill-year">2024</div>
+              <div className="dot-project"></div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Challenge:</p>
+              <p className="body-copy black">Create a cohesive ecosystem of 7+ landing pages to drive NFT acquisition and engagement within a complex game economy.</p>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Services:</p>
+              <div className="pill-services-cont">
+                <div className="pill-service">Art Direction</div>
+                <div className="pill-service">Web Design</div>
+                <div className="pill-service">UX/UI</div>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Role:</p>
+              <p className="body-copy black">Design Director. Set the visual direction and UX strategy to ensure a seamless, high-converting bridge between gameplay and commerce.</p>
+            </div>
+          </div>
+          <div className="cont-project-imgs mara"><img src="/images/yuga-otherside-juan-mora-1.jpg" loading="lazy" id="w-node-_4b96279f-c8e1-313b-d599-808907f01917-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/yuga-otherside-juan-mora-1-p-500.jpg 500w, /images/yuga-otherside-juan-mora-1-p-800.jpg 800w, /images/yuga-otherside-juan-mora-1-p-1080.jpg 1080w, /images/yuga-otherside-juan-mora-1-p-1600.jpg 1600w, /images/yuga-otherside-juan-mora-1-p-2000.jpg 2000w, /images/yuga-otherside-juan-mora-1-p-2600.jpg 2600w, /images/yuga-otherside-juan-mora-1.jpg 2800w" className="img-project" /><img src="/images/yuga-otherside-juan-mora-4.jpg" loading="lazy" id="w-node-_4b96279f-c8e1-313b-d599-808907f01918-402b81ee" sizes="100vw" alt="" srcSet="/images/yuga-otherside-juan-mora-4-p-500.jpg 500w, /images/yuga-otherside-juan-mora-4-p-800.jpg 800w, /images/yuga-otherside-juan-mora-4-p-1080.jpg 1080w, /images/yuga-otherside-juan-mora-4-p-1600.jpg 1600w, /images/yuga-otherside-juan-mora-4-p-2000.jpg 2000w, /images/yuga-otherside-juan-mora-4-p-2600.jpg 2600w, /images/yuga-otherside-juan-mora-4.jpg 2800w" className="img-project hide" /><img src="/images/yuga-otherside-juan-mora-5.jpg" loading="lazy" id="w-node-_4b96279f-c8e1-313b-d599-808907f01919-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/yuga-otherside-juan-mora-5-p-500.jpg 500w, /images/yuga-otherside-juan-mora-5-p-800.jpg 800w, /images/yuga-otherside-juan-mora-5-p-1080.jpg 1080w, /images/yuga-otherside-juan-mora-5-p-1600.jpg 1600w, /images/yuga-otherside-juan-mora-5-p-2000.jpg 2000w, /images/yuga-otherside-juan-mora-5-p-2600.jpg 2600w, /images/yuga-otherside-juan-mora-5.jpg 2800w" className="img-project" />
+            <div id="w-node-_4b96279f-c8e1-313b-d599-808907f0191c-402b81ee" className="video-cont-p2">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-yuga1.jpg">
+                  <source src="/videos-work/loot.mp4" type="video/mp4" />
+                </video></div>
+            </div><img src="/images/yuga-otherside-juan-mora-11.jpg" loading="lazy" id="w-node-_4b96279f-c8e1-313b-d599-808907f0191a-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/yuga-otherside-juan-mora-11-p-500.jpg 500w, /images/yuga-otherside-juan-mora-11-p-800.jpg 800w, /images/yuga-otherside-juan-mora-11-p-1080.jpg 1080w, /images/yuga-otherside-juan-mora-11-p-1600.jpg 1600w, /images/yuga-otherside-juan-mora-11-p-2000.jpg 2000w, /images/yuga-otherside-juan-mora-11-p-2600.jpg 2600w, /images/yuga-otherside-juan-mora-11.jpg 2800w" className="img-project" />
+            <div id="w-node-_4b96279f-c8e1-313b-d599-808907f0191e-402b81ee" className="video-cont-p2">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-yuga2.jpg">
+                  <source src="/videos-work/kodamara.mp4" type="video/mp4" />
+                </video></div>
+            </div>
+            <div id="w-node-_5f125df2-feec-a8e9-ac23-3921e05a495e-402b81ee" className="video-cont-p2 hide">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-yuga3.jpg">
+                  <source src="/videos-work/transaction.mp4" type="video/mp4" />
+                </video></div>
+            </div>
+          </div>
+        </div>
+        <div id="cryptopunks" className="main-project-wrapper">
+          <div className="cont-project-content">
+            <div id="w-node-_14464d04-1544-abb0-0307-af58ffe65fbf-402b81ee" className="content-project-info first">
+              <h3 className="headline-project">CryptoPunks<br />Live Mosh Art experience</h3>
+              <div className="pill-year">2024</div>
+              <div className="dot-project"></div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Challenge:</p>
+              <p className="body-copy black">Design an interactive live auction web experience for CryptoPunks, blending real-time participation with generative art.</p>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Services:</p>
+              <div className="pill-services-cont">
+                <div className="pill-service">UX / UI</div>
+                <div className="pill-service">Product Design</div>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Role:</p>
+              <p className="body-copy black">Led UI/UX and conceptual strategy, translating complex &quot;mosh pit&quot; mechanics into a clear, high-stakes auction interface.</p>
+            </div>
+          </div>
+          <div className="cont-project-imgs"><img src="/images/cryptopunks-mosh-juan-mora-1.jpg" loading="lazy" id="w-node-_14464d04-1544-abb0-0307-af58ffe65fdb-402b81ee" sizes="100vw" alt="" srcSet="/images/cryptopunks-mosh-juan-mora-1-p-500.jpg 500w, /images/cryptopunks-mosh-juan-mora-1-p-800.jpg 800w, /images/cryptopunks-mosh-juan-mora-1-p-1080.jpg 1080w, /images/cryptopunks-mosh-juan-mora-1-p-1600.jpg 1600w, /images/cryptopunks-mosh-juan-mora-1-p-2000.jpg 2000w, /images/cryptopunks-mosh-juan-mora-1-p-2600.jpg 2600w, /images/cryptopunks-mosh-juan-mora-1.jpg 3188w" className="img-project" />
+            <div id="w-node-_14464d04-1544-abb0-0307-af58ffe65fdc-402b81ee" className="video-cont-p2">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-cryptopunks.jpg">
+                  <source src="/videos-work/cryptopunks-mosh-juan-mora.mp4" type="video/mp4" />
+                </video></div>
+            </div><img src="/images/cryptopunks-mosh-juan-mora-3.jpg" loading="lazy" id="w-node-_14464d04-1544-abb0-0307-af58ffe65fde-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/cryptopunks-mosh-juan-mora-3-p-500.jpg 500w, /images/cryptopunks-mosh-juan-mora-3-p-800.jpg 800w, /images/cryptopunks-mosh-juan-mora-3-p-1080.jpg 1080w, /images/cryptopunks-mosh-juan-mora-3-p-1600.jpg 1600w, /images/cryptopunks-mosh-juan-mora-3-p-2000.jpg 2000w, /images/cryptopunks-mosh-juan-mora-3-p-2600.jpg 2600w, /images/cryptopunks-mosh-juan-mora-3.jpg 2800w" className="img-project" /><img src="/images/cryptopunks-mosh-juan-mora-4.jpg" loading="lazy" id="w-node-_14464d04-1544-abb0-0307-af58ffe65fdf-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/cryptopunks-mosh-juan-mora-4-p-500.jpg 500w, /images/cryptopunks-mosh-juan-mora-4-p-800.jpg 800w, /images/cryptopunks-mosh-juan-mora-4-p-1080.jpg 1080w, /images/cryptopunks-mosh-juan-mora-4-p-1600.jpg 1600w, /images/cryptopunks-mosh-juan-mora-4-p-2000.jpg 2000w, /images/cryptopunks-mosh-juan-mora-4-p-2600.jpg 2600w, /images/cryptopunks-mosh-juan-mora-4.jpg 2800w" className="img-project small" /><img src="/images/cryptopunks-mosh-juan-mora-5.jpg" loading="lazy" id="w-node-_14464d04-1544-abb0-0307-af58ffe65fe0-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/cryptopunks-mosh-juan-mora-5-p-500.jpg 500w, /images/cryptopunks-mosh-juan-mora-5-p-800.jpg 800w, /images/cryptopunks-mosh-juan-mora-5-p-1080.jpg 1080w, /images/cryptopunks-mosh-juan-mora-5-p-1600.jpg 1600w, /images/cryptopunks-mosh-juan-mora-5-p-2000.jpg 2000w, /images/cryptopunks-mosh-juan-mora-5-p-2600.jpg 2600w, /images/cryptopunks-mosh-juan-mora-5.jpg 2800w" className="img-project small" /><img src="/images/cryptopunks-mosh-juan-mora-6.jpg" loading="lazy" id="w-node-_14464d04-1544-abb0-0307-af58ffe65fe1-402b81ee" sizes="(max-width: 2500px) 100vw, 2500px" alt="" srcSet="/images/cryptopunks-mosh-juan-mora-6-p-500.jpg 500w, /images/cryptopunks-mosh-juan-mora-6-p-800.jpg 800w, /images/cryptopunks-mosh-juan-mora-6-p-1080.jpg 1080w, /images/cryptopunks-mosh-juan-mora-6-p-1600.jpg 1600w, /images/cryptopunks-mosh-juan-mora-6-p-2000.jpg 2000w, /images/cryptopunks-mosh-juan-mora-6.jpg 2500w" className="img-project" /><img src="/images/cryptopunks-mosh-juan-mora-7.jpg" loading="lazy" id="w-node-_14464d04-1544-abb0-0307-af58ffe65fe2-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/cryptopunks-mosh-juan-mora-7-p-500.jpg 500w, /images/cryptopunks-mosh-juan-mora-7-p-800.jpg 800w, /images/cryptopunks-mosh-juan-mora-7-p-1080.jpg 1080w, /images/cryptopunks-mosh-juan-mora-7-p-1600.jpg 1600w, /images/cryptopunks-mosh-juan-mora-7-p-2000.jpg 2000w, /images/cryptopunks-mosh-juan-mora-7-p-2600.jpg 2600w, /images/cryptopunks-mosh-juan-mora-7.jpg 2800w" className="img-project hide" />
+          </div>
+        </div>
+        <div id="google-photos" className="main-project-wrapper">
+          <div className="cont-project-content">
+            <div id="w-node-_01d4aced-0fdd-7d61-21ef-e3a7079bc733-402b81ee" className="content-project-info first">
+              <h3 className="headline-project">Google Photos<br />Landing Page Refresh</h3>
+              <div className="pill-year">2022</div>
+              <div className="dot-project"></div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Challenge:</p>
+              <p className="body-copy black">Refresh the marketing presence to educate users on new features and increase product adoption through engaging storytelling.</p>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Services:</p>
+              <div className="pill-services-cont">
+                <div className="pill-service">Art Direction</div>
+                <div className="pill-service">Web Design</div>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Role:</p>
+              <p className="body-copy black">Led concept, UX, and content structure, using advanced motion and narrative techniques to simplify complex product updates.</p>
+            </div>
+          </div>
+          <div className="cont-project-imgs photos">
+            <div id="w-node-_01d4aced-0fdd-7d61-21ef-e3a7079bc750-402b81ee" className="video-cont-p2">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-google-photos.jpg">
+                  <source src="/videos-work/google-photos-design-juan-mora.mp4" type="video/mp4" />
+                </video></div>
+            </div><img src="/images/google-photos-design-juan-mora-2.png" loading="lazy" id="w-node-_01d4aced-0fdd-7d61-21ef-e3a7079bc752-402b81ee" sizes="100vw" alt="" srcSet="/images/google-photos-design-juan-mora-2-p-500.png 500w, /images/google-photos-design-juan-mora-2-p-800.png 800w, /images/google-photos-design-juan-mora-2-p-1080.png 1080w, /images/google-photos-design-juan-mora-2-p-1600.png 1600w, /images/google-photos-design-juan-mora-2-p-2000.png 2000w, /images/google-photos-design-juan-mora-2-p-2600.png 2600w, /images/google-photos-design-juan-mora-2.png 3200w" className="img-project" /><img src="/images/google-photos-design-juan-mora-6.png" loading="lazy" id="w-node-_01d4aced-0fdd-7d61-21ef-e3a7079bc74f-402b81ee" sizes="100vw" alt="" srcSet="/images/google-photos-design-juan-mora-6-p-500.png 500w, /images/google-photos-design-juan-mora-6-p-800.png 800w, /images/google-photos-design-juan-mora-6-p-1080.png 1080w, /images/google-photos-design-juan-mora-6-p-1600.png 1600w, /images/google-photos-design-juan-mora-6-p-2000.png 2000w, /images/google-photos-design-juan-mora-6-p-2600.png 2600w, /images/google-photos-design-juan-mora-6.png 3200w" className="img-project" /><img src="/images/google-photos-design-juan-mora-7.png" loading="lazy" id="w-node-_01d4aced-0fdd-7d61-21ef-e3a7079bc753-402b81ee" sizes="100vw" alt="" srcSet="/images/google-photos-design-juan-mora-7-p-500.png 500w, /images/google-photos-design-juan-mora-7-p-800.png 800w, /images/google-photos-design-juan-mora-7-p-1080.png 1080w, /images/google-photos-design-juan-mora-7-p-1600.png 1600w, /images/google-photos-design-juan-mora-7-p-2000.png 2000w, /images/google-photos-design-juan-mora-7-p-2600.png 2600w, /images/google-photos-design-juan-mora-7.png 2800w" className="img-project" /><img src="/images/google-photos-design-juan-mora-4.png" loading="lazy" id="w-node-_01d4aced-0fdd-7d61-21ef-e3a7079bc754-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/google-photos-design-juan-mora-4-p-500.png 500w, /images/google-photos-design-juan-mora-4-p-800.png 800w, /images/google-photos-design-juan-mora-4-p-1080.png 1080w, /images/google-photos-design-juan-mora-4-p-1600.png 1600w, /images/google-photos-design-juan-mora-4-p-2000.png 2000w, /images/google-photos-design-juan-mora-4.png 2800w" className="img-project" />
+          </div>
+        </div>
+        <div id="rappi" className="main-project-wrapper">
+          <div className="cont-project-content">
+            <div id="w-node-_8784f743-b849-603b-b882-9f6d6e85e230-402b81ee" className="content-project-info first">
+              <h3 className="headline-project">Rappi<br />Credit Card Designs</h3>
+              <div className="pill-year">2023</div>
+              <div className="dot-project"></div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Challenge:</p>
+              <p className="body-copy black">Refresh the visual identity of a credit card collection to drive excitement and adoption in a new digital banking sector.</p>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Services:</p>
+              <div className="pill-services-cont">
+                <div className="pill-service">Art Direction</div>
+                <div className="pill-service">Illustrations</div>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Role:</p>
+              <p className="body-copy black">Art Director. Designed the visual system and custom illustrations to make financial products feel aspirational and modern.</p>
+            </div>
+          </div>
+          <div className="cont-project-imgs rappi"><img src="/images/Rappi-credit-card-juan-mora-1.jpg" loading="lazy" id="w-node-_8784f743-b849-603b-b882-9f6d6e85e24c-402b81ee" sizes="(max-width: 1400px) 100vw, 1400px" alt="" srcSet="/images/Rappi-credit-card-juan-mora-1-p-500.jpg 500w, /images/Rappi-credit-card-juan-mora-1-p-800.jpg 800w, /images/Rappi-credit-card-juan-mora-1-p-1080.jpg 1080w, /images/Rappi-credit-card-juan-mora-1.jpg 1400w" className="img-project" /><img src="/images/Rappi-credit-card-juan-mora-3.jpg" loading="lazy" id="w-node-_8784f743-b849-603b-b882-9f6d6e85e24d-402b81ee" sizes="(max-width: 1400px) 100vw, 1400px" alt="" srcSet="/images/Rappi-credit-card-juan-mora-3-p-500.jpg 500w, /images/Rappi-credit-card-juan-mora-3-p-800.jpg 800w, /images/Rappi-credit-card-juan-mora-3-p-1080.jpg 1080w, /images/Rappi-credit-card-juan-mora-3.jpg 1400w" className="img-project" /><img src="/images/Rappi-credit-card-thor-juan-mora.jpg" loading="lazy" id="w-node-_8784f743-b849-603b-b882-9f6d6e85e250-402b81ee" sizes="(max-width: 1400px) 100vw, 1400px" alt="" srcSet="/images/Rappi-credit-card-thor-juan-mora-p-500.jpg 500w, /images/Rappi-credit-card-thor-juan-mora-p-800.jpg 800w, /images/Rappi-credit-card-thor-juan-mora-p-1080.jpg 1080w, /images/Rappi-credit-card-thor-juan-mora.jpg 1400w" className="img-project" /><img src="/images/Rappi-credit-card-juan-mora-2.jpg" loading="lazy" id="w-node-c09a455a-959c-ef3a-d4db-9554dda549d0-402b81ee" sizes="(max-width: 1400px) 100vw, 1400px" alt="" srcSet="/images/Rappi-credit-card-juan-mora-2-p-500.jpg 500w, /images/Rappi-credit-card-juan-mora-2-p-800.jpg 800w, /images/Rappi-credit-card-juan-mora-2-p-1080.jpg 1080w, /images/Rappi-credit-card-juan-mora-2.jpg 1400w" className="img-project" /><img src="/images/Rappi-credit-card-juan-mora-4.jpg" loading="lazy" id="w-node-_8784f743-b849-603b-b882-9f6d6e85e251-402b81ee" sizes="(max-width: 1400px) 100vw, 1400px" alt="" srcSet="/images/Rappi-credit-card-juan-mora-4-p-500.jpg 500w, /images/Rappi-credit-card-juan-mora-4-p-800.jpg 800w, /images/Rappi-credit-card-juan-mora-4-p-1080.jpg 1080w, /images/Rappi-credit-card-juan-mora-4.jpg 1400w" className="img-project" /></div>
+        </div>
+        <div id="google-shopping" className="main-project-wrapper">
+          <div className="cont-project-content">
+            <div id="w-node-cecf9322-2783-6881-94a6-abdcbb5c1ff5-402b81ee" className="content-project-info first">
+              <h3 className="headline-project">Google Shopping<br />Inmersive Shop Gallery</h3>
+              <div className="pill-year">2023</div>
+              <div className="dot-project"></div>
+              <div className="cont-cta-work">
+                <a data-wf--cta-big--variant="work" href="https://blog.google/products-and-platforms/products/shopping/bestthings/" target="_blank" className="main-cont-button w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd w-inline-block">
+                  <div className="icon-wrapper-cta-first w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd"><img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd" /></div>
+                  <div className="text-wrapper-cta w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd">See it live</div>
+                  <div className="icon-wrapper-cta w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd"><img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd" /></div>
+                </a>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Challenge:</p>
+              <p className="body-copy black">Design a massive, immersive web showcase for the internet&#x27;s top 1,000 products to drive tool adoption and user discovery.</p>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Services:</p>
+              <div className="pill-services-cont">
+                <div className="pill-service">Art Direction</div>
+                <div className="pill-service">Web Design</div>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Role:</p>
+              <p className="body-copy black">Principal Designer. Led art direction and UX, ensuring a high-performance browsing experience for a high-volume product list.</p>
+            </div>
+          </div>
+          <div className="cont-project-imgs _1000"><img src="/images/best-things-for-everything-google-shopping-juan-mora1.jpg" loading="lazy" id="w-node-cecf9322-2783-6881-94a6-abdcbb5c2011-402b81ee" sizes="100vw" alt="" srcSet="/images/best-things-for-everything-google-shopping-juan-mora1-p-500.jpg 500w, /images/best-things-for-everything-google-shopping-juan-mora1-p-800.jpg 800w, /images/best-things-for-everything-google-shopping-juan-mora1-p-1080.jpg 1080w, /images/best-things-for-everything-google-shopping-juan-mora1-p-1600.jpg 1600w, /images/best-things-for-everything-google-shopping-juan-mora1-p-2000.jpg 2000w, /images/best-things-for-everything-google-shopping-juan-mora1-p-2600.jpg 2600w, /images/best-things-for-everything-google-shopping-juan-mora1.jpg 2800w" className="img-project" />
+            <div id="w-node-cecf9322-2783-6881-94a6-abdcbb5c2013-402b81ee" className="video-cont-p2">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-bestthings.jpg">
+                  <source src="/videos-work/best-things-for-everything-google-shopping-juan-mora.mp4" type="video/mp4" />
+                </video></div>
+            </div><img src="/images/best-things-for-everything-google-shopping-juan-mora2.jpg" loading="lazy" id="w-node-ce26c8a1-2aa6-3893-228c-8b16d3a330e2-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/best-things-for-everything-google-shopping-juan-mora2-p-500.jpg 500w, /images/best-things-for-everything-google-shopping-juan-mora2-p-800.jpg 800w, /images/best-things-for-everything-google-shopping-juan-mora2-p-1080.jpg 1080w, /images/best-things-for-everything-google-shopping-juan-mora2-p-1600.jpg 1600w, /images/best-things-for-everything-google-shopping-juan-mora2-p-2000.jpg 2000w, /images/best-things-for-everything-google-shopping-juan-mora2-p-2600.jpg 2600w, /images/best-things-for-everything-google-shopping-juan-mora2.jpg 2800w" className="img-project" /><img src="/images/best-things-for-everything-google-shopping-juan-mora3-1.jpg" loading="lazy" id="w-node-cecf9322-2783-6881-94a6-abdcbb5c2012-402b81ee" sizes="(max-width: 2800px) 100vw, 2800px" alt="" srcSet="/images/best-things-for-everything-google-shopping-juan-mora3-1-p-500.jpg 500w, /images/best-things-for-everything-google-shopping-juan-mora3-1-p-800.jpg 800w, /images/best-things-for-everything-google-shopping-juan-mora3-1-p-1080.jpg 1080w, /images/best-things-for-everything-google-shopping-juan-mora3-1-p-1600.jpg 1600w, /images/best-things-for-everything-google-shopping-juan-mora3-1-p-2000.jpg 2000w, /images/best-things-for-everything-google-shopping-juan-mora3-1-p-2600.jpg 2600w, /images/best-things-for-everything-google-shopping-juan-mora3-1.jpg 2800w" className="img-project" />
+          </div>
+        </div>
+        <div id="dino-runner-ar" className="main-project-wrapper">
+          <div className="cont-project-content">
+            <div id="w-node-adc84455-2cc8-44bc-4217-76a2b9e98df2-402b81ee" className="content-project-info first">
+              <h3 className="headline-project">Google AR<br />Dino Runner AR Game</h3>
+              <div className="dot-project"></div>
+              <div className="pill-year">2019</div>
+              <div className="cont-cta-work">
+                <a data-wf--cta-big--variant="work" href="https://www.youtube.com/watch?v=tVG9puVcNn4" target="_blank" className="main-cont-button w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd w-inline-block">
+                  <div className="icon-wrapper-cta-first w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd"><img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd" /></div>
+                  <div className="text-wrapper-cta w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd">See it live</div>
+                  <div className="icon-wrapper-cta w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd"><img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion w-variant-948bd83d-21eb-0eb2-4275-2385c9d64bcd" /></div>
+                </a>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Challenge:</p>
+              <p className="body-copy black">Showcase Google’s AR anchor-point technology through a high-traffic, interactive dinosaur racing game at Google I/O.</p>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Services:</p>
+              <div className="pill-services-cont">
+                <div className="pill-service">Art Direction</div>
+                <div className="pill-service">Visual Branding</div>
+                <div className="pill-service">Game Design</div>
+                <div className="pill-service">Character Design</div>
+              </div>
+            </div>
+            <div className="content-project-info">
+              <p className="body-copy title">Role:</p>
+              <p className="body-copy black">Art Director. Led visual identity, character design, and UI, turning a technical demo into a memorable, fun brand experience.</p>
+            </div>
+          </div>
+          <div className="cont-project-imgs dino"><img src="/images/Dino-runner-juan-mora-1.png" loading="lazy" id="w-node-adc84455-2cc8-44bc-4217-76a2b9e98e0f-402b81ee" sizes="(max-width: 1600px) 100vw, 1600px" alt="" srcSet="/images/Dino-runner-juan-mora-1-p-500.png 500w, /images/Dino-runner-juan-mora-1-p-800.png 800w, /images/Dino-runner-juan-mora-1-p-1080.png 1080w, /images/Dino-runner-juan-mora-1.png 1600w" className="img-project" /><img src="/images/Dino-runner-juan-mora-2.jpg" loading="lazy" id="w-node-adc84455-2cc8-44bc-4217-76a2b9e98e0e-402b81ee" sizes="100vw" alt="" srcSet="/images/Dino-runner-juan-mora-2-p-500.jpg 500w, /images/Dino-runner-juan-mora-2-p-800.jpg 800w, /images/Dino-runner-juan-mora-2-p-1080.jpg 1080w, /images/Dino-runner-juan-mora-2.jpg 1600w" className="img-project" /><img src="/images/Dino-runner-juan-mora-3.jpg" loading="lazy" id="w-node-adc84455-2cc8-44bc-4217-76a2b9e98e13-402b81ee" sizes="100vw" alt="" srcSet="/images/Dino-runner-juan-mora-3-p-500.jpg 500w, /images/Dino-runner-juan-mora-3-p-800.jpg 800w, /images/Dino-runner-juan-mora-3-p-1080.jpg 1080w, /images/Dino-runner-juan-mora-3.jpg 1400w" className="img-project" />
+            <div id="w-node-adc84455-2cc8-44bc-4217-76a2b9e98e10-402b81ee" className="video-cont-p2">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-dino1.jpg">
+                  <source src="/videos-work/dino-runner.mp4" type="video/mp4" />
+                </video></div>
+            </div>
+            <div id="w-node-_09db5005-4816-1c05-897e-77f84030b552-402b81ee" className="video-cont-p2">
+              <div className="code-video w-embed"><video className="lazy-video" autoPlay loop muted playsInline width="100%" height="auto" preload="none" poster="/videos-work/thumbnail/thumbnail-dino2.jpg">
+                  <source src="/videos-work/dino-runner2.mp4" type="video/mp4" />
+                </video></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    

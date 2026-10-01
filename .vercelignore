@@ -1,0 +1,9 @@
+node_modules
+backend
+frontend/legacy
+scripts
+*.bat
+capture_cards.cjs
+capture_final_verification.cjs
+webflow.js
+*.log
