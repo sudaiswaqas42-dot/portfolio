@@ -13,8 +13,8 @@ const themePresets = require('../../shared/themePresets.json');
 const contentCatalog = require('../../shared/contentCatalog.json');
 const app = express();
 const root = path.join(__dirname,'..');
-const uploadDir = path.join(root,'uploads');
-fs.mkdirSync(uploadDir,{recursive:true});
+const uploadDir = process.env.VERCEL ? path.join('/tmp','uploads') : path.join(root,'uploads');
+try { fs.mkdirSync(uploadDir,{recursive:true}); } catch {}
 app.disable('x-powered-by');
 app.use(cors({origin:true,credentials:true}));
 app.use((req,res,next)=>{res.setHeader('X-Content-Type-Options','nosniff');next();});
