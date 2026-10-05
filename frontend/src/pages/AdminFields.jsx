@@ -3,7 +3,8 @@ function Field({label,value,onChange,multiline=false,type='text',...props}){
    return <label className="editor-field"><span>{label}</span>{multiline?<textarea rows={4} value={value??''} onChange={e=>onChange(e.target.value)} {...props}/>:<input type={type} value={value??''} onChange={e=>onChange(e.target.value)} {...props}/>}</label>;
 }
 async function request(url,options={}){
-  const apiBase = import.meta.env.VITE_API_URL || '';
+  const defaultBackend = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) ? '' : 'https://portfolio-backend-production-9c68.up.railway.app';
+  const apiBase = import.meta.env.VITE_API_URL || defaultBackend;
   const fullUrl = url.startsWith('/') ? `${apiBase}${url}` : url;
   const res=await fetch(fullUrl,{...options,headers:{Authorization:`Bearer ${localStorage.getItem('adminToken')}`,...options.headers}});
   const body=await res.json().catch(()=>({error:'Server response was not valid. Please retry.'}));

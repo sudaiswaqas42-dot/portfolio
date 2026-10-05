@@ -20,7 +20,8 @@ export function PortfolioProvider({children}){
   const [data,setData]=useState(cachedData || {...defaults,theme:normalizeTheme()}),[loading,setLoading]=useState(true),[error,setError]=useState('');
   const refreshData=useCallback(async()=>{
     try{
-      const apiBase = import.meta.env.VITE_API_URL || '';
+      const defaultBackend = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) ? '' : 'https://portfolio-backend-production-9c68.up.railway.app';
+      const apiBase = import.meta.env.VITE_API_URL || defaultBackend;
       const res=await fetch(`${apiBase}/api/portfolio`,{signal:AbortSignal.timeout(10000)});
       if(!res.ok)throw new Error('The content server is unavailable. Please retry.');
       const next=await res.json();next.theme=normalizeTheme(next.theme);

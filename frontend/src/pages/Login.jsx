@@ -14,7 +14,8 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const apiBase = import.meta.env.VITE_API_URL || '';
+      const defaultBackend = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') ? '' : 'https://portfolio-backend-production-9c68.up.railway.app';
+      const apiBase = import.meta.env.VITE_API_URL || defaultBackend;
       const res = await fetch(`${apiBase}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
