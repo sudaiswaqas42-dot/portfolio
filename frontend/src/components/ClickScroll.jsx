@@ -16,8 +16,11 @@ export default function ClickScroll() {
   const clickHuhRef = useRef(null);
   const clickTextRef = useRef(null);
   const [curiousText, setCuriousText] = useState(content("intro.hover_button_text"));
+  const [hasClicked, setHasClicked] = useState(false);
+  const hasClickedRef = useRef(false);
 
   const handleMouseEnter = () => {
+    if (hasClickedRef.current) return;
     const clickText = clickTextRef.current;
     const clickHuh = clickHuhRef.current;
     const hoverPill = hoverPillRef.current;
@@ -67,6 +70,7 @@ export default function ClickScroll() {
   };
 
   const handleMouseLeave = () => {
+    if (hasClickedRef.current) return;
     const clickText = clickTextRef.current;
     const clickHuh = clickHuhRef.current;
     const hoverPill = hoverPillRef.current;
@@ -108,7 +112,9 @@ export default function ClickScroll() {
       ease: 'power2.in',
       overwrite: true,
       onComplete: () => {
-        setCuriousText(content("intro.hover_button_text"));
+        if (!hasClickedRef.current) {
+          setCuriousText(content("intro.hover_button_text"));
+        }
       }
     });
   };
@@ -116,7 +122,47 @@ export default function ClickScroll() {
   const handleClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    // Kill running button tweens so nothing lingers, then navigate instantly
+
+    if (!hasClickedRef.current) {
+      // Step 1: First click -> change to "Another click!" (Image 2)
+      hasClickedRef.current = true;
+      setHasClicked(true);
+      const clickedLabel = content("intro.clicked_button_text") || "Another click!";
+      setCuriousText(clickedLabel);
+
+      const clickText = clickTextRef.current;
+      const clickHuh = clickHuhRef.current;
+      const hoverPill = hoverPillRef.current;
+      const clickBtn = clickBtnRef.current;
+
+      if (clickText) {
+        gsap.to(clickText, { y: '-9vw', opacity: 0, duration: 0.2, overwrite: true });
+      }
+      if (hoverPill) {
+        gsap.to(hoverPill, { y: '-9vw', scale: 1.6, duration: 0.25, overwrite: true });
+      }
+      if (clickBtn) {
+        const greyColor = getComputedStyle(document.documentElement).getPropertyValue('--text-secondary').trim() || '#96908C';
+        gsap.to(clickBtn, {
+          backgroundColor: greyColor,
+          scale: 0.94,
+          duration: 0.12,
+          yoyo: true,
+          repeat: 1,
+          ease: 'power2.out',
+          overwrite: 'auto'
+        });
+      }
+      if (clickHuh) {
+        gsap.fromTo(clickHuh,
+          { opacity: 0, scale: 0.85, y: 4 },
+          { opacity: 1, scale: 1, y: 0, duration: 0.28, ease: 'back.out(2)', overwrite: true }
+        );
+      }
+      return;
+    }
+
+    // Step 2: Second click -> navigate to /work
     gsap.killTweensOf([clickBtnRef.current, clickTextRef.current, hoverPillRef.current, clickHuhRef.current]);
     navigate('/work');
     window.scrollTo(0, 0);

@@ -1096,7 +1096,7 @@ a:hover .brand-mark-dot, a:focus-visible .brand-mark-dot, .about-brand-icon:hove
 .about-intro-flow .lottie-circles { width: max(100vw,100vh); height: max(100vw,100vh); }
 .about-intro-flow .lottie-circles svg { overflow: visible !important; }
 .cont-click { background-color: var(--ribbon-accent, #FFBC95); }
-.click { color: var(--text-secondary) !important; }
+.click { color: var(--background, #FAF6EF) !important; }
 .scroll-accent, .scroll-ll { color: var(--ribbon-accent, #FFBC95); }
 .scroll-ribbons svg { filter: var(--ribbon-filter, none); }
 
