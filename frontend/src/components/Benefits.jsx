@@ -1,8 +1,10 @@
+import { useContent } from '../utils/content';
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { usePortfolio } from '../context/PortfolioContext';
 
 export default function Benefits() {
+  const content = useContent();
   const { data } = usePortfolio();
   const settings = data?.settings || {};
   const points = data?.philosophy || [
@@ -12,11 +14,18 @@ export default function Benefits() {
     'I align your goals with my experience to make the right design decisions for your brand.'
   ];
 
-  const silhouetteImg = settings.benefits_silhouette_image !== undefined && settings.benefits_silhouette_image !== null && settings.benefits_silhouette_image !== ''
-    ? settings.benefits_silhouette_image
-    : "/images/home-about-jm-2.png";
-  const darkImg = settings.benefits_dark_image || "/images/home-about-jm-1.jpg";
-  const lightImg = settings.benefits_light_image || "/images/home-about-jm-3.jpg";
+  let silhouetteImg = settings.benefits_silhouette_image ?? "/images/home-about-jm-2.png";
+  let darkImg = settings.benefits_dark_image ?? "/images/home-about-jm-1.jpg";
+  const lightImg = settings.benefits_light_image ?? "/images/home-about-jm-3.jpg";
+
+  // Auto-detect swapped images if silhouette was set to a jpg background and darkImg was set to a png cutout
+  if (silhouetteImg && darkImg && /\.jpe?g($|\?)/i.test(silhouetteImg) && /\.png($|\?)/i.test(darkImg)) {
+    const temp = silhouetteImg;
+    silhouetteImg = darkImg;
+    darkImg = temp;
+  }
+
+  const isOpaqueSilhouette = silhouetteImg && silhouetteImg !== 'none' && /\.jpe?g($|\?)/i.test(silhouetteImg);
 
   return (
     <section data-nav="peach" className="section" id="about">
@@ -28,21 +37,24 @@ export default function Benefits() {
             <div
               data-wf-target='[[["6966d53e7b70efaabd0a6539","bf4a27c8-e0a8-d734-f1de-8376874e8588"],[]]]'
               className="text-wrapper-align-benefit"
+              style={isOpaqueSilhouette ? { zIndex: 36 } : undefined}
             >
-              <h2 className="h2-headline-step1-1">Good design</h2>
+              <h2 className="h2-headline-step1-1" style={isOpaqueSilhouette ? { zIndex: 36 } : undefined}>
+                {content("benefits.good_design")}
+              </h2>
             </div>
             <div
               data-wf-target='[[["6966d53e7b70efaabd0a6539","d3492417-3232-8879-0da3-b1d63ee4557c"],[]]]'
               className="text-wrapper-align-benefit _2"
             >
-              <h2 className="h2-headline-step1-2">takes time</h2>
+              <h2 className="h2-headline-step1-2">{content("benefits.takes_time")}</h2>
             </div>
             
-            {silhouetteImg !== 'none' && (
+            {silhouetteImg && silhouetteImg !== 'none' && (
               <img 
                 src={silhouetteImg} 
                 loading="lazy"
-                alt="Benefits silhouette" 
+                alt={content("benefits.image_description_benefits_silhouette")}
                 className="jm-siluete-img"
               />
             )}
@@ -54,7 +66,7 @@ export default function Benefits() {
             <h2
               data-wf-target='[[["6966d53e7b70efaabd0a6539","b83787a3-8d2e-bb92-08ec-200215144fa4"],[]]]'
               className="h2-headline-step1-3"
-            >and working with me saves it</h2>
+            >{content("benefits.and_working_with_me_saves_it")}</h2>
           </div>
 
           {/* Step 2: Benefits Checklist */}
@@ -63,8 +75,8 @@ export default function Benefits() {
               data-wf-target='[[["6966d53e7b70efaabd0a6539","f41af8f4-7d3a-864f-96b4-a9aedbddc4e3"],[]]]'
               className="step2-headline-wrapper"
             >
-              <h2 className="h2-benefit-1">Companies partner with me because of my</h2>
-              <h2 className="h2-benefit-2">perspective +<br />sharp instincts</h2>
+              <h2 className="h2-benefit-1">{content("benefits.companies_partner_with_me_because_of_my")}</h2>
+              <h2 className="h2-benefit-2">{content("benefits.perspective")}<br />{content("benefits.sharp_instincts")}</h2>
             </div>
             <div className="line-step2"></div>
 
@@ -76,7 +88,7 @@ export default function Benefits() {
               {points.map((point, index) => (
                 <li key={index} className="item-benefits-cont">
                   <div className="text-benefit-cont">
-                    <img src="/images/check-mark-icon.svg" loading="lazy" alt="" className="check-icon" />
+                    <img src={content("benefits.check_mark_icon_svg")} loading="lazy" alt={content("benefits.image_description_decorative")} className="check-icon" />
                     <h3 className="he-bulltet">{point}</h3>
                   </div>
                   <div className="line-benefit"></div>
@@ -85,13 +97,13 @@ export default function Benefits() {
             </ul>
 
             <div className="cont-cta-benefitc">
-              <Link to="/about" className="main-cont-button w-inline-block">
+              <Link to={content("benefits.destination_about")} className="main-cont-button w-inline-block">
                 <div className="icon-wrapper-cta-first">
-                  <img loading="lazy" src="/images/arrow-grey.svg" alt="" className="arrow-cion" />
+                  <img loading="lazy" src={content("benefits.arrow_grey_svg")} alt={content("benefits.image_description_decorative")} className="arrow-cion" />
                 </div>
-                <div className="text-wrapper-cta">Learn more about me<br /></div>
+                <div className="text-wrapper-cta">{content("benefits.learn_more_about_me")}<br /></div>
                 <div className="icon-wrapper-cta">
-                  <img loading="lazy" src="/images/arrow-grey.svg" alt="" className="arrow-cion" />
+                  <img loading="lazy" src={content("benefits.arrow_grey_svg")} alt={content("benefits.image_description_decorative")} className="arrow-cion" />
                 </div>
               </Link>
             </div>
@@ -100,14 +112,14 @@ export default function Benefits() {
           <img
             src={darkImg}
             loading="lazy"
-            alt="Benefits dark background"
+            alt={content("benefits.image_description_benefits_dark_background")}
             className="dark-jm-img"
           />
           <img
             src={lightImg}
             loading="lazy"
             data-wf-target='[[["6966d53e7b70efaabd0a6539","909c9f01-91bb-1942-d595-3871a9b5a7c1"],[]]]'
-            alt="Benefits light background"
+            alt={content("benefits.image_description_benefits_light_background")}
             className="light-jm-img"
           />
         </div>

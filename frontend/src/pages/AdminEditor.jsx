@@ -1,85 +1,133 @@
-import React,{useEffect,useState} from 'react';
-import {Link,useNavigate} from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
 import {usePortfolio} from '../context/PortfolioContext';
-import './admin.css';
+import {Field, Upload, Gallery, request} from './AdminFields';
 import ThemeEditor from '../components/ThemeEditor';
-const tabs={settings:'General',theme:'Site colors',projects:'Work projects',services:'Home services',about:'About page',philosophy:'Benefits'};
-const clone=v=>JSON.parse(JSON.stringify(v));
-function Field({label,value,onChange,multiline=false,type='text',...props}){
-   return <label className="editor-field"><span>{label}</span>{multiline?<textarea rows={4} value={value??''} onChange={e=>onChange(e.target.value)} {...props}/>:<input type={type} value={value??''} onChange={e=>onChange(e.target.value)} {...props}/>}</label>;
-}
-async function request(url,options={}){
-  const apiBase = import.meta.env.VITE_API_URL || '';
-  const fullUrl = url.startsWith('/') ? `${apiBase}${url}` : url;
-  const res=await fetch(fullUrl,{...options,headers:{Authorization:`Bearer ${localStorage.getItem('adminToken')}`,...options.headers}});
-  const body=await res.json().catch(()=>({error:'Server response was not valid. Please retry.'}));
-  if(!res.ok){const e=new Error(body.error||'Request failed');e.status=res.status;throw e;}
-  return body;
-}
-function Upload({onUpload,label='Upload media',onBusy}){
-  const [busy,setBusy]=useState(false),[error,setError]=useState('');
-  async function upload(e){
-    const files=[...e.target.files];if(!files.length)return;
-    setBusy(true);onBusy?.(true);setError('');
-    try{const uploaded=[];for(const file of files){if(file.size>50*1024*1024)throw new Error('Maximum file size is 50 MB.');const result=await request('/api/admin/upload',{method:'POST',headers:{'Content-Type':file.type},body:file});uploaded.push({type:result.type,src:result.url,alt:file.name.replace(/\.[^.]+$/,''),className:result.type==='image'?'img-project':'video-cont-p2'});}onUpload(uploaded);}
-    catch(e){setError(e.message);}finally{setBusy(false);onBusy?.(false);e.target.value='';}
-  }
-  return <div><label className="upload-button">{busy?'Uploading…':label}<input aria-label={label} type="file" accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm" multiple disabled={busy} onChange={upload}/></label>{error&&<p role="alert" className="editor-error">{error}</p>}</div>;
-}
-function Gallery({media=[],onChange,onBusy}){
-  const update=(i,patch)=>onChange(media.map((m,j)=>i===j?{...m,...patch}:m));
-  const move=(i,d)=>{const next=[...media];[next[i],next[i+d]]=[next[i+d],next[i]];onChange(next);};
-  return <div className="gallery-editor"><div className="section-heading"><div><h3>Project gallery</h3><p>Upload, replace or reorder images and videos. Save changes to publish.</p></div><Upload onBusy={onBusy} onUpload={items=>onChange([...media,...items])}/></div>
-    <div className="media-grid">{media.map((m,i)=><div className="media-card" key={`${i}-${m.src}`}>
-      {m.type==='image'?<img src={m.src} alt={m.alt||'Project preview'} loading="lazy"/>:<video src={m.src} poster={m.poster} controls preload="metadata"/>}
-      <div className="media-fields"><Field label={`Media ${i+1} URL`} value={m.src} onChange={v=>update(i,{src:v,srcSet:''})}/><Field label="Description / alt text" value={m.alt} onChange={v=>update(i,{alt:v})}/>
-      <label className="editor-field"><span>Layout</span><select value={m.className?.includes('hide')?'hidden':m.className?.includes('small')?'small':m.className?.includes('big')?'big':'normal'} onChange={e=>update(i,{className:`${m.type==='image'?'img-project':'video-cont-p2'} ${e.target.value==='normal'?'':e.target.value==='hidden'?'hide':e.target.value}`,id:''})}><option value="normal">Normal</option><option value="big">Full width</option><option value="small">Small</option><option value="hidden">Hidden</option></select></label>
-      <div className="media-actions"><button type="button" disabled={!i} onClick={()=>move(i,-1)} aria-label={`Move media ${i+1} up`}>↑</button><button type="button" disabled={i===media.length-1} onClick={()=>move(i,1)} aria-label={`Move media ${i+1} down`}>↓</button><button type="button" onClick={()=>onChange(media.filter((_,j)=>i!==j))}>Remove</button></div>
-      <Upload label={`Replace media ${i+1}`} onBusy={onBusy} onUpload={items=>update(i,{...items[0],id:m.id,className:m.className,srcSet:''})}/></div>
-    </div>)}</div>{!media.length&&<p className="editor-empty">No media yet. Add your first image or video.</p>}
+import catalog from '../../../shared/contentCatalog.json';
+import './admin.css';
+
+const clone = value => JSON.parse(JSON.stringify(value));
+const sections = {
+  social: ['Social links', 'Edit the email, LinkedIn, X / Twitter and Behance destinations used in the website header and footer.'],
+  header: ['Header & navigation', 'Shared across all three pages. Edit your name, navigation buttons, destinations and social links.'],
+  hero: ['Hero', 'Your first impression: name, headline, role and background photograph.'],
+  intro: ['Click & scroll', 'Edit every word of the animated heading, interactive button and decorative artwork.'],
+  services: ['Services', 'Section heading, service descriptions, images, videos and icons.'],
+  benefits: ['Benefits', 'Both scrolling steps, background photographs, checklist and call to action.'],
+  folder: ['Work folder', 'Portfolio teaser, folder label, artwork and destination.'],
+  contact: ['Contact & call to action', 'Headings, button copy and confirmation messages. Shared by Home, About and Work.'],
+  footer: ['Footer', 'Shared brand heading, contact links, technologies and background video.'],
+  aboutHero: ['Hero & photography', 'About headline, portrait and animated introduction.'],
+  biography: ['Biography', 'Section labels, biography, approach, philosophy and awards.'],
+  news: ['News & updates', 'All three news cards, buttons, external links and photographs.'],
+  studio: ['Animated studio card', 'Replace the center logo/image and edit the large moving text. The original wave, halftone dots and mouse effect stay the same. Small top labels are editable too.'],
+  work: ['Heading & project labels', 'Work page headline, project field labels, live button and icons.'],
+  projects: ['Projects & galleries', 'Create, reorder and edit projects. Manage every gallery image, video and poster.'],
+  brand: ['Brand & icons', 'Logo and shared visual identity.'],
+  cursor: ['Cursor & messages', 'Custom pointer icon, hover copy and click feedback.'],
+  theme: ['Colors & appearance', 'Choose a palette and customize your site colors.'],
+};
+const pages = [
+  {id:'home', name:'Home page', icon:'01', url:'/', sections:['header','hero','intro','services','benefits','folder','contact','footer']},
+  {id:'about', name:'About page', icon:'02', url:'/about', sections:['header','aboutHero','biography','news','studio','contact','footer']},
+  {id:'work', name:'Work page', icon:'03', url:'/work', sections:['header','work','projects','contact','footer']},
+  {id:'site', name:'Site settings', icon:'✦', url:'/', sections:['social','brand','cursor','theme']},
+];
+const bindings = {
+  social: {settings:['email','linkedin_url','twitter_url','behance_url']},
+  header: {settings:['first_name','last_name','email','linkedin_url','twitter_url','behance_url']},
+  hero: {settings:['first_name','last_name','title','role','hero_image']},
+  benefits: {settings:['benefits_dark_image','benefits_silhouette_image','benefits_light_image']},
+  contact: {settings:['email']},
+  footer: {settings:['footer_heading','footer_subheading','footer_tech_label','footer_technologies','footer_video','footer_video_poster','email','linkedin_url','twitter_url','behance_url']},
+  aboutHero: {about:['headline'],settings:['about_image']},
+  biography: {about:['who_i_am','approach','philosophy','awards']},
+  news: {about:[1,2,3].flatMap(n=>[`news${n}_title`,`news${n}_desc`,`news${n}_link`]).concat(['news2_img1','news2_img2','news2_img3','news3_img1','news3_img2'])},
+};
+const labels = {title:'Hero heading',role:'Professional role',hero_image:'Hero background image',about_image:'About portrait',benefits_dark_image:'Step 1: Background room photo',benefits_silhouette_image:'Step 1: Foreground person cutout (Transparent PNG — sits in front of text; or "none")',benefits_light_image:'Step 2: Light background photo',footer_technologies:'Technologies — one per line',footer_video_poster:'Video poster',who_i_am:'Who I am',awards:'Awards — one per line'};
+const human = key => labels[key] || key.replace(/_/g,' ').replace(/news(\d)/g,'News card $1').replace(/img(\d)/g,'image $1').replace(/^./,c=>c.toUpperCase());
+const boundType = key => /video$/.test(key)?'video':/image|img\d|poster/.test(key)?'image':/url|link/.test(key)?'link':'text';
+const fieldsFor = section => Object.entries(catalog).filter(([,field])=>field.group===section||(section==='hero'&&field.group==='heroCards'));
+const normalize = data => ({...clone(data),content:{...Object.fromEntries(Object.entries(catalog).map(([k,f])=>[k,f.value])),...data.content}});
+const editable = ['settings','about','content','projects','services','philosophy','theme'];
+
+function AssetField({label,value,type,onChange,onBusy}) {
+  const media=['image','video'].includes(type);
+  return <div className={media?'cms-asset':'cms-copy-field'}>
+    {media && value && value!=='none' && (type==='image'?<img className="photo-preview" src={value} alt={`${label} preview`} loading="lazy"/>:<video className="photo-preview" src={value} controls preload="metadata"/>)}
+    <Field label={label} value={value} multiline={!media&&type==='text'&&(String(value).includes('\n')||String(value).length>110||/description|biography|philosophy|approach|who i am|awards|technologies/i.test(label))} onChange={onChange}/>
+    {media&&<Upload label={`Upload ${type}`} onBusy={onBusy} acceptType={type} onUpload={items=>onChange(items[0].src)}/>}
   </div>;
 }
-export default function AdminEditor(){
- const {data,loading,error,refreshData}=usePortfolio(),navigate=useNavigate();
- const [authorized,setAuthorized]=useState(false),[draft,setDraft]=useState(null),[baseline,setBaseline]=useState(null),[tab,setTab]=useState('settings'),[selected,setSelected]=useState(0),[saving,setSaving]=useState(false),[uploading,setUploading]=useState(false),[notice,setNotice]=useState(null);
- useEffect(()=>{let live=true;request('/api/auth/me').then(()=>{if(live)setAuthorized(true)}).catch(()=>{localStorage.removeItem('adminToken');navigate('/login',{replace:true})});return()=>{live=false}},[navigate]);
- useEffect(()=>{if(!loading&&!error&&data.revision&&!draft){setDraft(clone(data));setBaseline(clone(data));}},[data,loading,error,draft]);
- const dirty=!!draft&&Object.keys(tabs).some(key=>JSON.stringify(draft[key])!==JSON.stringify(baseline[key]));
- const sectionDirty=!!draft&&JSON.stringify(draft[tab])!==JSON.stringify(baseline[tab]);
- useEffect(()=>{const prevent=e=>{if(dirty){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',prevent);return()=>window.removeEventListener('beforeunload',prevent)},[dirty]);
- const patch=(section,value)=>setDraft(d=>({...d,[section]:value}));
- const field=(section,key,value)=>setDraft(d=>({...d,[section]:{...d[section],[key]:value}}));
- const project=(key,value)=>setDraft(d=>({...d,projects:d.projects.map((p,i)=>i===selected?{...p,[key]:value}:p)}));
- async function save(e){
-   e.preventDefault();setSaving(true);setNotice(null);
-   try{
-     const payload=tab==='projects'?{projects:draft.projects}:tab==='services'?{services:draft.services}:tab==='philosophy'?{points:draft.philosophy}:draft[tab];
-     const result=await request(`/api/admin/${tab}`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({...payload,revision:draft.revision})});
-     const latest=await refreshData();
-     if(!latest)throw new Error('Saved, but refresh failed. Reload before editing further.');
-     setDraft(d=>({...d,[tab]:clone(latest[tab]),revision:result.revision}));setBaseline(b=>({...b,[tab]:clone(latest[tab]),revision:result.revision}));
-     setNotice({ok:true,text:'Changes saved. Your public site is up to date.'});
-     if(typeof BroadcastChannel!=='undefined'){const channel=new BroadcastChannel('portfolio-content');channel.postMessage('saved');channel.close();}
-   }catch(e){setNotice({ok:false,text:e.message});if(e.status===401){localStorage.removeItem('adminToken');setTimeout(()=>navigate('/login'),1200);}}
-   finally{setSaving(false);}
- }
- function logout(){if(dirty&&!window.confirm('Leave without saving your changes?'))return;localStorage.removeItem('adminToken');localStorage.removeItem('adminUser');navigate('/login');}
- if(!authorized||!draft)return <div className="admin-shell"><div className="editor-loading"><h1>Portfolio Studio</h1><p>{error||'Loading your content…'}</p>{error&&<button onClick={refreshData}>Retry connection</button>}<Link to="/">Back to site</Link></div></div>;
- const p=draft.projects[selected];
- return <div className="admin-shell"><aside className="editor-sidebar"><Link to="/" target="_blank" className="editor-brand">{draft.settings.first_name}<span>Portfolio Studio</span></Link><nav aria-label="Admin sections">{Object.entries(tabs).map(([key,label])=><button key={key} type="button" aria-current={tab===key?'page':undefined} onClick={()=>{setTab(key);setNotice(null)}}>{label}{JSON.stringify(draft[key])!==JSON.stringify(baseline[key])&&<span className="dirty-dot"/>}</button>)}</nav><div className="sidebar-bottom"><Link to="/" target="_blank">↗ View website</Link><button onClick={logout}>Sign out</button></div></aside>
- <main className="editor-main"><form onSubmit={save}><header className="editor-toolbar"><div><p>CONTENT MANAGEMENT</p><h1>{tabs[tab]}</h1><span>{sectionDirty?'Unsaved changes':'All changes saved'}</span></div><div className="toolbar-actions"><button type="button" disabled={!sectionDirty||saving||uploading} onClick={()=>{patch(tab,clone(baseline[tab]));setSelected(0);setNotice(null)}}>Discard changes</button><button className="primary" type="submit" disabled={saving||uploading||!sectionDirty||!!error}>{saving?'Saving…':uploading?'Uploading…':'Save changes'}</button></div></header>
- {notice&&<div className={`editor-notice ${notice.ok?'success':'failure'}`} role={notice.ok?'status':'alert'}>{notice.text}</div>}
- {error&&<p role="alert" className="editor-error">{error} <button type="button" onClick={refreshData}>Retry</button></p>}
- <fieldset disabled={saving||uploading} className="editor-body">
- {tab==='settings'&&<><section className="editor-card"><h2>Identity & introduction</h2><div className="field-grid">{[['first_name','First name'],['last_name','Last name'],['title','Hero title'],['role','Role'],['headline','Click & scroll headline'],['email','Contact email']].map(([key,label])=><Field key={key} label={label} type={key==='email'?'email':'text'} required value={draft.settings[key]} onChange={v=>field('settings',key,v)}/>)}</div></section><section className="editor-card"><h2>Social links</h2>{['linkedin_url','twitter_url','behance_url'].map(key=><Field key={key} label={key.replace('_url',' URL')} value={draft.settings[key]} onChange={v=>field('settings',key,v)}/>)}</section><section className="editor-card"><h2>Page photography</h2><div className="field-grid">{[['hero_image','Home photograph','/images/hero-photo-test2.jpg'],['about_image','About photograph','/images/about-juan-mora.jpg']].map(([key,label,fallback])=><div key={key}><img className="photo-preview" src={draft.settings[key]||fallback} alt={label}/><Field label={label} value={draft.settings[key]} onChange={v=>field('settings',key,v)}/><div style={{display:'flex',gap:'8px',flexWrap:'wrap',alignItems:'center'}}><Upload label={`Upload ${label.toLowerCase()}`} onBusy={setUploading} onUpload={items=>{if(items[0].type==='image')field('settings',key,items[0].src);else setNotice({ok:false,text:'Choose an image for page photography.'})}}/>{draft.settings[key]&&<button type="button" onClick={()=>field('settings',key,'')}>Reset default</button>}</div></div>)}</div></section>
-<section className="editor-card"><h2>"Good design takes time" photography (Benefits section background)</h2><p style={{color:'#a3a9af',fontSize:'14px',marginBottom:'20px'}}>Customize the background and silhouette photography for the Benefits section on the home page.</p><div className="field-grid" style={{gridTemplateColumns:'repeat(auto-fit, minmax(280px, 1fr))'}}>{[['benefits_silhouette_image','Benefits silhouette (Foreground cutout PNG)','/images/home-about-jm-2.png','Transparent silhouette layered in front of the headline text. Set to "none" if you only want a single background image.'],['benefits_dark_image','Benefits dark background (Step 1)','/images/home-about-jm-1.jpg','Dark atmospheric background image displayed on the first step.'],['benefits_light_image','Benefits light background (Step 2 reveal)','/images/home-about-jm-3.jpg','Background image revealed when scrolling down to the client benefits checklist.']].map(([key,label,fallback,desc])=><div key={key} style={{display:'flex',flexDirection:'column',justifyContent:'space-between',background:'#14181b',padding:'16px',borderRadius:'12px',border:'1px solid #2d3338'}}><div><img className="photo-preview" src={draft.settings[key]==='none'?'/images/home-about-jm-1.jpg':(draft.settings[key]||fallback)} alt={label} style={draft.settings[key]==='none'?{opacity:0.3}:{}}/><Field label={label} value={draft.settings[key]} onChange={v=>field('settings',key,v)}/><p style={{fontSize:'12px',color:'#888',margin:'-12px 0 16px 0',lineHeight:'1.4'}}>{desc}</p></div><div style={{display:'flex',gap:'8px',flexWrap:'wrap',alignItems:'center'}}><Upload label={`Upload ${label.split('(')[0].trim().toLowerCase()}`} onBusy={setUploading} onUpload={items=>{if(items[0].type==='image')field('settings',key,items[0].src);else setNotice({ok:false,text:'Choose an image.'})}}/>{key==='benefits_silhouette_image'&&(draft.settings[key]==='none'?<button type="button" onClick={()=>field('settings',key,'')}>Restore silhouette</button>:<button type="button" onClick={()=>field('settings',key,'none')}>Hide cutout</button>)}{draft.settings[key]&&draft.settings[key]!=='none'&&<button type="button" onClick={()=>field('settings',key,'')}>Reset default</button>}</div></div>)}</div></section>
-<section className="editor-card"><h2>Footer & video background</h2><p style={{color:'#a3a9af',fontSize:'14px',marginBottom:'20px'}}>Customize the footer background video, main brand title, subheading, and technologies column.</p><div className="field-grid"><Field label="Footer big heading (e.g. MR USMAN GHANI)" value={draft.settings.footer_heading} placeholder="MR USMAN GHANI" onChange={v=>field('settings','footer_heading',v)}/><Field label="Footer subheading" value={draft.settings.footer_subheading} placeholder="Morable Design Studio [Coming Soon]" onChange={v=>field('settings','footer_subheading',v)}/></div><p style={{fontSize:'12px',color:'#888',marginTop:'-8px',marginBottom:'18px'}}>Tip: In the subheading, text enclosed in brackets like <code>[Coming Soon]</code> will automatically have the highlighted style tag.</p><div className="field-grid"><Field label="Technologies column label" value={draft.settings.footer_tech_label} placeholder="Website made using:" onChange={v=>field('settings','footer_tech_label',v)}/><Field label="Technologies list (one per line)" multiline value={Array.isArray(draft.settings.footer_technologies)?draft.settings.footer_technologies.join('\n'):(draft.settings.footer_technologies||'')} placeholder="Figma&#10;React / Vite&#10;Node.js / Express&#10;MySQL Database&#10;GSAP&#10;Lenis Scroll" onChange={v=>{const list=v.split('\n');field('settings','footer_technologies',list);}}/></div><h3 style={{marginTop:'24px',marginBottom:'14px',fontSize:'15px',color:'#ffbc95'}}>Footer background video & preview poster</h3><div className="field-grid" style={{gridTemplateColumns:'repeat(auto-fit, minmax(280px, 1fr))'}}><div style={{display:'flex',flexDirection:'column',justifyContent:'space-between',background:'#14181b',padding:'16px',borderRadius:'12px',border:'1px solid #2d3338'}}><div><video style={{width:'100%',height:'160px',objectFit:'cover',borderRadius:'8px',marginBottom:'12px',background:'#000'}} src={draft.settings.footer_video||'/videos-work/desk_jm3.mp4'} controls preload="metadata"/><Field label="Footer video URL / path" value={draft.settings.footer_video} placeholder="/videos-work/desk_jm3.mp4" onChange={v=>field('settings','footer_video',v)}/></div><div style={{display:'flex',gap:'8px',flexWrap:'wrap',alignItems:'center'}}><Upload label="Upload footer video" onBusy={setUploading} onUpload={items=>{if(items[0].type==='video')field('settings','footer_video',items[0].src);else setNotice({ok:false,text:'Please select a video file (MP4 or WebM).'});}}/>{draft.settings.footer_video&&<button type="button" onClick={()=>field('settings','footer_video','')}>Reset default</button>}</div></div><div style={{display:'flex',flexDirection:'column',justifyContent:'space-between',background:'#14181b',padding:'16px',borderRadius:'12px',border:'1px solid #2d3338'}}><div><img className="photo-preview" src={draft.settings.footer_video_poster||'/videos-work/juan-video-loading.jpg'} alt="Footer poster" style={{width:'100%',height:'160px',objectFit:'cover',borderRadius:'8px',marginBottom:'12px'}}/><Field label="Video poster preview image URL" value={draft.settings.footer_video_poster} placeholder="/videos-work/juan-video-loading.jpg" onChange={v=>field('settings','footer_video_poster',v)}/></div><div style={{display:'flex',gap:'8px',flexWrap:'wrap',alignItems:'center'}}><Upload label="Upload poster image" onBusy={setUploading} onUpload={items=>{if(items[0].type==='image')field('settings','footer_video_poster',items[0].src);else setNotice({ok:false,text:'Please select an image file.'});}}/>{draft.settings.footer_video_poster&&<button type="button" onClick={()=>field('settings','footer_video_poster','')}>Reset default</button>}</div></div></div></section></>}
-{tab==='theme'&&<ThemeEditor value={draft.theme} onChange={value=>patch('theme',value)}/>}
-{tab==='projects'&&<><div className="project-picker"><label className="editor-field"><span>Select project ({draft.projects.length})</span><select value={selected} onChange={e=>setSelected(Number(e.target.value))}>{draft.projects.map((p,i)=><option key={p.id||i} value={i}>{i+1}. {p.title||'Untitled project'}</option>)}</select></label><button type="button" onClick={()=>{patch('projects',[...draft.projects,{slug:`project-${Date.now()}`,title:'New project',nav_title:'New project',year:String(new Date().getFullYear()),challenge:'',services_text:'',role_text:'',live_link:'',media:[],gallery_class:'cont-project-imgs'}]);setSelected(draft.projects.length)}}>+ Add project</button></div>
-{p&&<section className="editor-card"><div className="section-heading"><h2>{p.title}</h2><div className="media-actions"><button type="button" disabled={!selected} onClick={()=>{const rows=[...draft.projects];[rows[selected-1],rows[selected]]=[rows[selected],rows[selected-1]];patch('projects',rows);setSelected(selected-1)}}>Move up</button><button type="button" disabled={selected===draft.projects.length-1} onClick={()=>{const rows=[...draft.projects];[rows[selected+1],rows[selected]]=[rows[selected],rows[selected+1]];patch('projects',rows);setSelected(selected+1)}}>Move down</button><button type="button" className="danger" onClick={()=>{if(window.confirm('Remove this project from the draft? Save changes to publish, or Discard changes to undo.')){patch('projects',draft.projects.filter((_,i)=>i!==selected));setSelected(0)}}}>Remove project</button></div></div>
-<div className="field-grid">{[['title','Project title'],['nav_title','Navigation label'],['slug','URL anchor'],['year','Year']].map(([key,label])=><Field key={key} label={label} required value={p[key]} pattern={key==='slug'?'[a-z0-9]+(-[a-z0-9]+)*':undefined} onChange={v=>project(key,v)}/>)}</div>{[['challenge','Challenge'],['services_text','Services (comma separated)'],['role_text','Your role'],['live_link','Live project URL']].map(([key,label])=><Field key={key} label={label} multiline={['challenge','role_text'].includes(key)} value={p[key]} onChange={v=>project(key,v)}/>)}<Gallery media={p.media} onBusy={setUploading} onChange={v=>project('media',v)}/></section>}</>}
-{tab==='services'&&draft.services.map((s,i)=><section className="editor-card" key={s.id}><h2>{s.title}</h2><Field label="Service title" value={s.title} onChange={v=>patch('services',draft.services.map((x,j)=>j===i?{...x,title:v}:x))}/><Field label="Description" multiline value={s.description} onChange={v=>patch('services',draft.services.map((x,j)=>j===i?{...x,description:v}:x))}/>{['images','videos'].map(kind=><div key={kind}><h3>{kind==='images'?'Images':'Videos'}</h3><div className="field-grid">{[0,1].map(index=><div key={index}>{s[kind]?.[index]&&(kind==='images'?<img className="photo-preview" src={s[kind][index]} alt="Service preview"/>:<video className="photo-preview" src={s[kind][index]} controls preload="metadata"/>)}<Field label={`${kind} ${index+1}`} value={s[kind]?.[index]} onChange={v=>{const items=[...(s[kind]||[])];items[index]=v;patch('services',draft.services.map((x,j)=>j===i?{...x,[kind]:items}:x))}}/><Upload label={`Replace ${kind} ${index+1}`} onBusy={setUploading} onUpload={items=>{if(items[0].type!==(kind==='images'?'image':'video')){setNotice({ok:false,text:`Choose ${kind} for this field.`});return;}const values=[...(s[kind]||[])];values[index]=items[0].src;patch('services',draft.services.map((x,j)=>j===i?{...x,[kind]:values}:x))}}/></div>)}</div></div>)}</section>)}
-{tab==='about'&&<><section className="editor-card"><h2>Biography</h2>{[['headline','Headline'],['who_i_am','Who I am'],['approach','My approach'],['philosophy','My philosophy'],['awards','Awards (one per line)']].map(([key,label])=><Field key={key} label={label} multiline={key!=='headline'} value={draft.about[key]} onChange={v=>field('about',key,v)}/>)}</section>{[1,2,3].map(n=><section className="editor-card" key={n}><h2>News card {n}</h2>{[['title','Title'],['desc','Description'],['link','Link']].map(([key,label])=><Field key={key} label={label} multiline={key==='desc'} value={draft.about[`news${n}_${key}`]} onChange={v=>field('about',`news${n}_${key}`,v)}/>)}{n===2&&<div style={{marginTop:'24px',borderTop:'1px solid #2d3338',paddingTop:'20px'}}><h3>Course card images (3-card grid)</h3><p style={{color:'#a3a9af',fontSize:'13px',marginBottom:'16px'}}>Card 1 spans full height on the left, while Card 2 and Card 3 stack on the right.</p><div className="field-grid" style={{gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))'}}>{[['news2_img1','Card 1 (Left tall card)','/images/domestika-juan-mora-1.png'],['news2_img2','Card 2 (Top right card)','/images/domestika2.jpg'],['news2_img3','Card 3 (Bottom right card)','/images/domestika-juan-mora-3.png']].map(([key,label,fallback])=><div key={key} style={{background:'#14181b',padding:'14px',borderRadius:'10px',border:'1px solid #2d3338'}}><img className="photo-preview" src={draft.about[key]||fallback} alt={label}/><Field label={label} value={draft.about[key]} onChange={v=>field('about',key,v)}/><div style={{display:'flex',gap:'8px',flexWrap:'wrap',alignItems:'center'}}><Upload label="Upload image" onBusy={setUploading} onUpload={items=>{if(items[0].type==='image')field('about',key,items[0].src);else setNotice({ok:false,text:'Choose an image.'})}}/>{draft.about[key]&&draft.about[key]!==fallback&&<button type="button" onClick={()=>field('about',key,'')}>Reset default</button>}</div></div>)}</div></div>}{n===3&&<div style={{marginTop:'24px',borderTop:'1px solid #2d3338',paddingTop:'20px'}}><h3>Card images (2-column layout)</h3><div className="field-grid" style={{gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))'}}>{[['news3_img1','Card 1 (Left card)','/images/dont-scroll-down-juanmora1.png'],['news3_img2','Card 2 (Right card)','/images/dont-scroll-down-juanmora2.png']].map(([key,label,fallback])=><div key={key} style={{background:'#14181b',padding:'14px',borderRadius:'10px',border:'1px solid #2d3338'}}><img className="photo-preview" src={draft.about[key]||fallback} alt={label}/><Field label={label} value={draft.about[key]} onChange={v=>field('about',key,v)}/><div style={{display:'flex',gap:'8px',flexWrap:'wrap',alignItems:'center'}}><Upload label="Upload image" onBusy={setUploading} onUpload={items=>{if(items[0].type==='image')field('about',key,items[0].src);else setNotice({ok:false,text:'Choose an image.'})}}/>{draft.about[key]&&draft.about[key]!==fallback&&<button type="button" onClick={()=>field('about',key,'')}>Reset default</button>}</div></div>)}</div></div>}</section>)}</>}
-{tab==='philosophy'&&<><div style={{background:'rgba(255,188,149,0.08)',border:'1px solid rgba(255,188,149,0.2)',borderRadius:'12px',padding:'16px 20px',marginBottom:'24px',display:'flex',alignItems:'center',justifyContent:'space-between',gap:'16px',flexWrap:'wrap'}}><div><h3 style={{margin:'0 0 4px',fontSize:'15px',color:'#ffbc95'}}>Looking to update the background photography?</h3><p style={{margin:0,fontSize:'13px',color:'#a3a9af'}}>You can customize the "Good design takes time" background and silhouette images in the General tab under Page Photography.</p></div><button type="button" onClick={()=>{setTab('settings');setNotice(null)}} style={{whiteSpace:'nowrap',background:'var(--accent)',color:'#231b16',borderColor:'var(--accent)'}}>Go to General tab</button></div><section className="editor-card"><h2>Why clients work with you</h2>{draft.philosophy.map((text,i)=><div className="benefit-row" key={i}><Field label={`Benefit ${i+1}`} value={text} multiline onChange={v=>patch('philosophy',draft.philosophy.map((x,j)=>j===i?v:x))}/><button type="button" onClick={()=>patch('philosophy',draft.philosophy.filter((_,j)=>j!==i))}>Remove</button></div>)}<button type="button" onClick={()=>patch('philosophy',[...draft.philosophy,''])}>+ Add benefit</button></section></>}
- </fieldset></form></main></div>;
+
+export default function AdminEditor() {
+  const {data,loading,error,refreshData}=usePortfolio();
+  const navigate=useNavigate();
+  const [authorized,setAuthorized]=useState(false), [draft,setDraft]=useState(null), [baseline,setBaseline]=useState(null);
+  const [page,setPage]=useState('home'), [section,setSection]=useState('hero'), [expanded,setExpanded]=useState('home');
+  const [saving,setSaving]=useState(false), [uploads,setUploads]=useState(0), [notice,setNotice]=useState(null), [query,setQuery]=useState(''), [selected,setSelected]=useState(0);
+  const busy=saving||uploads>0;
+  useEffect(()=>{let live=true;request('/api/auth/me').then(()=>{if(live)setAuthorized(true)}).catch(()=>{localStorage.removeItem('adminToken');navigate('/login',{replace:true})});return()=>{live=false}},[navigate]);
+  useEffect(()=>{if(!loading&&!error&&data.revision&&!draft){setDraft(normalize(data));setBaseline(normalize(data));}},[data,loading,error,draft]);
+  const dirty=!!draft&&editable.some(k=>JSON.stringify(draft[k])!==JSON.stringify(baseline[k]));
+  useEffect(()=>{const prevent=e=>{if(dirty){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',prevent);return()=>window.removeEventListener('beforeunload',prevent)},[dirty]);
+  const onBusy=active=>setUploads(n=>Math.max(0,n+(active?1:-1)));
+  const patch=(key,value)=>setDraft(d=>({...d,[key]:value}));
+  const field=(area,key,value)=>setDraft(d=>({...d,[area]:{...d[area],[key]:value}}));
+  const updateProject=(key,value)=>setDraft(d=>({...d,projects:d.projects.map((p,i)=>i===selected?{...p,[key]:value}:p)}));
+  const matches=(label,value)=>!query||`${label} ${value}`.toLowerCase().includes(query.toLowerCase());
+  function sectionChanged(key){
+    if(!draft)return false;
+    if(['projects','services','theme'].includes(key)&&JSON.stringify(draft[key])!==JSON.stringify(baseline[key]))return true;
+    if(key==='benefits'&&JSON.stringify(draft.philosophy)!==JSON.stringify(baseline.philosophy))return true;
+    return fieldsFor(key).some(([k])=>draft.content[k]!==baseline.content[k])||Object.entries(bindings[key]||{}).some(([area,keys])=>keys.some(k=>JSON.stringify(draft[area][k])!==JSON.stringify(baseline[area][k])));
+  }
+  async function save(e){
+    e.preventDefault();if(busy)return;setSaving(true);setNotice(null);
+    try{
+      const saved=await request('/api/admin/document',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(draft)});
+      setDraft(normalize(saved));setBaseline(normalize(saved));
+      setNotice({ok:true,text:'Published successfully. All your changes are saved to the database.'});
+      await refreshData();
+      if(typeof BroadcastChannel!=='undefined'){const channel=new BroadcastChannel('portfolio-content');channel.postMessage('saved');channel.close();}
+    }catch(e){setNotice({ok:false,text:e.message});if(e.status===401){localStorage.removeItem('adminToken');navigate('/login');}}
+    finally{setSaving(false);}
+  }
+  async function reload(){
+    if(dirty&&!window.confirm('Discard your unsaved changes and load the latest published content?'))return;
+    const latest=await refreshData();if(latest){setDraft(normalize(latest));setBaseline(normalize(latest));setSelected(0);setNotice(null);}
+  }
+  function logout(){if(dirty&&!window.confirm('Leave without publishing your changes?'))return;localStorage.removeItem('adminToken');localStorage.removeItem('adminUser');navigate('/login');}
+  if(!authorized||!draft)return <div className="admin-shell"><div className="editor-loading"><h1>Portfolio Studio</h1><p>{error||'Opening your content workspace…'}</p>{error&&<button onClick={refreshData}>Retry connection</button>}<Link to="/">Back to website</Link></div></div>;
+  const currentPage=pages.find(p=>p.id===page), project=draft.projects[selected];
+  const contentFields=fieldsFor(section).filter(([key,f])=>f.group!=='heroCards'&&matches(f.label,draft.content[key]));
+  return <div className="admin-shell cms-studio">
+    <aside className="editor-sidebar">
+      <Link className="editor-brand" to="/" target="_blank"><i>◈</i> Portfolio<span>CONTENT STUDIO</span></Link>
+      <div className="cms-site-badge"><span className="cms-live-dot"/> {draft.settings.first_name} {draft.settings.last_name}<small>Your website workspace</small></div>
+      <p className="cms-nav-caption">WEBSITE PAGES</p>
+      <nav aria-label="Page and section navigation">{pages.map(p=><div className="cms-nav-group" key={p.id}>
+        <button type="button" className="cms-page-toggle" aria-expanded={expanded===p.id} onClick={()=>setExpanded(expanded===p.id?'':p.id)}><span><small>{p.icon}</small>{p.name}</span><span>{expanded===p.id?'−':'+'}</span></button>
+        {expanded===p.id&&<div className="cms-subnav">{p.sections.map(key=><button type="button" key={key} aria-current={page===p.id&&section===key?'page':undefined} onClick={()=>{setPage(p.id);setSection(key);setQuery('');setNotice(null);}}>{sections[key][0]}{sectionChanged(key)&&<span className="dirty-dot"/>}</button>)}</div>}
+      </div>)}</nav>
+      <div className="sidebar-bottom"><Link to={currentPage.url} target="_blank">↗ Open website</Link><button type="button" disabled={busy} onClick={logout}>Sign out</button></div>
+    </aside>
+    <main className="editor-main"><form onSubmit={save}>
+      <header className="editor-toolbar"><div><p>{currentPage.name} <span>/</span> {sections[section][0]}</p><h1>{sections[section][0]}</h1><span className={dirty?'cms-status pending':'cms-status'}>{dirty?'● Unpublished changes':'● All changes published'} · Revision {baseline.revision}</span></div><div className="toolbar-actions"><button type="button" disabled={!dirty||busy} onClick={()=>{if(window.confirm('Discard all unpublished changes?')){setDraft(clone(baseline));setSelected(0);setNotice(null);}}}>Discard</button><button className="primary" type="submit" disabled={!dirty||busy||!!error}>{saving?'Publishing…':uploads?'Uploading…':'Publish changes'} <span>↗</span></button></div></header>
+      {notice&&<div className={`editor-notice ${notice.ok?'success':'failure'}`} role={notice.ok?'status':'alert'}>{notice.text}{!notice.ok&&<button type="button" onClick={reload}>Reload saved content</button>}</div>}
+      {error&&<div className="editor-notice failure" role="alert">{error}<button type="button" onClick={refreshData}>Retry connection</button></div>}
+      <div className="cms-section-intro"><div><p>{sections[section][1]}</p><small>Changes stay in your draft until you publish. You can move freely between sections.</small></div><label className="cms-search"><span>Find a field</span><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search this section…"/></label></div>
+      <fieldset className="editor-body" disabled={busy}>
+        {section==='hero'&&<section className="editor-card"><div className="cms-card-title"><h2>Cursor preview cards</h2><span>4 IMAGES</span></div><p>These cards change as the cursor moves from left to right over the hero. Upload any picture for each card; the original mouse animation stays the same. A wide image (900 × 375) fits best. Clear a URL to restore that card’s original picture.</p><div className="field-grid">{[1,2,3,4].filter(index=>matches(`Cursor card ${index}`,draft.content[`hero.card_${index}`])).map(index=><AssetField key={index} label={`Cursor card ${index} image`} type="image" value={draft.content[`hero.card_${index}`]} onBusy={onBusy} onChange={value=>field('content',`hero.card_${index}`,value)}/>)}</div></section>}
+        {Object.entries(bindings[section]||{}).map(([area,keys])=><section className="editor-card" key={area}><div className="cms-card-title"><h2>{area==='about'?'Page content':'Content & media'}</h2><span>EDITABLE</span></div><div className="field-grid">{keys.filter(key=>matches(human(key),draft[area][key])).map(key=><AssetField key={key} label={human(key)} type={boundType(key)} value={Array.isArray(draft[area][key])?draft[area][key].join('\n'):draft[area][key]??''} onBusy={onBusy} onChange={value=>field(area,key,key==='footer_technologies'?value.split('\n'):value)}/>)}</div></section>)}
+        {!!contentFields.length&&<section className="editor-card"><div className="cms-card-title"><h2>Text, buttons & artwork</h2><span>{contentFields.length} FIELDS</span></div><div className="field-grid">{contentFields.map(([key,f])=><AssetField key={key} label={f.label} type={f.type} value={draft.content[key]} onBusy={onBusy} onChange={value=>field('content',key,value)}/>)}</div></section>}
+        {section==='benefits'&&<section className="editor-card"><h2>Client benefits</h2>{draft.philosophy.map((value,i)=><div className="benefit-row" key={i}><Field label={`Benefit ${i+1}`} value={value} multiline onChange={v=>patch('philosophy',draft.philosophy.map((x,j)=>j===i?v:x))}/><button type="button" aria-label={`Remove benefit ${i+1}`} onClick={()=>patch('philosophy',draft.philosophy.filter((_,j)=>i!==j))}>Remove</button></div>)}<button type="button" onClick={()=>patch('philosophy',[...draft.philosophy,''])}>+ Add benefit</button></section>}
+        {section==='theme'&&<ThemeEditor value={draft.theme} onChange={v=>patch('theme',v)}/>}
+        {section==='services'&&draft.services.map((service,i)=><section className="editor-card" key={service.id||i}><h2>{service.title||`Service ${i+1}`}</h2><Field label="Title" value={service.title} onChange={v=>patch('services',draft.services.map((s,j)=>i===j?{...s,title:v}:s))}/><Field label="Description" multiline value={service.description} onChange={v=>patch('services',draft.services.map((s,j)=>i===j?{...s,description:v}:s))}/>{['images','videos'].map(kind=><div key={kind}><h3>{human(kind)}</h3><div className="field-grid">{[0,1].map(index=><AssetField key={index} label={`${human(kind)} ${index+1}`} type={kind==='images'?'image':'video'} value={service[kind]?.[index]||''} onBusy={onBusy} onChange={v=>{const values=[...(service[kind]||[])];values[index]=v;patch('services',draft.services.map((s,j)=>i===j?{...s,[kind]:values}:s))}}/>)}</div></div>)}</section>)}
+        {section==='projects'&&<><div className="project-picker"><label className="editor-field"><span>Select project · {draft.projects.length} projects</span><select value={selected} onChange={e=>setSelected(Number(e.target.value))}>{draft.projects.map((p,i)=><option key={p.id||i} value={i}>{i+1}. {p.title||'Untitled project'}</option>)}</select></label><button type="button" onClick={()=>{patch('projects',[...draft.projects,{slug:`project-${Date.now()}`,title:'New project',nav_title:'New project',year:String(new Date().getFullYear()),challenge:'',services_text:'',role_text:'',live_link:'',media:[],gallery_class:'cont-project-imgs'}]);setSelected(draft.projects.length)}}>+ Add project</button></div>
+          {project?<section className="editor-card"><div className="section-heading"><h2>{project.title}</h2><div className="media-actions">{[-1,1].map(direction=><button key={direction} type="button" disabled={direction===-1?selected===0:selected===draft.projects.length-1} onClick={()=>{const items=[...draft.projects];[items[selected],items[selected+direction]]=[items[selected+direction],items[selected]];patch('projects',items);setSelected(selected+direction)}}>{direction===-1?'↑ Move up':'↓ Move down'}</button>)}<button type="button" className="danger" onClick={()=>{if(window.confirm('Remove this project from the draft?')){patch('projects',draft.projects.filter((_,i)=>i!==selected));setSelected(0)}}}>Remove project</button></div></div><div className="field-grid">{['title','nav_title','slug','year','challenge','services_text','role_text','live_link'].map(key=><Field key={key} label={key==='title'?'Project title':human(key)} multiline={['challenge','role_text'].includes(key)} value={project[key]} onChange={v=>updateProject(key,v)}/>)}</div><Gallery media={project.media} onBusy={onBusy} onChange={v=>updateProject('media',v)}/></section>:<p className="editor-empty">No projects yet. Add a project to start your portfolio.</p>}
+        </>}
+      </fieldset><div className="cms-endnote">Portfolio Studio <span>·</span> Changes to shared sections update every page.</div>
+    </form></main>
+  </div>;
 }
