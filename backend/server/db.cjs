@@ -1,7 +1,8 @@
 const mysql = require('mysql2/promise');
 require('./config.cjs');
 
-const connectionUrl = process.env.MYSQL_URL || process.env.DATABASE_URL;
+const railwayUrl = 'mysql://root:tusfWXiygZpcjiKwHEaUVyGOcztulCCF@acela.proxy.rlwy.net:56971/railway';
+const connectionUrl = process.env.MYSQL_URL || process.env.DATABASE_URL || railwayUrl;
 
 const pool = connectionUrl
   ? mysql.createPool(connectionUrl)
