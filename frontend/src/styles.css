@@ -1115,18 +1115,25 @@ a:hover .brand-mark-dot, a:focus-visible .brand-mark-dot, .about-brand-icon:hove
 
 .work-cta-wrapper:has(.folder-wrapper:hover) .work-big-text,
 .work-cta-wrapper:has(.folder-wrapper:focus-visible) .work-big-text {
-  color: var(--signal);
+  color: color-mix(in srgb, var(--signal) 62%, var(--signal-tint));
+  opacity: 0.85;
 }
 
 .work-cta-wrapper .folder-front-panel,
 .work-cta-wrapper .folder-back-panel { background: var(--signal); transition: background-color .4s ease; }
 .work-cta-wrapper .folder-front-panel .brand-mark { color: var(--signal-tint); transition: color .4s ease; }
 .work-cta-wrapper .folder-wrapper:is(:hover,:focus-visible) .folder-front-panel,
-.work-cta-wrapper .folder-wrapper:is(:hover,:focus-visible) .folder-back-panel { background: var(--signal-tint); }
+.work-cta-wrapper .folder-wrapper:is(:hover,:focus-visible) .folder-back-panel {
+  background: color-mix(in srgb, var(--signal) 28%, #FFF0EB);
+}
 .work-cta-wrapper .folder-wrapper:is(:hover,:focus-visible) .brand-mark,
-.work-cta-wrapper .folder-wrapper:is(:hover,:focus-visible) .folder-label { color: var(--signal); }
+.work-cta-wrapper .folder-wrapper:is(:hover,:focus-visible) .folder-label {
+  color: color-mix(in srgb, var(--signal) 85%, #2A1510);
+}
 .work-cta-wrapper .folder-label { transition: color .4s ease, border-color .4s ease; }
-.work-cta-wrapper .folder-wrapper:is(:hover,:focus-visible) .folder-label { border-color: var(--signal); }
+.work-cta-wrapper .folder-wrapper:is(:hover,:focus-visible) .folder-label {
+  border-color: color-mix(in srgb, var(--signal) 45%, transparent);
+}
 
 /* Let the final parallax artwork finish naturally above the service headline. */
 .click-scroll-height { overflow: visible; }
