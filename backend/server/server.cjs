@@ -220,7 +220,9 @@ app.post('/api/admin/upload',requireAuth,express.raw({type:['image/jpeg','image/
 });
 app.use('/uploads',express.static(uploadDir,{immutable:true,maxAge:'1y'}));
 app.use('/api',(req,res)=>res.status(404).json({error:'API route not found'}));
-const frontendDist = path.join(root, '..', 'frontend', 'dist');
+const frontendDist = fs.existsSync(path.join(root, '..', 'dist'))
+  ? path.join(root, '..', 'dist')
+  : path.join(root, '..', 'frontend', 'dist');
 app.use(express.static(frontendDist));
 app.get('/{*path}',(req,res)=>res.sendFile(path.join(frontendDist,'index.html')));
 app.use((err,req,res,next)=>{console.error(err.message);res.status(err.status||500).json({error:err.status===400?err.message:err.status===413?'File or request is too large.':'Unable to save or load content. Check the database connection.'});});
