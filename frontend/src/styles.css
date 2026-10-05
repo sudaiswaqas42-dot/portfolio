@@ -869,7 +869,8 @@ a:hover .hover-letter > span + span, a:focus-visible .hover-letter > span + span
 /* Authored looping ribbon artwork, anchored to the two letter stems. */
 .scroll-ribbons { position: absolute; top: 0; left: 0; z-index: 47; pointer-events: none; transform-origin: top left; }
 .scroll-ribbons svg { display: block; width: 100% !important; height: 100% !important; overflow: visible; }
-@media (prefers-reduced-motion: reduce) { .scroll-ribbons { display: none; } }
+/* Ensure ribbons are always visible regardless of reduced motion preferences */
+.scroll-ribbons { display: block !important; }
 
 /* September reference revisions: neutral surfaces and signal orange. */
 :root {

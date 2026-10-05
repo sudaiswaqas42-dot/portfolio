@@ -9,3 +9,5 @@ frontend/legacy/scratch/before-repair/
 *.log
 .vercel
 vite.config.js.timestamp-*
+
+.vercel
