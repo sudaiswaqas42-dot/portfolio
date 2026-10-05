@@ -21,16 +21,16 @@ export default function Login() {
         body: JSON.stringify({ username, password })
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
       if (res.ok && data.token) {
         localStorage.setItem('adminToken', data.token);
         localStorage.setItem('adminUser', data.username);
         navigate('/admin');
       } else {
-        setError(data.error || 'Invalid credentials');
+        setError(data.error || data.message || 'Invalid username or password');
       }
     } catch (err) {
-      setError('Connection failed. Is backend server running?');
+      setError(err.message === 'Failed to fetch' ? 'Connection failed. Please check network or disable Vercel Authentication protection.' : err.message || 'Connection failed.');
     } finally {
       setLoading(false);
     }
