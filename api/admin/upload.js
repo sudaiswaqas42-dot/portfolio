@@ -1,6 +1,5 @@
-import { createRequire } from 'node:module';
-const require = createRequire(import.meta.url);
-const { app } = require('../../backend/server/server.cjs');
+import serverModule from '../../backend/server/server.cjs';
+const { app } = serverModule;
 
 export default function handler(req, res) {
   req.url = '/api/admin/upload';
