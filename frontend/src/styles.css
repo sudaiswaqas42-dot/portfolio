@@ -1108,7 +1108,7 @@ a:hover .brand-mark-dot, a:focus-visible .brand-mark-dot, .about-brand-icon:hove
 
 .work-big-text {
   color: var(--signal-tint, #FFBC95);
-  opacity: 0.35;
+  opacity: 0.32;
   will-change: opacity, color, transform;
   transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -1116,14 +1116,35 @@ a:hover .brand-mark-dot, a:focus-visible .brand-mark-dot, .about-brand-icon:hove
 .work-cta-wrapper:has(.folder-wrapper:hover) .work-big-text,
 .work-cta-wrapper:has(.folder-wrapper:focus-visible) .work-big-text,
 .folder-wrapper:hover ~ .work-big-text {
-  color: var(--signal-hover-dark, #F99E76);
-  opacity: 1;
+  color: var(--signal-tint, #FFBC95);
+  opacity: 0.72;
 }
 
 .work-cta-wrapper .folder-front-panel,
-.work-cta-wrapper .folder-back-panel { background: var(--signal); }
-.work-cta-wrapper .folder-front-panel .brand-mark { color: var(--signal-text, #FFFFFF); }
-.work-cta-wrapper .folder-label { color: var(--signal-tint); border-color: color-mix(in srgb, var(--signal-tint) 40%, transparent); }
+.work-cta-wrapper .folder-back-panel {
+  background: var(--signal);
+  transition: background-color 0.4s ease;
+}
+.work-cta-wrapper .folder-front-panel .brand-mark {
+  color: var(--signal-tint);
+  transition: color 0.4s ease;
+}
+.work-cta-wrapper .folder-label {
+  color: var(--signal-tint);
+  border-color: color-mix(in srgb, var(--signal-tint) 40%, transparent);
+  transition: color 0.4s ease, border-color 0.4s ease;
+}
+.work-cta-wrapper .folder-wrapper:is(:hover, :focus-visible) .folder-front-panel,
+.work-cta-wrapper .folder-wrapper:is(:hover, :focus-visible) .folder-back-panel {
+  background: var(--signal-tint);
+}
+.work-cta-wrapper .folder-wrapper:is(:hover, :focus-visible) .brand-mark,
+.work-cta-wrapper .folder-wrapper:is(:hover, :focus-visible) .folder-label {
+  color: var(--signal);
+}
+.work-cta-wrapper .folder-wrapper:is(:hover, :focus-visible) .folder-label {
+  border-color: var(--signal);
+}
 
 /* Let the final parallax artwork finish naturally above the service headline. */
 .click-scroll-height { overflow: visible; }
