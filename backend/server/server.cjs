@@ -35,7 +35,27 @@ async function portfolio(db=pool){
   publicSettings.footer_technologies=footer_technologies_json?parse(footer_technologies_json):[];
   return {content:{...Object.fromEntries(Object.entries(contentCatalog).map(([key,field])=>[key,field.value])),...(content_json?parse(content_json):{})},settings:publicSettings,theme,theme_presets:themePresets,services:services.map(({images_json,videos_json,...s})=>({...s,images:parse(images_json),videos:parse(videos_json)})),philosophy:philosophy.map(p=>p.point_text),projects:projects.map(({media_json,...p})=>({...p,media:parse(media_json)})),about:about[0]||{},revision:meta[0].revision};
 }
-app.get('/api/portfolio',async(req,res,next)=>{try{res.json(await portfolio())}catch(e){next(e)}});
+app.get('/api/portfolio',async(req,res,next)=>{
+  try{
+    res.json(await portfolio());
+  }catch(e){
+    console.warn('Database query failed for /api/portfolio, serving fallback content:', e.message);
+    try{
+      const defaults = require('../data/defaults.json');
+      res.json({
+        content: Object.fromEntries(Object.entries(contentCatalog).map(([key,field])=>[key,field.value])),
+        settings: defaults.settings || {},
+        theme: defaultTheme,
+        theme_presets: themePresets,
+        services: defaults.services || [],
+        philosophy: defaults.philosophy || [],
+        projects: defaults.projects || [],
+        about: defaults.about || {},
+        revision: 1
+      });
+    }catch(err){next(e);}
+  }
+});
 app.get('/api/admin/theme-presets',(req,res)=>res.json(themePresets));
 const attempts=new Map();
 app.post('/api/auth/login',async(req,res,next)=>{
@@ -206,6 +226,11 @@ app.get('/{*path}',(req,res)=>res.sendFile(path.join(frontendDist,'index.html'))
 app.use((err,req,res,next)=>{console.error(err.message);res.status(err.status||500).json({error:err.status===400?err.message:err.status===413?'File or request is too large.':'Unable to save or load content. Check the database connection.'});});
 if(require.main===module){
   const host = process.env.HOST || '0.0.0.0';
-  migrate().then(()=>app.listen(port,host,()=>console.log(`Portfolio API: http://${host}:${port}`))).catch(e=>{console.error('Database startup failed:',e.message);process.exitCode=1;pool.end();});
+  migrate()
+    .then(()=>app.listen(port,host,()=>console.log(`Portfolio API: http://${host}:${port}`)))
+    .catch(e=>{
+      console.warn('Database startup warning (running in resilient mode):', e.message);
+      app.listen(port,host,()=>console.log(`Portfolio API (resilient mode): http://${host}:${port}`));
+    });
 }
 module.exports={app,portfolio,validate,validateDocument};
