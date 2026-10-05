@@ -1,9 +1,13 @@
+import { useContent } from '../utils/content';
 import React, { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { gsap } from '../utils/motion';
 import ScrollRibbons from './ScrollRibbons';
 
 
 export default function ClickScroll() {
+  const content = useContent();
+  const navigate = useNavigate();
 
   const containerRef = useRef(null);
   const llRef = useRef(null);
@@ -11,7 +15,7 @@ export default function ClickScroll() {
   const hoverPillRef = useRef(null);
   const clickHuhRef = useRef(null);
   const clickTextRef = useRef(null);
-  const [curiousText, setCuriousText] = useState('Who is a little\ncurious?');
+  const [curiousText, setCuriousText] = useState(content("intro.hover_button_text"));
 
   const handleMouseEnter = () => {
     const clickText = clickTextRef.current;
@@ -20,7 +24,7 @@ export default function ClickScroll() {
     const clickBtn = clickBtnRef.current;
     if (!clickText || !clickHuh || !hoverPill) return;
 
-    setCuriousText('Who is a little\ncurious?');
+    setCuriousText(content("intro.hover_button_text"));
 
     // 1. Move orange 'click' text up and out
     gsap.to(clickText, {
@@ -104,32 +108,18 @@ export default function ClickScroll() {
       ease: 'power2.in',
       overwrite: true,
       onComplete: () => {
-        setCuriousText('Who is a little\ncurious?');
+        setCuriousText(content("intro.hover_button_text"));
       }
     });
   };
 
   const handleClick = (e) => {
+    e.preventDefault();
     e.stopPropagation();
-    const clickHuh = clickHuhRef.current;
-    const clickBtn = clickBtnRef.current;
-    if (!clickHuh) return;
-
-    setCuriousText('Another click!');
-
-    // Subtle press bounce on the button
-    if (clickBtn) {
-      gsap.fromTo(clickBtn,
-        { scale: 0.92 },
-        { scale: 0.96, duration: 0.25, ease: 'back.out(2)', overwrite: 'auto' }
-      );
-    }
-
-    // Bounce / character reveal on "Another click!"
-    gsap.fromTo(clickHuh,
-      { scale: 0.85, opacity: 0.5 },
-      { scale: 1, opacity: 1, duration: 0.3, ease: 'back.out(2)', overwrite: true }
-    );
+    // Kill running button tweens so nothing lingers, then navigate instantly
+    gsap.killTweensOf([clickBtnRef.current, clickTextRef.current, hoverPillRef.current, clickHuhRef.current]);
+    navigate('/work');
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -138,21 +128,20 @@ export default function ClickScroll() {
         <ScrollRibbons containerRef={containerRef} lettersRef={llRef} />
         <div className="wrapper-cont-50">
           <h1 className="click-scroll-text">
-            <span className="click-scroll-word">16</span>{' '}
-            <span className="click-scroll-word">years</span>
+            <span className="click-scroll-word">{content("intro.16")}</span>{' '}
+            <span className="click-scroll-word">{content("intro.years")}</span>
             <br />
-            <span className="click-scroll-word">making</span>{' '}
-            <span className="click-scroll-word">users</span>
+            <span className="click-scroll-word">{content("intro.making")}</span>{' '}
+            <span className="click-scroll-word">{content("intro.users")}</span>
             <br />
             <span className="click-line">
-              <span className="click-placeholder" aria-hidden="true">click</span>
-              <span className="click-scroll-word">and</span>
-              <span className="scroll-accent text-span">
-                scro<span ref={llRef} className="scroll-ll"><span className="scroll-stem">l</span><span className="scroll-stem">l</span></span>
+              <span className="click-placeholder" aria-hidden="true">{content("intro.click")}</span>
+              <span className="click-scroll-word">{content("intro.and")}</span>
+              <span className="scroll-accent text-span">{content("intro.scro")}<span ref={llRef} className="scroll-ll"><span className="scroll-stem">{content("intro.l")}</span><span className="scroll-stem">{content("intro.second_stem")}</span></span>
               </span>
             </span>{' '}
-            <span className="click-scroll-word">my</span>{' '}
-            <span className="click-scroll-word">designs</span>
+            <span className="click-scroll-word">{content("intro.my")}</span>{' '}
+            <span className="click-scroll-word">{content("intro.designs")}</span>
           </h1>
 
           {/* Interactive Click Pill Button */}
@@ -165,7 +154,7 @@ export default function ClickScroll() {
             onFocus={handleMouseEnter}
             onBlur={handleMouseLeave}
             onClick={handleClick}
-            aria-label="Who is curious? Click me"
+            aria-label={content("intro.accessible_label_who_is_curious_click_me")}
           >
             <div
               ref={hoverPillRef}
@@ -184,61 +173,58 @@ export default function ClickScroll() {
               ref={clickTextRef}
               data-wf-target='[[["6966d53e7b70efaabd0a6539","2e444f02-906b-8537-be7d-85ba58d7d07a"],[]]]'
               className="click"
-            >
-              click
-            </div>
+            >{content("intro.click")}</div>
           </button>
         </div>
 
         {/* Floating 3D Shapes & Icons */}
         <div className="wrapper-icons">
           <img
-            src="/images/big-pill-scroll1.png"
+            src={content("intro.big_pill_scroll1_png")}
             loading="lazy"
             data-wf-target='[[["6966d53e7b70efaabd0a6539","c3038144-83f2-b39f-91a9-204b1e6ea2ea"],[]]]'
-            alt=""
+            alt={content("intro.image_description_decorative")}
             className="pill-scroll"
           />
           <img
-            src="/images/big-circle-scroll1.png"
+            src={content("intro.big_circle_scroll1_png")}
             loading="lazy"
             data-wf-target='[[["6966d53e7b70efaabd0a6539","d6a0ef6d-670a-9d71-ac02-286125176582"],[]]]'
-            alt=""
+            alt={content("intro.image_description_decorative")}
             className="circle-left-scroll"
           />
           <img
-            src="/images/big-hexagon-scroll1.png"
+            src={content("intro.big_hexagon_scroll1_png")}
             loading="lazy"
-            alt=""
+            alt={content("intro.image_description_decorative")}
             className="hex-scroll"
           />
           <img
-            src="/images/big-circle-scroll2.png"
+            src={content("intro.big_circle_scroll2_png")}
             loading="lazy"
             data-wf-target='[[["6966d53e7b70efaabd0a6539","61c260c1-bfdf-2837-84d4-b20323d07789"],[]]]'
-            alt=""
+            alt={content("intro.image_description_decorative")}
             className="circle-center-scroll"
           />
           <img
-            src="/images/big-circle-scroll3.png"
+            src={content("intro.big_circle_scroll3_png")}
             loading="lazy"
             data-wf-target='[[["6966d53e7b70efaabd0a6539","731b5d7d-3bee-ebf0-19c6-2955189e6c1b"],[]]]'
-            alt=""
+            alt={content("intro.image_description_decorative")}
             className="circle-plus-scroll"
           />
           <img
-            src="/images/big-square-scroll1.png"
+            src={content("intro.big_square_scroll1_png")}
             loading="lazy"
             data-wf-target='[[["6966d53e7b70efaabd0a6539","3b638a51-2446-819d-022e-833e8b56c603"],[]]]'
-            alt=""
+            alt={content("intro.image_description_decorative")}
             className="square-scroll"
           />
-          <span className="blue-circle theme-shape" aria-hidden="true" style={{'--shape': 'url(/images/blue-circle-scroll.svg)'}} />
-          <span className="blue-pill theme-shape" aria-hidden="true" style={{'--shape': 'url(/images/blue-pill-scroll.svg)'}} />
-          <span className="blue-hex theme-shape" aria-hidden="true" style={{'--shape': 'url(/images/blue-hexagon-scroll.svg)'}} />
+          <span className="blue-circle theme-shape" aria-hidden="true" style={{'--shape': `url(${content('intro.shape_circle')})`}} />
+          <span className="blue-pill theme-shape" aria-hidden="true" style={{'--shape': `url(${content('intro.shape_pill')})`}} />
+          <span className="blue-hex theme-shape" aria-hidden="true" style={{'--shape': `url(${content('intro.shape_hexagon')})`}} />
         </div>
       </div>
     </section>
   );
 }
-

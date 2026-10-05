@@ -10,7 +10,7 @@ export default function PageMotion() {
   const { data } = usePortfolio();
 
   useLayoutEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [pathname]);
 
   useLayoutEffect(() => {
@@ -26,6 +26,17 @@ export default function PageMotion() {
     const mm = gsap.matchMedia();
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
+      // Keep the destination page in place beneath a single sliding loader.
+      // Start its hero animation only when that loader has fully cleared.
+      const entrance = gsap.timeline({ paused: Boolean(document.querySelector('.refresh-intro')) });
+      listen(window, 'portfolio-intro-complete', () => entrance.play());
+      if (pathname === '/about' || pathname === '/work') {
+        entrance.fromTo(pathname === '/about' ? '.about-hero-word' : '.work-hero-word',
+          { color: colors.signal, opacity: 0.85 },
+          { color: colors['text-secondary'], opacity: 1,
+            duration: 0.65, stagger: 0.12, ease: 'power2.out', clearProps: 'color,opacity' }, 0);
+      }
+
       // 1. Lenis Smooth Scroll
       const lenis = new Lenis({
         lerp: 0.1,
@@ -203,13 +214,14 @@ export default function PageMotion() {
             masks.forEach((mask, index) => {
               const outer = index === 0 || index === masks.length - 1;
               reveal.fromTo(mask, {
-                y: outer ? 110 : 155, rotationX: outer ? 58 : 72,
+                y: outer ? 110 : 155, rotationX: outer ? 78 : 86,
                 rotationZ: (index - (masks.length - 1) / 2) * 3,
-                scale: 0.94, opacity: 0.15, transformOrigin: '50% 100%'
+                scale: 0.94, opacity: 0.15, clipPath: 'inset(30% 0 30% 0)', transformOrigin: '50% 100%'
               }, {
-                y: 0, rotationX: 0, rotationZ: 0, scale: 1, opacity: 1,
-                duration: 1, ease: 'power2.out'
-              }, index * 0.12);
+                rotationX: 0, clipPath: 'inset(0% 0 0% 0)', opacity: 1,
+                duration: 0.65, ease: 'power2.out'
+              }, index * 0.12)
+                .to(mask, { y: 0, rotationZ: 0, scale: 1, duration: 0.85, ease: 'power2.out' }, index * 0.12 + 0.2);
             });
           }
 
@@ -254,15 +266,7 @@ export default function PageMotion() {
         const benefitsSticky = document.querySelector('.bg-benefits-wrapper');
 
         if (benefitsWrapper && benefitsSticky) {
-          // 1. GSAP ScrollTrigger Pinning
-          ScrollTrigger.create({
-            trigger: benefitsWrapper,
-            pin: benefitsSticky,
-            start: 'top top',
-            end: 'bottom bottom',
-            pinSpacing: false
-          });
-
+          // Native sticky owns the photo position; no fixed-pin handoff on scroll.
           // 2. Scrubbed Storytelling Timeline
           const benefitsTimeline = gsap.timeline({
             scrollTrigger: {
@@ -284,12 +288,18 @@ export default function PageMotion() {
           gsap.set('.check-icon', { opacity: 0, scale: 0.7 });
           gsap.set('.cont-cta-benefitc', { opacity: 0, y: 12 });
 
-          gsap.fromTo('.h2-headline-step1-1', { x: () => { const el = document.querySelector('.h2-headline-step1-1'); return (el.parentElement.clientWidth - el.offsetWidth) / 2; } }, {
-            x: '0%', ease: 'none', scrollTrigger: { trigger: benefitsWrapper,
+          gsap.fromTo('.text-wrapper-align-benefit:not(._2)', { x: () => {
+            const el = document.querySelector('.h2-headline-step1-1');
+            return el?.parentElement ? (el.parentElement.clientWidth - el.offsetWidth) / 2 : 0;
+          } }, {
+            x: 0, ease: 'none', scrollTrigger: { trigger: benefitsWrapper,
               start: 'top 85%', end: 'top top', scrub: 0.8, invalidateOnRefresh: true }
           });
-          gsap.fromTo('.h2-headline-step1-2', { x: () => { const el = document.querySelector('.h2-headline-step1-2'); return -(el.parentElement.clientWidth - el.offsetWidth) / 2; } }, {
-            x: '0%', ease: 'none', scrollTrigger: { trigger: benefitsWrapper,
+          gsap.fromTo('.text-wrapper-align-benefit._2', { x: () => {
+            const el = document.querySelector('.h2-headline-step1-2');
+            return el?.parentElement ? -(el.parentElement.clientWidth - el.offsetWidth) / 2 : 0;
+          } }, {
+            x: 0, ease: 'none', scrollTrigger: { trigger: benefitsWrapper,
               start: 'top 85%', end: 'top top', scrub: 0.8, invalidateOnRefresh: true }
           });
           const savingsWords = splitIntoSpans('.h2-headline-step1-3', 'words');
@@ -300,13 +310,12 @@ export default function PageMotion() {
             .fromTo('.h2-headline-step1-2', { x: '0%' }, { x: '10vw', ease: 'none', immediateRender: false, duration: 0.3 }, 0)
             .fromTo('.line.step1', { scaleX: 0 }, { scaleX: 1, ease: 'power2.inOut', duration: 0.18 }, 0.08)
             .fromTo(savingsWords, { opacity: 0, y: 18, clipPath: 'inset(0 100% 0 0)' }, { opacity: 1, y: 0, clipPath: 'inset(0 0% 0 0)', duration: 0.045, stagger: 0.022, ease: 'power2.out' }, 0.09)
-            .to(savingsWords, { opacity: 0, y: -12, duration: 0.035, stagger: 0.012 }, 0.29)
-            .fromTo('.jm-siluete-img, .dark-jm-img', { y: '-2vw' }, { y: '2vw', ease: 'none', duration: 0.3 }, 0);
+            .to(savingsWords, { opacity: 0, y: -12, duration: 0.035, stagger: 0.012 }, 0.29);
 
           // Transition: Step 1 fades out, image turns light, Step 2 enters (30% - 44%)
           benefitsTimeline
-            .to('.main-cont-step1', { opacity: 0, y: -30, duration: 0.06, ease: 'power2.in' }, 0.39)
-            .to('.light-jm-img', { opacity: 1, duration: 0.14, ease: 'power2.inOut' }, 0.3)
+            .to('.main-cont-step1', { opacity: 0, duration: 0.12, ease: 'power2.in' }, 0.32)
+            .to('.light-jm-img', { opacity: 1, duration: 0.25, ease: 'none' }, 0.3)
             .to('.main-cont-step2', { opacity: 1, y: 0, duration: 0.14, ease: 'power2.out' }, 0.32);
 
           // Step 2: Checklist & CTA Reveal (44% - 68%)
@@ -318,7 +327,11 @@ export default function PageMotion() {
             .fromTo('.line-benefit', { scaleX: 0 }, { scaleX: 1, stagger: 0.04, duration: 0.15 }, 0.56)
             .fromTo('.cont-cta-benefitc', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.12 }, 0.65)
             // Include the CTA's bottom breathing room when fitting the checklist to the viewport.
-            .to('.main-cont-step2', { y: () => -Math.max(0, document.querySelector('.main-cont-step2').offsetHeight + parseFloat(getComputedStyle(document.querySelector('.main-cont-step2')).top) + window.innerWidth * 0.025 - window.innerHeight), duration: 0.3, ease: 'none' }, 0.7);
+            .to('.main-cont-step2', { y: () => {
+              const el = document.querySelector('.main-cont-step2');
+              if (!el) return 0;
+              return -Math.max(0, el.offsetHeight + parseFloat(getComputedStyle(el).top || '0') + window.innerWidth * 0.025 - window.innerHeight);
+            }, duration: 0.3, ease: 'none' }, 0.7);
         }
 
         // --- E. Work Folder CTA Section ---
@@ -339,67 +352,23 @@ export default function PageMotion() {
 
         // Work Folder Hover 3D Flap & Ambient Background Text
         const folder = document.querySelector('.folder-wrapper');
-        const workText = document.querySelector('.work-big-text');
-        let folderHovered = false;
-
-        if (workText) {
-          gsap.set(workText, {
-            opacity: 0.52,
-            color: 'var(--ribbon-accent, #FFBC95)'
-          });
-
-          ScrollTrigger.create({
-            trigger: '.work-cta-wrapper',
-            start: 'top 85%',
-            end: 'bottom 15%',
-            onEnter: () => {
-              if (!folderHovered) {
-                gsap.to(workText, { opacity: 0.52, color: 'var(--ribbon-accent, #FFBC95)', duration: 0.6, ease: 'power2.out', overwrite: 'auto' });
-              }
-            },
-            onLeaveBack: () => {
-              if (!folderHovered) {
-                gsap.to(workText, { opacity: 0.2, duration: 0.6, ease: 'power2.out', overwrite: 'auto' });
-              }
-            }
-          });
-        }
-
         if (folder) {
           const front = folder.querySelector('.front-folder');
           const projects = folder.querySelector('.projects-folder');
           const files = folder.querySelectorAll('.folder-project-card');
 
           const onFolderEnter = () => {
-            folderHovered = true;
             if (front) gsap.to(front, { rotationX: -35, duration: 0.68, ease: 'elastic.out(0.7, 0.3)', overwrite: true });
             if (projects) gsap.to(projects, { y: -40, duration: 0.65, ease: 'power2.out', overwrite: true });
             gsap.to(files, { y: i => -(i + 1) * 22, x: i => (i - (files.length - 1) / 2) * 12, rotation: i => (i - (files.length - 1) / 2) * 3, duration: 0.8, stagger: 0.055, ease: 'power3.out', overwrite: true });
-            if (workText) {
-              gsap.to(workText, {
-                opacity: 1,
-                color: 'var(--signal-hover-dark, #FF6A4F)',
-                duration: 0.4,
-                ease: 'power2.out',
-                overwrite: true
-              });
-            }
+
           };
 
           const onFolderLeave = () => {
-            folderHovered = false;
             if (front) gsap.to(front, { rotationX: 0, duration: 0.5, ease: 'power2.inOut', overwrite: true });
             if (projects) gsap.to(projects, { y: 0, duration: 0.6, ease: 'power2.inOut', overwrite: true });
             gsap.to(files, { y: i => i * -7, x: 0, rotation: 0, duration: 0.7, ease: 'power3.out', overwrite: true });
-            if (workText) {
-              gsap.to(workText, {
-                opacity: 0.52,
-                color: 'var(--ribbon-accent, #FFBC95)',
-                duration: 0.4,
-                ease: 'power2.out',
-                overwrite: true
-              });
-            }
+
           };
 
           listen(folder, 'mouseenter', onFolderEnter);
@@ -466,18 +435,13 @@ export default function PageMotion() {
       // 4. ABOUT PAGE ANIMATIONS
       if (pathname === '/about') {
         // A. Hero Headline & Pill Entrance
-        gsap.fromTo(
+        entrance.fromTo(
           '.text-headline-about',
           { opacity: 0, y: 35 },
-          { opacity: 1, y: 0, duration: 1, delay: 0.15, ease: 'power3.out' }
+          { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, 0
         );
 
-        gsap.from('.pill-hero-about-wrapper', {
-          scale: 0.65,
-          rotation: -15,
-          duration: 1,
-          ease: 'back.out(1.4)'
-        });
+        entrance.from('.pill-hero-about-wrapper', { opacity: 0, y: 12, duration: 0.5, ease: 'power2.out' }, 0);
 
         // B. Sticky Circles Lottie & Big Portrait Timeline (matching Webflow t-4b300411)
         gsap.set('.big-about-cont', { opacity: 0, scale: 1.12 });
@@ -698,13 +662,13 @@ export default function PageMotion() {
         }
       }
 
-      // Project cards enter with a gentle upward reveal, without scale or bounce.
+      // Open the image mask first, then settle the card into the gallery.
       if (pathname === '/work') {
         gsap.utils.toArray('.main-project-wrapper').forEach(project => {
           const media = project.querySelectorAll('.cont-project-imgs > *');
           media.forEach(item => gsap.fromTo(item,
-            { clipPath: 'inset(8% 0 0 0)', y: 48, opacity: 0.25 },
-            { clipPath: 'inset(0% 0 0 0)', y: 0, opacity: 1, duration: 1.05, ease: 'power2.out',
+            { clipPath: 'inset(48% 0 48% 0 round 12px)', y: 70, rotationX: 12, scale: 0.96, opacity: 0.3, transformOrigin: '50% 100%', transformPerspective: 1200 },
+            { clipPath: 'inset(0% 0 0% 0 round 4px)', y: 0, rotationX: 0, scale: 1, opacity: 1, duration: 1.25, ease: 'power3.out',
               scrollTrigger: { trigger: item, start: 'top 94%', once: true } }
           ));
         });
@@ -768,6 +732,7 @@ export default function PageMotion() {
 
     // 7. Navigation Theme Switcher (data-nav="peach" / "grey")
     const navItems = document.querySelectorAll('.nav-name-jm, .nav-link-mobile, .nav-link, .nav-social-link');
+    navItems.forEach(el => el.classList.toggle('is-peach', pathname === '/'));
     const navObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -829,4 +794,3 @@ export default function PageMotion() {
 
   return null;
 }
-

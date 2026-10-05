@@ -1,66 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useContent } from '../utils/content';
+import React, { useEffect, useState } from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
-import { gsap } from '../utils/motion';
+
 import Footer from '../components/Footer';
 import CtaSection from '../components/CtaSection';
 import BrandMark from '../components/BrandMark';
 
 export default function Work() {
+  const content = useContent();
   const { data } = usePortfolio();
   const settings = data?.settings || {};
   const projects = data.projects || [];
   const [active, setActive] = useState('');
-
-  const loaderRef = useRef(null);
-  const introRef = useRef(null);
-  const lineRef = useRef(null);
-  const [loading, setLoading] = useState(true);
-
-  // Intro Page Loader Animation (matching Home Page and About Page)
-  useEffect(() => {
-    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (isReduced) {
-      setLoading(false);
-      return;
-    }
-
-    const tl = gsap.timeline({
-      defaults: { ease: 'power3.inOut' }
-    });
-
-    tl.fromTo(lineRef.current, { scaleX: 0 }, { scaleX: 1, duration: 0.6, transformOrigin: 'left' })
-      .to(introRef.current, { yPercent: -100, duration: 0.7, delay: 0.1 })
-      .to(loaderRef.current, {
-        height: 0,
-        duration: 0.5,
-        ease: 'power3.inOut',
-        onComplete: () => setLoading(false)
-      })
-      .fromTo(
-        '.text-headline-work',
-        { '--heading-fill': '0%' },
-        { '--heading-fill': '100%', duration: 1.4, ease: 'power2.inOut' },
-        '-=0.4'
-      )
-      .fromTo(
-        '.folder-work',
-        { scale: 0.75, rotation: -12, opacity: 0 },
-        { scale: 1, rotation: 0, opacity: 1, duration: 0.8, ease: 'back.out(1.4)' },
-        '-=0.7'
-      )
-      .fromTo(
-        '.main-cont-nav-work',
-        { opacity: 0, x: -30 },
-        { opacity: 1, x: 0, duration: 0.8, ease: 'power2.out' },
-        '-=0.6'
-      );
-
-    const fallback = window.setTimeout(() => setLoading(false), 2000);
-    return () => {
-      window.clearTimeout(fallback);
-      tl.kill();
-    };
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -81,28 +32,10 @@ export default function Work() {
 
   return (
     <main data-barba="container" className="main">
-      {/* Intro Page Loader */}
-      {loading && (
-        <div
-          ref={loaderRef}
-          className="container-loader"
-          aria-hidden="true"
-          style={{ pointerEvents: 'none', position: 'fixed', inset: 0, zIndex: 10000 }}
-        >
-          <div ref={introRef} className="orange-intro">
-            <div className="cont-juan-intro">
-              <div className="nav-name-jm intro">{settings.first_name || 'Sudais'}</div>
-              <div className="dot-jm intro" />
-              <div className="nav-name-jm intro">{settings.last_name || 'Waqas'}</div>
-            </div>
-          </div>
-          <div ref={lineRef} className="grow-line" />
-        </div>
-      )}
 
       <div className="blur work" />
       <section data-nav="grey" className="section work">
-        <nav className="main-cont-nav-work" aria-label="Projects">
+        <nav className="main-cont-nav-work" aria-label={content("work.accessible_label_projects")}>
           <ul className="wrapper-work-nav w-list-unstyled">
             {projects.map(p => (
               <li className="wrapper-nav-work" key={p.slug}>
@@ -117,7 +50,7 @@ export default function Work() {
                   <div className="project-cont-nav">
                     <div>{p.nav_title || p.title}</div>
                     {p.media?.find(m => m.type === 'image') && (
-                      <img src={p.media.find(m => m.type === 'image').src} alt="" className="img-project-nav" loading="lazy" />
+                      <img src={p.media.find(m => m.type === 'image').src} alt={content("work.image_description_decorative")} className="img-project-nav" loading="lazy" />
                     )}
                   </div>
                 </a>
@@ -128,8 +61,8 @@ export default function Work() {
         <div className="main-wrapper-work">
           <div className="header-work-copy">
             <h1 className="text-headline-work">
-              <span className="work-heading-lead"><span className="folder-work branded-work-folder" tabIndex={0} aria-label="Portfolio folder"><BrandMark /></span><span>Passionate about the</span></span>
-              <span className="work-heading-second">craft and little details</span>
+              <span className="work-heading-lead"><span className="folder-work branded-work-folder" tabIndex={0} aria-label={content("work.accessible_label_portfolio_folder")}><BrandMark /></span><span>{content("work.heading_line_1").split(' ').map((word, index) => <React.Fragment key={word}>{index > 0 && ' '}<span className="work-hero-word">{word}</span></React.Fragment>)}</span></span>
+              <span className="work-heading-second">{content("work.heading_line_2").split(' ').map((word, index) => <React.Fragment key={word}>{index > 0 && ' '}<span className="work-hero-word">{word}</span></React.Fragment>)}</span>
             </h1>
           </div>
           {projects.map(p => (
@@ -143,22 +76,22 @@ export default function Work() {
                     <div className="cont-cta-work">
                       <a href={p.live_link} target="_blank" rel="noopener noreferrer" className="main-cont-button w-inline-block">
                         <div className="icon-wrapper-cta-first">
-                          <img src="/images/arrow-grey-out.svg" alt="" className="arrow-cion" />
+                          <img src={content("work.arrow_grey_out_svg")} alt={content("work.image_description_decorative")} className="arrow-cion" />
                         </div>
-                        <div className="text-wrapper-cta">See it live</div>
+                        <div className="text-wrapper-cta">{content("work.see_it_live")}</div>
                         <div className="icon-wrapper-cta">
-                          <img src="/images/arrow-grey-out.svg" alt="" className="arrow-cion" />
+                          <img src={content("work.arrow_grey_out_svg")} alt={content("work.image_description_decorative")} className="arrow-cion" />
                         </div>
                       </a>
                     </div>
                   )}
                 </div>
                 <div className="content-project-info">
-                  <p className="body-copy title">Challenge:</p>
+                  <p className="body-copy title">{content("work.challenge")}</p>
                   <p className="body-copy black">{p.challenge}</p>
                 </div>
                 <div className="content-project-info">
-                  <p className="body-copy title">Services:</p>
+                  <p className="body-copy title">{content("work.services")}</p>
                   <div className="pill-services-cont">
                     {p.services_text.split(',').filter(Boolean).map((s, i) => (
                       <div className="pill-service" key={i}>{s.trim()}</div>
@@ -166,7 +99,7 @@ export default function Work() {
                   </div>
                 </div>
                 <div className="content-project-info">
-                  <p className="body-copy title">Role:</p>
+                  <p className="body-copy title">{content("work.role")}</p>
                   <p className="body-copy black">{p.role_text}</p>
                 </div>
               </div>
@@ -194,7 +127,7 @@ export default function Work() {
               </div>
             </article>
           ))}
-          {!projects.length && <p className="body-copy">New projects coming soon.</p>}
+          {!projects.length && <p className="body-copy">{content("work.new_projects_coming_soon")}</p>}
         </div>
       </section>
       <CtaSection />

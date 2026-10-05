@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Cursor from './components/Cursor';
 import PageMotion from './components/PageMotion';
 import ThemeFilters from './components/ThemeFilters';
+import RefreshIntro from './components/RefreshIntro';
 import Home from './pages/Home';
 import About from './pages/About';
 import Work from './pages/Work';
@@ -14,7 +15,7 @@ import './styles.css';
 function Layout(){
   const {pathname}=useLocation();
   const admin=/^\/(admin|login)/.test(pathname);
-  return <>{!admin&&<><ThemeFilters/><Navbar/><Cursor key={pathname}/></>}<Routes>
+  return <>{!admin&&<><ThemeFilters/><RefreshIntro key={pathname}/><Navbar/><Cursor key={pathname}/></>}<Routes>
     <Route path="/" element={<Home/>}/><Route path="/about" element={<About/>}/><Route path="/work" element={<Work/>}/>
     <Route path="/login" element={<Login/>}/><Route path="/admin" element={<AdminEditor/>}/>
     <Route path="/index.html" element={<Navigate to="/" replace/>}/><Route path="/about.html" element={<Navigate to="/about" replace/>}/><Route path="/work.html" element={<Navigate to="/work" replace/>}/>

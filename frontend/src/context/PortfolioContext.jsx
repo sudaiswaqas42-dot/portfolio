@@ -1,15 +1,33 @@
 import React,{createContext,useContext,useState,useEffect,useLayoutEffect,useCallback} from 'react';
 import defaults from '../data/defaults.json';
 import {applyTheme,normalizeTheme} from '../utils/theme';
+import contentCatalog from '../../../shared/contentCatalog.json';
 const PortfolioContext=createContext(null);
+const cacheKey='portfolio-content-v1';
+function readCachedData(){
+  try{
+    const cached=JSON.parse(localStorage.getItem(cacheKey));
+    if(cached?.settings && Array.isArray(cached.projects) && cached.theme){
+      return {...cached,theme:normalizeTheme(cached.theme)};
+    }
+  }catch{}
+  return null;
+}
+const cachedData=readCachedData();
+// Apply cached colors before React mounts any animated content.
+applyTheme(cachedData?.theme || normalizeTheme());
 export function PortfolioProvider({children}){
-  const [data,setData]=useState({...defaults,theme:normalizeTheme()}),[loading,setLoading]=useState(true),[error,setError]=useState('');
+  const [data,setData]=useState(cachedData || {...defaults,theme:normalizeTheme()}),[loading,setLoading]=useState(true),[error,setError]=useState('');
   const refreshData=useCallback(async()=>{
     try{
       const apiBase = import.meta.env.VITE_API_URL || '';
       const res=await fetch(`${apiBase}/api/portfolio`,{signal:AbortSignal.timeout(10000)});
       if(!res.ok)throw new Error('The content server is unavailable. Please retry.');
-      const next=await res.json();next.theme=normalizeTheme(next.theme);applyTheme(next.theme);setData(next);setError('');return next;
+      const next=await res.json();next.theme=normalizeTheme(next.theme);
+      try{localStorage.setItem(cacheKey,JSON.stringify(next));}catch{}
+      applyTheme(next.theme);
+      setData(current=>JSON.stringify(current)===JSON.stringify(next)?current:next);
+      setError('');return next;
     }catch(e){setError(e.message);return null;}finally{setLoading(false);}
   },[]);
   useEffect(()=>{refreshData();},[refreshData]);
@@ -27,7 +45,17 @@ export function PortfolioProvider({children}){
     window.addEventListener('focus',refresh);
     return()=>{channel?.close();window.removeEventListener('focus',refresh);};
   },[refreshData]);
-  useEffect(()=>{const s=data.settings;document.title=`${s.first_name} ${s.last_name} | ${s.role}`;},[data.settings]);
-  return <PortfolioContext.Provider value={{data,loading,error,refreshData}}>{children}</PortfolioContext.Provider>;
+  useEffect(()=>{
+    const s=data.settings;
+    const get=key=>data.content?.[key]??contentCatalog[key]?.value??'';
+    document.title=get('brand.page_title')||`${s.first_name} ${s.last_name} | ${s.role}`;
+    let description=document.querySelector('meta[name="description"]');
+    if(!description){description=document.createElement('meta');description.name='description';document.head.appendChild(description);}
+    description.content=get('brand.description');
+    let icon=document.querySelector('link[rel="icon"]');
+    if(!icon){icon=document.createElement('link');icon.rel='icon';document.head.appendChild(icon);}
+    icon.href=get('brand.favicon');
+  },[data.settings,data.content]);
+  return <PortfolioContext.Provider value={{data,loading,error,refreshData}}>{loading ? <div className="site-loading" role="status" aria-label="Loading portfolio"/> : children}</PortfolioContext.Provider>;
 }
 export const usePortfolio=()=>useContext(PortfolioContext);

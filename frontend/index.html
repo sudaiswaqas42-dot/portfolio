@@ -5,6 +5,18 @@
   <title>Sudais Waqas | Design Director - Web and Brand Design Specialist</title>
   <meta content="Design Director who helps companies succeed on projects like Websites &amp; landing pages, Visual Branding, Product Design Enhancement, and Webflow &amp; Framer Development." name="description">
   <meta content="width=device-width, initial-scale=1" name="viewport">
+  <script>
+    // Paint the last saved page background while the app bundle is loading.
+    try {
+      var savedTheme = JSON.parse(localStorage.getItem('portfolio-content-v1')).theme;
+      var savedMode = savedTheme.mode === 'system' ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : savedTheme.mode;
+      var savedBackground = savedTheme[savedMode].background;
+      if (/^#[0-9a-f]{6}$/i.test(savedBackground)) {
+        document.documentElement.style.setProperty('--background', savedBackground);
+      }
+    } catch (e) {}
+  </script>
+  <style>html, body.body { background: var(--background, #FAF6EF); }</style>
   <link href="/css/normalize.css" rel="stylesheet" type="text/css">
   <link href="/css/webflow.css" rel="stylesheet" type="text/css">
   <link href="/css/juan-portfolio-2026.webflow.css" rel="stylesheet" type="text/css">

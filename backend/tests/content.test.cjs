@@ -1,7 +1,7 @@
 const {test,after}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
-const {validate}=require('../server/server.cjs');
+const {validate,validateDocument}=require('../server/server.cjs');
 const pool=require('../server/db.cjs');
 const defaults=require('../data/defaults.json');
 after(()=>pool.end());
@@ -45,4 +45,22 @@ test('theme normalizes hex values and ignores unknown CSS properties',()=>{
  const result=validate('theme',theme);
  assert.equal(result.accent.signal,'#ABCDEF');
  assert.equal(result.accent.backgroundImage,undefined);
+});
+test('CMS preserves empty text and validates every kind of content URL',()=>{
+ const catalog=require('../../shared/contentCatalog.json');
+ const fields=Object.fromEntries(Object.entries(catalog).map(([k,f])=>[k,f.value]));
+ fields['header.about']='';fields['news.button_1']='Explore the studio';
+ assert.equal(validate('content',fields)['header.about'],'');
+ for(const key of ['header.destination_work','hero.video','brand.logo','aboutHero.animation']){
+   assert.throws(()=>validate('content',{...fields,[key]:'javascript:alert(1)'}),/URL|link/);
+ }
+ assert.equal(validate('content',{...fields,'contact.destination':'mailto:hello@example.com'})['contact.destination'],'mailto:hello@example.com');
+});
+test('whole-site publishing validates all sections before starting a write',()=>{
+ const document={...structuredClone(defaults),theme:require('../../shared/theme.json'),content:{}};
+ assert.equal(validateDocument(document).projects.length,defaults.projects.length);
+ delete document.about;
+ assert.throws(()=>validateDocument(document),/Missing section: about/);
+ document.about=defaults.about;document.projects[0].media[0].src='data:text/html,unsafe';
+ assert.throws(()=>validateDocument(document),/https/);
 });

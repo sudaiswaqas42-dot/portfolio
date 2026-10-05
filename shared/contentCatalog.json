@@ -1,0 +1,830 @@
+{
+  "header.destination_about": {
+    "group": "header",
+    "label": "Destination /about",
+    "value": "/about",
+    "type": "link"
+  },
+  "header.about": {
+    "group": "header",
+    "label": "About",
+    "value": "About",
+    "type": "text"
+  },
+  "header.destination": {
+    "group": "header",
+    "label": "Destination /",
+    "value": "/",
+    "type": "link"
+  },
+  "header.accessible_label_home": {
+    "group": "header",
+    "label": "Accessible label Home",
+    "value": "Home",
+    "type": "text"
+  },
+  "header.destination_work": {
+    "group": "header",
+    "label": "Destination /work",
+    "value": "/work",
+    "type": "link"
+  },
+  "header.work": {
+    "group": "header",
+    "label": "Work",
+    "value": "Work",
+    "type": "text"
+  },
+  "header.email": {
+    "group": "header",
+    "label": "Email",
+    "value": "Email",
+    "type": "text"
+  },
+  "header.in": {
+    "group": "header",
+    "label": "in",
+    "value": "in",
+    "type": "text"
+  },
+  "header.x": {
+    "group": "header",
+    "label": "x",
+    "value": "x",
+    "type": "text"
+  },
+  "header.be": {
+    "group": "header",
+    "label": "Be",
+    "value": "Be",
+    "type": "text"
+  },
+  "intro.hover_button_text": {
+    "group": "intro",
+    "label": "Hover button text",
+    "value": "Who is a little\ncurious?",
+    "type": "text"
+  },
+  "intro.clicked_button_text": {
+    "group": "intro",
+    "label": "Clicked button text",
+    "value": "Another click!",
+    "type": "text"
+  },
+  "intro.16": {
+    "group": "intro",
+    "label": "16",
+    "value": "16",
+    "type": "text"
+  },
+  "intro.years": {
+    "group": "intro",
+    "label": "years",
+    "value": "years",
+    "type": "text"
+  },
+  "intro.making": {
+    "group": "intro",
+    "label": "making",
+    "value": "making",
+    "type": "text"
+  },
+  "intro.users": {
+    "group": "intro",
+    "label": "users",
+    "value": "users",
+    "type": "text"
+  },
+  "intro.click": {
+    "group": "intro",
+    "label": "click",
+    "value": "click",
+    "type": "text"
+  },
+  "intro.and": {
+    "group": "intro",
+    "label": "and",
+    "value": "and",
+    "type": "text"
+  },
+  "intro.scro": {
+    "group": "intro",
+    "label": "Scroll word — beginning",
+    "value": "scro",
+    "type": "text"
+  },
+  "intro.l": {
+    "group": "intro",
+    "label": "Scroll word — first animated character",
+    "value": "l",
+    "type": "text"
+  },
+  "intro.my": {
+    "group": "intro",
+    "label": "my",
+    "value": "my",
+    "type": "text"
+  },
+  "intro.designs": {
+    "group": "intro",
+    "label": "designs",
+    "value": "designs",
+    "type": "text"
+  },
+  "intro.accessible_label_who_is_curious_click_me": {
+    "group": "intro",
+    "label": "Accessible label Who is curious? Click me",
+    "value": "Who is curious? Click me",
+    "type": "text"
+  },
+  "intro.big_pill_scroll1_png": {
+    "group": "intro",
+    "label": "big-pill-scroll1.png",
+    "value": "/images/big-pill-scroll1.png",
+    "type": "image"
+  },
+  "intro.image_description_decorative": {
+    "group": "intro",
+    "label": "Image description decorative",
+    "value": "",
+    "type": "text"
+  },
+  "intro.big_circle_scroll1_png": {
+    "group": "intro",
+    "label": "big-circle-scroll1.png",
+    "value": "/images/big-circle-scroll1.png",
+    "type": "image"
+  },
+  "intro.big_hexagon_scroll1_png": {
+    "group": "intro",
+    "label": "big-hexagon-scroll1.png",
+    "value": "/images/big-hexagon-scroll1.png",
+    "type": "image"
+  },
+  "intro.big_circle_scroll2_png": {
+    "group": "intro",
+    "label": "big-circle-scroll2.png",
+    "value": "/images/big-circle-scroll2.png",
+    "type": "image"
+  },
+  "intro.big_circle_scroll3_png": {
+    "group": "intro",
+    "label": "big-circle-scroll3.png",
+    "value": "/images/big-circle-scroll3.png",
+    "type": "image"
+  },
+  "intro.big_square_scroll1_png": {
+    "group": "intro",
+    "label": "big-square-scroll1.png",
+    "value": "/images/big-square-scroll1.png",
+    "type": "image"
+  },
+  "services.design_expert": {
+    "group": "services",
+    "label": "Design Expert",
+    "value": "Design Expert",
+    "type": "text"
+  },
+  "services.i_help_companies_to_succeed_on_projects_like": {
+    "group": "services",
+    "label": "I help companies to succeed on projects like:",
+    "value": "I help companies to succeed on projects like:",
+    "type": "text"
+  },
+  "services.image_description_decorative": {
+    "group": "services",
+    "label": "Image description decorative",
+    "value": "",
+    "type": "text"
+  },
+  "services.juan_video_loading_jpg": {
+    "group": "services",
+    "label": "juan-video-loading.jpg",
+    "value": "/videos-work/juan-video-loading.jpg",
+    "type": "image"
+  },
+  "services.webflow_frame_svg": {
+    "group": "services",
+    "label": "webflow-frame.svg",
+    "value": "/images/webflow-frame.svg",
+    "type": "image"
+  },
+  "services.framer_frame_svg": {
+    "group": "services",
+    "label": "framer-frame.svg",
+    "value": "/images/framer-frame.svg",
+    "type": "image"
+  },
+  "benefits.good_design": {
+    "group": "benefits",
+    "label": "Good design",
+    "value": "Good design",
+    "type": "text"
+  },
+  "benefits.takes_time": {
+    "group": "benefits",
+    "label": "takes time",
+    "value": "takes time",
+    "type": "text"
+  },
+  "benefits.image_description_benefits_silhouette": {
+    "group": "benefits",
+    "label": "Image description Benefits silhouette",
+    "value": "Benefits silhouette",
+    "type": "text"
+  },
+  "benefits.and_working_with_me_saves_it": {
+    "group": "benefits",
+    "label": "and working with me saves it",
+    "value": "and working with me saves it",
+    "type": "text"
+  },
+  "benefits.companies_partner_with_me_because_of_my": {
+    "group": "benefits",
+    "label": "Companies partner with me because of my",
+    "value": "Companies partner with me because of my",
+    "type": "text"
+  },
+  "benefits.perspective": {
+    "group": "benefits",
+    "label": "perspective +",
+    "value": "perspective +",
+    "type": "text"
+  },
+  "benefits.sharp_instincts": {
+    "group": "benefits",
+    "label": "sharp instincts",
+    "value": "sharp instincts",
+    "type": "text"
+  },
+  "benefits.check_mark_icon_svg": {
+    "group": "benefits",
+    "label": "check-mark-icon.svg",
+    "value": "/images/check-mark-icon.svg",
+    "type": "image"
+  },
+  "benefits.image_description_decorative": {
+    "group": "benefits",
+    "label": "Image description decorative",
+    "value": "",
+    "type": "text"
+  },
+  "benefits.destination_about": {
+    "group": "benefits",
+    "label": "Destination /about",
+    "value": "/about",
+    "type": "link"
+  },
+  "benefits.arrow_grey_svg": {
+    "group": "benefits",
+    "label": "arrow-grey.svg",
+    "value": "/images/arrow-grey.svg",
+    "type": "image"
+  },
+  "benefits.learn_more_about_me": {
+    "group": "benefits",
+    "label": "Learn more about me",
+    "value": "Learn more about me",
+    "type": "text"
+  },
+  "benefits.image_description_benefits_dark_background": {
+    "group": "benefits",
+    "label": "Image description Benefits dark background",
+    "value": "Benefits dark background",
+    "type": "text"
+  },
+  "benefits.image_description_benefits_light_background": {
+    "group": "benefits",
+    "label": "Image description Benefits light background",
+    "value": "Benefits light background",
+    "type": "text"
+  },
+  "folder.curious_check_out_my": {
+    "group": "folder",
+    "label": "Curious?... Check out my",
+    "value": "Curious?... Check out my",
+    "type": "text"
+  },
+  "folder.destination_work": {
+    "group": "folder",
+    "label": "Destination /work",
+    "value": "/work",
+    "type": "link"
+  },
+  "folder.accessible_label_explore_my_portfolio": {
+    "group": "folder",
+    "label": "Accessible label Explore my portfolio",
+    "value": "Explore my portfolio",
+    "type": "text"
+  },
+  "folder.image_description_decorative": {
+    "group": "folder",
+    "label": "Image description decorative",
+    "value": "",
+    "type": "text"
+  },
+  "folder.portfolio": {
+    "group": "folder",
+    "label": "Portfolio",
+    "value": "Portfolio",
+    "type": "text"
+  },
+  "folder.or_keep_scrolling": {
+    "group": "folder",
+    "label": "Or keep scrolling",
+    "value": "Or keep scrolling",
+    "type": "text"
+  },
+  "folder.w": {
+    "group": "folder",
+    "label": "Large work heading — first part",
+    "value": "W",
+    "type": "text"
+  },
+  "folder.o": {
+    "group": "folder",
+    "label": "Large work heading — highlighted part",
+    "value": "o",
+    "type": "text"
+  },
+  "folder.rk": {
+    "group": "folder",
+    "label": "Large work heading — last part",
+    "value": "rk",
+    "type": "text"
+  },
+  "contact.copied_message": {
+    "group": "contact",
+    "label": "Copied message",
+    "value": "Email copied",
+    "type": "text"
+  },
+  "contact.fallback_message": {
+    "group": "contact",
+    "label": "Fallback message",
+    "value": "Opening your email app",
+    "type": "text"
+  },
+  "contact.about_heading": {
+    "group": "contact",
+    "label": "About heading",
+    "value": "You know my story, let’s design yours",
+    "type": "text"
+  },
+  "contact.home_and_work_heading": {
+    "group": "contact",
+    "label": "Home and work heading",
+    "value": "Let's build something people remember",
+    "type": "text"
+  },
+  "contact.from_global_tech_companies_to_growing_startups": {
+    "group": "contact",
+    "label": "from global tech companies to growing startups.",
+    "value": "from global tech companies to growing startups.",
+    "type": "text"
+  },
+  "contact.let_s_talk": {
+    "group": "contact",
+    "label": "Let's talk",
+    "value": "Let's talk",
+    "type": "text"
+  },
+  "footer.contact": {
+    "group": "footer",
+    "label": "Contact:",
+    "value": "Contact:",
+    "type": "text"
+  },
+  "footer.email": {
+    "group": "footer",
+    "label": "Email",
+    "value": "Email",
+    "type": "text"
+  },
+  "footer.linkedin": {
+    "group": "footer",
+    "label": "Linkedin",
+    "value": "Linkedin",
+    "type": "text"
+  },
+  "footer.x": {
+    "group": "footer",
+    "label": "X",
+    "value": "X",
+    "type": "text"
+  },
+  "footer.behance": {
+    "group": "footer",
+    "label": "Behance",
+    "value": "Behance",
+    "type": "text"
+  },
+  "cursor.hover_message": {
+    "group": "cursor",
+    "label": "Hover message",
+    "value": "Copy my Email",
+    "type": "text"
+  },
+  "cursor.copied_message": {
+    "group": "cursor",
+    "label": "Copied message",
+    "value": "Great! Email copied",
+    "type": "text"
+  },
+  "cursor.arrow_grey_svg": {
+    "group": "cursor",
+    "label": "arrow-grey.svg",
+    "value": "/images/arrow-grey.svg",
+    "type": "image"
+  },
+  "cursor.image_description_decorative": {
+    "group": "cursor",
+    "label": "Image description decorative",
+    "value": "",
+    "type": "text"
+  },
+  "cursor.copy": {
+    "group": "cursor",
+    "label": "copy",
+    "value": "copy",
+    "type": "text"
+  },
+  "studio.animation_scene_url": {
+    "group": "studio",
+    "label": "Animation scene URL",
+    "value": "/documents/studio-scene.json",
+    "type": "url"
+  },
+  "studio.accessible_label_morable_design_studio_visual": {
+    "group": "studio",
+    "label": "Accessible label Morable design studio visual",
+    "value": "Morable design studio visual",
+    "type": "text"
+  },
+  "studio.morable": {
+    "group": "studio",
+    "label": "Morable",
+    "value": "Morable",
+    "type": "text"
+  },
+  "studio.design_with_intention": {
+    "group": "studio",
+    "label": "Design with intention.",
+    "value": "Design with intention.",
+    "type": "text"
+  },
+  "biography.": {
+    "group": "aboutHero",
+    "label": "----",
+    "value": "----",
+    "type": "text"
+  },
+  "biography.who_i_am": {
+    "group": "biography",
+    "label": "Who I Am",
+    "value": "Who I Am",
+    "type": "text"
+  },
+  "biography.approach": {
+    "group": "biography",
+    "label": "Approach",
+    "value": "Approach",
+    "type": "text"
+  },
+  "biography.philosophy": {
+    "group": "biography",
+    "label": "Philosophy",
+    "value": "Philosophy",
+    "type": "text"
+  },
+  "biography.awards_and": {
+    "group": "biography",
+    "label": "Awards and",
+    "value": "Awards and",
+    "type": "text"
+  },
+  "biography.recognitions": {
+    "group": "biography",
+    "label": "Recognitions",
+    "value": "Recognitions",
+    "type": "text"
+  },
+  "news.news_updates": {
+    "group": "news",
+    "label": "News & Updates",
+    "value": "News & Updates",
+    "type": "text"
+  },
+  "news.1": {
+    "group": "news",
+    "label": "1",
+    "value": "1",
+    "type": "text"
+  },
+  "news.arrow_grey_out_svg": {
+    "group": "news",
+    "label": "arrow-grey-out.svg",
+    "value": "/images/arrow-grey-out.svg",
+    "type": "image"
+  },
+  "news.image_description_decorative": {
+    "group": "news",
+    "label": "Image description decorative",
+    "value": "",
+    "type": "text"
+  },
+  "news.2": {
+    "group": "news",
+    "label": "2",
+    "value": "2",
+    "type": "text"
+  },
+  "news.image_description_ux_ui_design_a_landing_page": {
+    "group": "news",
+    "label": "Image description UX/UI Design a Landing Page",
+    "value": "UX/UI Design a Landing Page",
+    "type": "text"
+  },
+  "news.image_description_heart_drawing_on_laptop": {
+    "group": "news",
+    "label": "Image description Heart drawing on laptop",
+    "value": "Heart drawing on laptop",
+    "type": "text"
+  },
+  "news.image_description_sticky_notes_planning": {
+    "group": "news",
+    "label": "Image description Sticky notes planning",
+    "value": "Sticky notes planning",
+    "type": "text"
+  },
+  "news.3": {
+    "group": "news",
+    "label": "3",
+    "value": "3",
+    "type": "text"
+  },
+  "news.image_description_don_t_scroll_down_preview_1": {
+    "group": "news",
+    "label": "Image description Don't scroll down preview 1",
+    "value": "Don't scroll down preview 1",
+    "type": "text"
+  },
+  "news.image_description_don_t_scroll_down_preview_2": {
+    "group": "news",
+    "label": "Image description Don't scroll down preview 2",
+    "value": "Don't scroll down preview 2",
+    "type": "text"
+  },
+  "work.heading_line_1": {
+    "group": "work",
+    "label": "Heading line 1",
+    "value": "Passionate about the",
+    "type": "text"
+  },
+  "work.heading_line_2": {
+    "group": "work",
+    "label": "Heading line 2",
+    "value": "craft and little details",
+    "type": "text"
+  },
+  "work.accessible_label_projects": {
+    "group": "work",
+    "label": "Accessible label Projects",
+    "value": "Projects",
+    "type": "text"
+  },
+  "work.image_description_decorative": {
+    "group": "work",
+    "label": "Image description decorative",
+    "value": "",
+    "type": "text"
+  },
+  "work.accessible_label_portfolio_folder": {
+    "group": "work",
+    "label": "Accessible label Portfolio folder",
+    "value": "Portfolio folder",
+    "type": "text"
+  },
+  "work.arrow_grey_out_svg": {
+    "group": "work",
+    "label": "arrow-grey-out.svg",
+    "value": "/images/arrow-grey-out.svg",
+    "type": "image"
+  },
+  "work.see_it_live": {
+    "group": "work",
+    "label": "See it live",
+    "value": "See it live",
+    "type": "text"
+  },
+  "work.challenge": {
+    "group": "work",
+    "label": "Challenge:",
+    "value": "Challenge:",
+    "type": "text"
+  },
+  "work.services": {
+    "group": "work",
+    "label": "Services:",
+    "value": "Services:",
+    "type": "text"
+  },
+  "work.role": {
+    "group": "work",
+    "label": "Role:",
+    "value": "Role:",
+    "type": "text"
+  },
+  "work.new_projects_coming_soon": {
+    "group": "work",
+    "label": "New projects coming soon.",
+    "value": "New projects coming soon.",
+    "type": "text"
+  },
+  "brand.logo": {
+    "group": "brand",
+    "label": "Custom logo image (blank keeps the original mark)",
+    "value": "",
+    "type": "image"
+  },
+  "brand.favicon": {
+    "group": "brand",
+    "label": "Browser tab icon",
+    "value": "/images/favicon.png",
+    "type": "image"
+  },
+  "brand.page_title": {
+    "group": "brand",
+    "label": "Browser title (blank uses your name and role)",
+    "value": "",
+    "type": "text"
+  },
+  "brand.description": {
+    "group": "brand",
+    "label": "Search engine description",
+    "value": "Independent designer specializing in brand and web design.",
+    "type": "text"
+  },
+  "hero.video": {
+    "group": "hero",
+    "label": "Background video (optional)",
+    "value": "",
+    "type": "video"
+  },
+  "aboutHero.pill_image": {
+    "group": "aboutHero",
+    "label": "Intro pill photograph",
+    "value": "/images/juan-about-hero.jpg",
+    "type": "image"
+  },
+  "aboutHero.video": {
+    "group": "aboutHero",
+    "label": "Portrait background video (optional)",
+    "value": "",
+    "type": "video"
+  },
+  "aboutHero.animation": {
+    "group": "aboutHero",
+    "label": "Circle animation JSON",
+    "value": "/documents/circles-about.json",
+    "type": "url"
+  },
+  "intro.ribbons": {
+    "group": "intro",
+    "label": "Scroll ribbon animation JSON",
+    "value": "/documents/ll-scroll.json",
+    "type": "url"
+  },
+  "intro.shape_circle": {
+    "group": "intro",
+    "label": "Small circle artwork",
+    "value": "/images/blue-circle-scroll.svg",
+    "type": "image"
+  },
+  "intro.shape_pill": {
+    "group": "intro",
+    "label": "Small pill artwork",
+    "value": "/images/blue-pill-scroll.svg",
+    "type": "image"
+  },
+  "intro.shape_hexagon": {
+    "group": "intro",
+    "label": "Small hexagon artwork",
+    "value": "/images/blue-hexagon-scroll.svg",
+    "type": "image"
+  },
+  "intro.second_stem": {
+    "group": "intro",
+    "label": "Scroll word — final character",
+    "value": "l",
+    "type": "text"
+  },
+  "contact.destination": {
+    "group": "contact",
+    "label": "Button destination (blank copies your email)",
+    "value": "",
+    "type": "link"
+  },
+  "contact.hover_label": {
+    "group": "contact",
+    "label": "Button hover text (blank uses contact email)",
+    "value": "",
+    "type": "text"
+  },
+  "folder.cover_1": {
+    "group": "folder",
+    "label": "Folder cover 1 (blank uses project gallery)",
+    "value": "",
+    "type": "image"
+  },
+  "folder.cover_2": {
+    "group": "folder",
+    "label": "Folder cover 2 (blank uses project gallery)",
+    "value": "",
+    "type": "image"
+  },
+  "folder.cover_3": {
+    "group": "folder",
+    "label": "Folder cover 3 (blank uses project gallery)",
+    "value": "",
+    "type": "image"
+  },
+  "folder.cover_4": {
+    "group": "folder",
+    "label": "Folder cover 4 (blank uses project gallery)",
+    "value": "",
+    "type": "image"
+  },
+  "news.button_1": {
+    "group": "news",
+    "label": "News card 1 button label",
+    "value": "Learn more",
+    "type": "text"
+  },
+  "news.button_2": {
+    "group": "news",
+    "label": "News card 2 button label",
+    "value": "Learn more",
+    "type": "text"
+  },
+  "news.button_3": {
+    "group": "news",
+    "label": "News card 3 button label",
+    "value": "Learn more",
+    "type": "text"
+  },
+  "studio.logo_image": {
+    "group": "studio",
+    "label": "Card logo / image (keeps the animated effect)",
+    "value": "https://assets.unicorn.studio/images/ZyN7TEuRmdUBACrLPyog9d91oNw1/logo-official-M-ble.png",
+    "type": "image"
+  },
+  "studio.animated_text": {
+    "group": "studio",
+    "label": "Large animated text — same wave effect",
+    "value": "COMING SOON",
+    "type": "text"
+  },
+  "studio.top_left": {
+    "group": "studio",
+    "label": "Small top-left text",
+    "value": "COMING",
+    "type": "text"
+  },
+  "studio.top_center": {
+    "group": "studio",
+    "label": "Small top-center text",
+    "value": "SOON",
+    "type": "text"
+  },
+  "studio.top_right": {
+    "group": "studio",
+    "label": "Small top-right text",
+    "value": "2026",
+    "type": "text"
+  },
+  "hero.card_1": {
+    "group": "heroCards",
+    "label": "Cursor card 1 image",
+    "value": "/images/hero-cursor-card-1.jpg",
+    "type": "image"
+  },
+  "hero.card_2": {
+    "group": "heroCards",
+    "label": "Cursor card 2 image",
+    "value": "/images/hero-cursor-card-2.jpg",
+    "type": "image"
+  },
+  "hero.card_3": {
+    "group": "heroCards",
+    "label": "Cursor card 3 image",
+    "value": "/images/hero-cursor-card-3.jpg",
+    "type": "image"
+  },
+  "hero.card_4": {
+    "group": "heroCards",
+    "label": "Cursor card 4 image",
+    "value": "/images/hero-cursor-card-4.jpg",
+    "type": "image"
+  }
+}

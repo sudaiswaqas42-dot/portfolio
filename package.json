@@ -13,6 +13,7 @@
     "db:init": "node backend/server/init_db.cjs",
     "test": "node --test backend/tests/*.test.cjs",
     "verify:api": "node backend/scripts/verify-api.cjs",
+    "verify:cms": "node backend/scripts/verify-cms.cjs",
     "verify:site": "node backend/scripts/verify-site.cjs"
   },
   "dependencies": {

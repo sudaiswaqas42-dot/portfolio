@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useContent } from '../utils/content';
+import React, { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -7,17 +8,13 @@ import Footer from '../components/Footer';
 import CtaSection from '../components/CtaSection';
 import StudioScene from '../components/StudioScene';
 import BrandMark from '../components/BrandMark';
-import { themeColors } from '../utils/theme';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
+  const content = useContent();
   const { data } = usePortfolio();
   const lottieCircleRef = useRef(null);
-  const [loading, setLoading] = useState(true);
-  const loaderRef = useRef(null);
-  const introRef = useRef(null);
-  const lineRef = useRef(null);
 
   const about = data?.about || {};
   const settings = data?.settings || {};
@@ -41,63 +38,15 @@ export default function About() {
   const news3Desc = about.news3_desc ?? '';
   const news3Link = about.news3_link ?? '';
 
-  const news2Img1 = about.news2_img1 || '/images/domestika-juan-mora-1.png';
-  const news2Img2 = about.news2_img2 || '/images/domestika2.jpg';
-  const news2Img3 = about.news2_img3 || '/images/domestika-juan-mora-3.png';
+  const news2Img1 = about.news2_img1 ?? '/images/domestika-juan-mora-1.png';
+  const news2Img2 = about.news2_img2 ?? '/images/domestika2.jpg';
+  const news2Img3 = about.news2_img3 ?? '/images/domestika-juan-mora-3.png';
 
-  const news3Img1 = about.news3_img1 || '/images/dont-scroll-down-juanmora1.png';
-  const news3Img2 = about.news3_img2 || '/images/dont-scroll-down-juanmora2.png';
-
-  // Intro Page Loader Animation (matching Home Page)
-  useEffect(() => {
-    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (isReduced) {
-      setLoading(false);
-      return;
-    }
-
-    const colors = themeColors(data.theme);
-    const tl = gsap.timeline({
-      defaults: { ease: 'power3.inOut' }
-    });
-
-    tl.fromTo(lineRef.current, { scaleX: 0 }, { scaleX: 1, duration: 0.6, transformOrigin: 'left' })
-      .to(introRef.current, { yPercent: -100, duration: 0.7, delay: 0.1 })
-      .to(loaderRef.current, {
-        height: 0,
-        duration: 0.5,
-        ease: 'power3.inOut',
-        onComplete: () => setLoading(false)
-      })
-      .fromTo(
-        '.pill-hero-about-wrapper',
-        { scale: 0.65, rotation: -15, opacity: 0 },
-        { scale: 1, rotation: 0, opacity: 1, duration: 0.8, ease: 'back.out(1.4)' },
-        '-=0.3'
-      )
-      .fromTo(
-        '.about-hero-word',
-        { color: colors.signal, opacity: 0.85 },
-        {
-          color: colors['text-secondary'],
-          opacity: 1,
-          duration: 0.65,
-          stagger: 0.12,
-          ease: 'power2.out',
-          onComplete: () => gsap.set('.about-hero-word', { clearProps: 'color,opacity' })
-        },
-        '-=0.4'
-      );
-
-    const fallback = window.setTimeout(() => setLoading(false), 2000);
-    return () => {
-      window.clearTimeout(fallback);
-      tl.kill();
-    };
-  }, []);
+  const news3Img1 = about.news3_img1 ?? '/images/dont-scroll-down-juanmora1.png';
+  const news3Img2 = about.news3_img2 ?? '/images/dont-scroll-down-juanmora2.png';
 
   const renderHeadline = () => {
-    const text = headline || 'Designer based in Miami, working globally';
+    const text = headline;
     if (text === 'Designer based in Miami, working globally') {
       return (
         <>
@@ -123,9 +72,13 @@ export default function About() {
   };
 
   useEffect(() => {
-    const anim = lottie.loadAnimation({container:lottieCircleRef.current,renderer:'svg',rendererSettings:{preserveAspectRatio:'xMidYMid slice'},loop:false,autoplay:false,path:'/documents/circles-about.json'});
+    const anim = lottie.loadAnimation({container:lottieCircleRef.current,renderer:'svg',rendererSettings:{preserveAspectRatio:'xMidYMid slice'},loop:false,autoplay:false,path:content('aboutHero.animation')});
     let context;
-    const ready=()=>{context=gsap.context(()=>{
+    const ready=()=>{
+      // Lottie clips its entire composition independently of SVG overflow.
+      // Let the expanding rings extend all the way to the viewport edges.
+      lottieCircleRef.current?.querySelector('svg > g[clip-path]')?.removeAttribute('clip-path');
+      context=gsap.context(()=>{
       const frames={value:0};
       gsap.to(frames,{value:anim.totalFrames-1,ease:'none',onUpdate:()=>anim.goToAndStop(frames.value,true),scrollTrigger:{trigger:'.about-scroll-wrapper',start:'top bottom',end:'bottom bottom',scrub:0.8}});
       ScrollTrigger.refresh();
@@ -133,28 +86,10 @@ export default function About() {
     anim.addEventListener('DOMLoaded',ready);
     if (anim.isLoaded) ready();
     return ()=>{anim.removeEventListener('DOMLoaded',ready);context?.revert();anim.destroy();};
-  }, []);
+  }, [data.content?.['aboutHero.animation']]);
 
   return (
     <main data-barba="container" className="main">
-      {/* Intro Page Loader */}
-      {loading && (
-        <div
-          ref={loaderRef}
-          className="container-loader"
-          aria-hidden="true"
-          style={{ pointerEvents: 'none', position: 'fixed', inset: 0, zIndex: 10000 }}
-        >
-          <div ref={introRef} className="orange-intro">
-            <div className="cont-juan-intro">
-              <div className="nav-name-jm intro">{settings.first_name || 'Sudais'}</div>
-              <div className="dot-jm intro" />
-              <div className="nav-name-jm intro">{settings.last_name || 'Waqas'}</div>
-            </div>
-          </div>
-          <div ref={lineRef} className="grow-line" />
-        </div>
-      )}
 
       <div className="top-glow">
         <div className="blur"></div>
@@ -167,13 +102,13 @@ export default function About() {
           <div className="wrapper-cont-50 _70">
             <div className="pill-hero-about-wrapper">
               <div className="img-pill-mask">
-                <div className="img-pill-full"></div>
+                <div className="img-pill-full" style={{backgroundImage:content('aboutHero.pill_image')?`url(${content('aboutHero.pill_image')})`:'none'}}></div>
               </div>
               <div className="about-brand-icon"><BrandMark /></div>
               <div className="blue-dot-hero"></div>
             </div>
             <h1 className="text-headline-about">
-              <span className="text-span-5">----</span>
+              <span className="text-span-5">{content("biography.")}</span>
               {renderHeadline()}
             </h1>
           </div>
@@ -185,7 +120,7 @@ export default function About() {
           <div className="sticky-cont-about">
             <div className="circle-lottie-cont"><div ref={lottieCircleRef} className="lottie-circles" /></div>
             <div className="cont-shine-mask"><div className="glow-orange" /></div>
-            <div className="big-about-cont" style={settings.about_image ? {backgroundImage: `url(${settings.about_image})`} : undefined} />
+            <div className="big-about-cont" style={{backgroundImage: settings.about_image === '' ? 'none' : `url(${settings.about_image ?? '/images/about-juan-mora.jpg'})`}}>{content('aboutHero.video')&&<video className="cms-background-video" src={content('aboutHero.video')} autoPlay loop muted playsInline/>}</div>
           </div>
         </div>
       </section>
@@ -196,7 +131,7 @@ export default function About() {
         <div className="about-bio-wrapper">
           <div className="cont-bio-tem">
             <div className="cont-bio-text">
-              <h3 className="headline-bio">Who I Am</h3>
+              <h3 className="headline-bio">{content("biography.who_i_am")}</h3>
             </div>
             <div className="cont-bio-text right">
               {whoIAm.split(/\n\s*\n/).filter(Boolean).map((para, i) => (
@@ -208,7 +143,7 @@ export default function About() {
 
           <div className="cont-bio-tem">
             <div className="cont-bio-text">
-              <h3 className="headline-bio">Approach</h3>
+              <h3 className="headline-bio">{content("biography.approach")}</h3>
             </div>
             <div className="cont-bio-text right">
               {approach.split(/\n\s*\n/).filter(Boolean).map((para, i) => (
@@ -220,7 +155,7 @@ export default function About() {
 
           <div className="cont-bio-tem">
             <div className="cont-bio-text">
-              <h3 className="headline-bio">Philosophy</h3>
+              <h3 className="headline-bio">{content("biography.philosophy")}</h3>
             </div>
             <div className="cont-bio-text right">
               {philosophy.split(/\n\s*\n/).filter(Boolean).map((para, i) => (
@@ -232,7 +167,7 @@ export default function About() {
 
           <div className="cont-bio-tem">
             <div className="cont-bio-text">
-              <h3 className="headline-bio">Awards and <br />Recognitions</h3>
+              <h3 className="headline-bio">{content("biography.awards_and")} <br />{content("biography.recognitions")}</h3>
             </div>
             <div className="cont-bio-text right awards-list">
               {awards.split(/\n+/).filter(Boolean).map((para, i) => (
@@ -248,24 +183,24 @@ export default function About() {
         <div className="about-news-wrapper">
           <div className="news-cont-top">
             <div className="square-news"></div>
-            <h3 className="body-copy news">News &amp; Updates</h3>
+            <h3 className="body-copy news">{content("news.news_updates")}</h3>
           </div>
           <div className="line news"></div>
 
           {/* News 1: Morable Studio */}
           <div className="cont-news-wrapper">
             <div className="cont-headline-news">
-              <h3 className="number-news">1</h3>
+              <h3 className="number-news">{content("news.1")}</h3>
               <h3 className="headline-news" style={{ whiteSpace: 'pre-line' }}>{news1Title}</h3>
               <p className="body-copy news">{news1Desc}</p>
               <div className="cont-btn-news">
                 <a href={news1Link} target="_blank" rel="noreferrer" className="main-cont-button w-inline-block">
                   <div className="icon-wrapper-cta-first">
-                    <img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion" />
+                    <img loading="lazy" src={content("news.arrow_grey_out_svg")} alt={content("news.image_description_decorative")} className="arrow-cion" />
                   </div>
-                  <div className="text-wrapper-cta">Learn more</div>
+                  <div className="text-wrapper-cta">{content('news.button_1')}</div>
                   <div className="icon-wrapper-cta">
-                    <img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion" />
+                    <img loading="lazy" src={content("news.arrow_grey_out_svg")} alt={content("news.image_description_decorative")} className="arrow-cion" />
                   </div>
                 </a>
               </div>
@@ -277,28 +212,28 @@ export default function About() {
           {/* News 2: Domestika Course */}
           <div className="cont-news-wrapper" id="news2">
             <div className="cont-headline-news">
-              <h3 className="number-news">2</h3>
+              <h3 className="number-news">{content("news.2")}</h3>
               <h3 className="headline-news" style={{ whiteSpace: 'pre-line' }}>{news2Title}</h3>
               <p className="body-copy news">{news2Desc}</p>
               <a href={news2Link} target="_blank" rel="noreferrer" className="main-cont-button w-inline-block">
                 <div className="icon-wrapper-cta-first">
-                  <img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion" />
+                  <img loading="lazy" src={content("news.arrow_grey_out_svg")} alt={content("news.image_description_decorative")} className="arrow-cion" />
                 </div>
-                <div className="text-wrapper-cta">Learn more</div>
+                <div className="text-wrapper-cta">{content('news.button_2')}</div>
                 <div className="icon-wrapper-cta">
-                  <img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion" />
+                  <img loading="lazy" src={content("news.arrow_grey_out_svg")} alt={content("news.image_description_decorative")} className="arrow-cion" />
                 </div>
               </a>
             </div>
             <div className="w-layout-layout cont-img-news wf-layout-layout news2-grid" id="w-node-a8cc3bf7-e6a2-d9a3-8dca-598da0ef85fd-63a17526">
               <div className="w-layout-cell cell-2 cell-news-tall" id="w-node-_2d061a88-a9e7-91a1-0cf2-fc7148309172-63a17526">
-                <img src={news2Img1} loading="lazy" alt="UX/UI Design a Landing Page" className="img-news" />
+                <img src={news2Img1} loading="lazy" alt={content("news.image_description_ux_ui_design_a_landing_page")} className="img-news" />
               </div>
               <div className="w-layout-cell cell-news-top-right">
-                <img src={news2Img2} loading="lazy" alt="Heart drawing on laptop" className="img-news" />
+                <img src={news2Img2} loading="lazy" alt={content("news.image_description_heart_drawing_on_laptop")} className="img-news" />
               </div>
               <div className="w-layout-cell cell cell-news-bottom-right">
-                <img src={news2Img3} loading="lazy" alt="Sticky notes planning" className="img-news" />
+                <img src={news2Img3} loading="lazy" alt={content("news.image_description_sticky_notes_planning")} className="img-news" />
               </div>
             </div>
           </div>
@@ -307,25 +242,25 @@ export default function About() {
           {/* News 3: Don't Scroll Down */}
           <div className="cont-news-wrapper" id="news3">
             <div className="cont-headline-news">
-              <h3 className="number-news">3</h3>
+              <h3 className="number-news">{content("news.3")}</h3>
               <h3 className="headline-news" style={{ whiteSpace: 'pre-line' }}>{news3Title}</h3>
               <p className="body-copy news">{news3Desc}</p>
               <a href={news3Link} target="_blank" rel="noreferrer" className="main-cont-button w-inline-block">
                 <div className="icon-wrapper-cta-first">
-                  <img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion" />
+                  <img loading="lazy" src={content("news.arrow_grey_out_svg")} alt={content("news.image_description_decorative")} className="arrow-cion" />
                 </div>
-                <div className="text-wrapper-cta">Learn more</div>
+                <div className="text-wrapper-cta">{content('news.button_3')}</div>
                 <div className="icon-wrapper-cta">
-                  <img loading="lazy" src="/images/arrow-grey-out.svg" alt="" className="arrow-cion" />
+                  <img loading="lazy" src={content("news.arrow_grey_out_svg")} alt={content("news.image_description_decorative")} className="arrow-cion" />
                 </div>
               </a>
             </div>
             <div className="w-layout-layout cont-img-news wf-layout-layout news3-grid" id="w-node-_6a1ed807-c73e-b900-6403-161fa04ec116-63a17526">
               <div className="w-layout-cell cell-news-half">
-                <img src={news3Img1} loading="lazy" alt="Don't scroll down preview 1" className="img-news" />
+                <img src={news3Img1} loading="lazy" alt={content("news.image_description_don_t_scroll_down_preview_1")} className="img-news" />
               </div>
               <div className="w-layout-cell cell-news-half">
-                <img src={news3Img2} loading="lazy" alt="Don't scroll down preview 2" className="img-news" />
+                <img src={news3Img2} loading="lazy" alt={content("news.image_description_don_t_scroll_down_preview_2")} className="img-news" />
               </div>
             </div>
           </div>

@@ -1,29 +1,30 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useContent } from '../utils/content';
+import React, { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
-import { gsap } from '../utils/motion';
 import { usePortfolio } from '../context/PortfolioContext';
 import { bindHeroName } from '../utils/heroName';
+import { configureHeroCards } from '../utils/heroCards.mjs';
 
 export default function Hero() {
+  const content = useContent();
   const { data } = usePortfolio();
   const s = data.settings || {};
+  const cardImages=[1,2,3,4].map(index=>content(`hero.card_${index}`));
+  const cardSignature=JSON.stringify(cardImages);
 
   const heroWrapperRef = useRef(null);
   const lottieContainerRef = useRef(null);
   const animRef = useRef(null);
-  const loaderRef = useRef(null);
-  const introRef = useRef(null);
-  const lineRef = useRef(null);
-  const [loading, setLoading] = useState(true);
 
   // 1. Initialize Hero Mouse Lottie Animation
   useEffect(() => {
     let anim;
+    let fitNames;
     let live = true;
     const controller = new AbortController();
     const load = async () => {
       const response = await fetch('/documents/juan-name-mouse.json', { signal: controller.signal });
-      const animationData = await response.json();
+      const animationData = configureHeroCards(await response.json(),JSON.parse(cardSignature));
       await document.fonts.ready;
       if (!live || !lottieContainerRef.current) return;
       animationData.layers[0].cl = 'hero-name-0';
@@ -38,14 +39,16 @@ export default function Hero() {
       });
 
       anim.addEventListener('DOMLoaded', () => {
-        bindHeroName(
+        fitNames=bindHeroName(
           lottieContainerRef.current,
-          [s.first_name || 'Sudais', s.last_name || ''],
-          animationData.layers.slice(0, 2).map(layer => ({ anchorY: layer.ks.a.k[1], positionY: layer.ks.p.k[0].s[1] }))
+          [s.first_name ?? 'Sudais', s.last_name ?? ''],
+          animationData.layers.slice(0, 2).map(layer => ({ anchorY: layer.ks.a.k[1], positionY: layer.ks.p.k[0].s[1] })),
+          anim,animationData
         );
         // Set to middle frame initially
         const mid = Math.floor((anim.totalFrames || 60) / 2);
         anim.goToAndStop(mid, true);
+        fitNames?.();
       });
 
       animRef.current = anim;
@@ -64,6 +67,7 @@ export default function Hero() {
         const total = animRef.current.totalFrames;
         const frame = Math.max(0, Math.min(total - 1, currentProgress * (total - 1)));
         animRef.current.goToAndStop(frame, true);
+        fitNames?.();
       }
       rafId = requestAnimationFrame(updateLottie);
     };
@@ -87,68 +91,10 @@ export default function Hero() {
       if (anim) anim.destroy();
       animRef.current = null;
     };
-  }, [s.first_name, s.last_name]);
-
-  // 2. Page Load Animation
-  useEffect(() => {
-    const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (isReduced) {
-      setLoading(false);
-      return;
-    }
-
-    const tl = gsap.timeline({
-      defaults: { ease: 'power3.inOut' }
-    });
-
-    // Animate loader line
-    tl.fromTo(lineRef.current, { scaleX: 0 }, { scaleX: 1, duration: 0.6, transformOrigin: 'left' })
-      .to(introRef.current, { yPercent: -100, duration: 0.7, delay: 0.1 })
-      .to(loaderRef.current, {
-        height: 0,
-        duration: 0.4,
-        onComplete: () => setLoading(false)
-      })
-      .fromTo(
-        '.img-hero-wrapper',
-        { opacity: 0.5, scale: 1.1 },
-        { opacity: 1, scale: 1, duration: 1.1, ease: 'power2.out' },
-        '-=0.4'
-      )
-      .fromTo(
-        '.hero-top .heading, .hero-bottom .heading.right',
-        { opacity: 0, y: 25 },
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out' },
-        '-=0.7'
-      );
-
-    const fallback = window.setTimeout(() => setLoading(false), 2000);
-    return () => {
-      window.clearTimeout(fallback);
-      tl.kill();
-    };
-  }, []);
+  }, [s.first_name, s.last_name, cardSignature]);
 
   return (
     <div ref={heroWrapperRef}>
-      {/* Intro Page Loader */}
-      {loading && (
-        <div
-          ref={loaderRef}
-          className="container-loader"
-          aria-hidden="true"
-          style={{ pointerEvents: 'none', position: 'fixed', inset: 0, zIndex: 10000 }}
-        >
-          <div ref={introRef} className="orange-intro">
-            <div className="cont-juan-intro">
-              <div className="nav-name-jm intro">{s.first_name || 'Sudais'}</div>
-              <div className="dot-jm intro" />
-              <div className="nav-name-jm intro">{s.last_name || 'Waqas'}</div>
-            </div>
-          </div>
-          <div ref={lineRef} className="grow-line" />
-        </div>
-      )}
 
       <div className="top-glow">
         <div className="blur" />
@@ -158,11 +104,12 @@ export default function Hero() {
         <div
           className="img-hero-wrapper"
           style={{
-            backgroundImage: `url(${s.hero_image || '/images/hero-photo-test2.jpg'})`,
+            backgroundImage: s.hero_image === '' ? 'none' : `url(${s.hero_image ?? '/images/hero-photo-test2.jpg'})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}
         >
+          {content('hero.video')&&<video className="cms-background-video" src={content('hero.video')} poster={s.hero_image||undefined} autoPlay loop muted playsInline/>}
           <div className="black-overlay-top" />
           <div className="black-overlay" />
         </div>
@@ -171,7 +118,7 @@ export default function Hero() {
           <div className="conter-content-hero">
             <div className="hero-top">
               <h1 className="heading hero-title" style={{ whiteSpace: 'pre-line' }}>
-                {(s.title || 'Brand & Web Design Specialist').replace(/Web\s+Design/i, 'Web\nDesign')}
+                {(s.title ?? 'Brand & Web Design Specialist').replace(/Web\s+Design/i, 'Web\nDesign')}
               </h1>
             </div>
 
@@ -180,12 +127,12 @@ export default function Hero() {
                 ref={lottieContainerRef}
                 className="name-mouse-lottie"
                 role="img"
-                aria-label={`${s.first_name || 'Sudais'} ${s.last_name || ''}`.trim()}
+                aria-label={`${s.first_name ?? 'Sudais'} ${s.last_name ?? ''}`.trim()}
                 data-is-ix2-target="1"
                 style={{ width: '100%', minHeight: '8vw' }}
               />
               <p className="heading right hero-role">
-                {s.role || 'Freelance Design Director'}
+                {s.role ?? 'Freelance Design Director'}
               </p>
             </div>
           </div>

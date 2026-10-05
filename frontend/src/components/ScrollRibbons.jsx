@@ -1,10 +1,13 @@
 import { useLayoutEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 import { gsap, ScrollTrigger } from '../utils/motion';
+import { useContent } from '../utils/content';
 
 // The original asset includes both the curved trim paths and their peach-to-cream artwork.
 // Its two stroke centers start at x=2087.125 and x=2130 on a 2880px canvas.
 export default function ScrollRibbons({ containerRef, lettersRef }) {
+  const content = useContent();
+  const animationUrl=content('intro.ribbons');
   const artworkRef = useRef(null);
 
   useLayoutEffect(() => {
@@ -42,7 +45,7 @@ export default function ScrollRibbons({ containerRef, lettersRef }) {
     mm.add('(prefers-reduced-motion: no-preference)', () => {
       const animation = lottie.loadAnimation({
         container: host, renderer: 'svg', loop: false, autoplay: false,
-        path: '/documents/ll-scroll.json',
+        path: animationUrl,
         rendererSettings: { preserveAspectRatio: 'xMinYMin meet' }
       });
       let tween;
@@ -82,7 +85,7 @@ export default function ScrollRibbons({ containerRef, lettersRef }) {
       ScrollTrigger.removeEventListener('refreshInit', align);
       mm.revert();
     };
-  }, [containerRef, lettersRef]);
+  }, [containerRef, lettersRef, animationUrl]);
 
   return <div ref={artworkRef} className="scroll-ribbons" aria-hidden="true" />;
 }

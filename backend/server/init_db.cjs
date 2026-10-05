@@ -347,10 +347,17 @@ async function initDB() {
     console.log('Database initialization completed successfully!');
   } catch (err) {
     console.error('Database initialization error:', err);
+    throw err;
   } finally {
     if (conn) conn.release();
-    process.exit(0);
+    if (require.main === module) {
+      process.exit(0);
+    }
   }
 }
 
-initDB();
+if (require.main === module) {
+  initDB();
+}
+
+module.exports = initDB;

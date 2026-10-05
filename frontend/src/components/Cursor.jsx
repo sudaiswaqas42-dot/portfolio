@@ -1,7 +1,11 @@
+import { usePortfolio } from '../context/PortfolioContext';
+import { useContent } from '../utils/content';
 import React, { useEffect, useRef } from 'react';
 import { gsap, SplitText } from '../utils/motion';
 
 export default function Cursor() {
+  const content = useContent();
+  const {data}=usePortfolio();
   const cursorRef = useRef(null);
   const iconRef = useRef(null);
   const textRef = useRef(null);
@@ -41,14 +45,16 @@ export default function Cursor() {
 
     // CTA hover interactions
     const onCtaEnter = () => {
-      text.innerText = 'Copy my Email';
+      if(content('contact.destination'))return;
+      text.innerText = content("cursor.hover_message");
       gsap.to(text, { opacity: 1, duration: 0.4, overwrite: true });
     };
     const onCtaLeave = () => {
       gsap.to(text, { opacity: 0, duration: 0.3, overwrite: true });
     };
     const onCtaClick = () => {
-      text.innerText = 'Great! Email copied';
+      if(content('contact.destination'))return;
+      text.innerText = content("cursor.copied_message");
       try {
         const split = new SplitText(text, { type: 'chars' });
         gsap.from(split.chars, {
@@ -82,24 +88,20 @@ export default function Cursor() {
       }
     };
 
-    const handleClick = (e) => {
-      if (e.target.closest?.('.cta-button-wrapper')) {
-        onCtaClick();
-      }
-    };
+    const handleClick = () => onCtaClick();
 
     document.addEventListener('mouseover', handleMouseOver);
     document.addEventListener('mouseout', handleMouseOut);
-    document.addEventListener('click', handleClick);
+    window.addEventListener('portfolio-email-copied', handleClick);
 
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
       gsap.ticker.remove(tick);
       document.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mouseout', handleMouseOut);
-      document.removeEventListener('click', handleClick);
+      window.removeEventListener('portfolio-email-copied', handleClick);
     };
-  }, []);
+  }, [data.content]);
 
   return (
     <div
@@ -116,11 +118,9 @@ export default function Cursor() {
       }}
     >
       <div ref={iconRef} className="cursor-jm-icon" style={{ opacity: 0 }}>
-        <img src="/images/arrow-grey.svg" loading="lazy" alt="" className="icon-cursor" />
+        <img src={content("cursor.arrow_grey_svg")} loading="lazy" alt={content("cursor.image_description_decorative")} className="icon-cursor" />
       </div>
-      <div ref={textRef} className="text-jm-cursor" style={{ opacity: 0 }}>
-        copy
-      </div>
+      <div ref={textRef} className="text-jm-cursor" style={{ opacity: 0 }}>{content("cursor.copy")}</div>
     </div>
   );
 }

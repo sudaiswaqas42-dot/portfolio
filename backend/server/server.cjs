@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const fs = require('node:fs');
@@ -9,11 +10,13 @@ const pool = require('./db.cjs');
 const migrate = require('./migrate.cjs');
 const defaultTheme = require('../../shared/theme.json');
 const themePresets = require('../../shared/themePresets.json');
+const contentCatalog = require('../../shared/contentCatalog.json');
 const app = express();
 const root = path.join(__dirname,'..');
 const uploadDir = path.join(root,'uploads');
 fs.mkdirSync(uploadDir,{recursive:true});
 app.disable('x-powered-by');
+app.use(cors({origin:true,credentials:true}));
 app.use((req,res,next)=>{res.setHeader('X-Content-Type-Options','nosniff');next();});
 app.use('/api',(req,res,next)=>{res.setHeader('Cache-Control','no-store');next();});
 app.use(express.json({limit:'2mb'}));
@@ -27,10 +30,10 @@ async function portfolio(db=pool){
     db.query('SELECT * FROM site_settings WHERE id=1'),db.query('SELECT * FROM services ORDER BY sort_order,id'),
     db.query('SELECT * FROM philosophy_points ORDER BY sort_order,id'),db.query('SELECT * FROM projects ORDER BY sort_order,id'),
     db.query('SELECT * FROM about_content WHERE id=1'),db.query('SELECT revision FROM cms_meta WHERE id=1')]);
-  const {theme_json,footer_technologies_json,...publicSettings}=settings[0]||{};
+  const {theme_json,footer_technologies_json,content_json,...publicSettings}=settings[0]||{};
   const theme=theme_json?parse(theme_json):defaultTheme;
   publicSettings.footer_technologies=footer_technologies_json?parse(footer_technologies_json):[];
-  return {settings:publicSettings,theme,theme_presets:themePresets,services:services.map(({images_json,videos_json,...s})=>({...s,images:parse(images_json),videos:parse(videos_json)})),philosophy:philosophy.map(p=>p.point_text),projects:projects.map(({media_json,...p})=>({...p,media:parse(media_json)})),about:about[0]||{},revision:meta[0].revision};
+  return {content:{...Object.fromEntries(Object.entries(contentCatalog).map(([key,field])=>[key,field.value])),...(content_json?parse(content_json):{})},settings:publicSettings,theme,theme_presets:themePresets,services:services.map(({images_json,videos_json,...s})=>({...s,images:parse(images_json),videos:parse(videos_json)})),philosophy:philosophy.map(p=>p.point_text),projects:projects.map(({media_json,...p})=>({...p,media:parse(media_json)})),about:about[0]||{},revision:meta[0].revision};
 }
 app.get('/api/portfolio',async(req,res,next)=>{try{res.json(await portfolio())}catch(e){next(e)}});
 app.get('/api/admin/theme-presets',(req,res)=>res.json(themePresets));
@@ -57,6 +60,18 @@ function list(v,max=200){if(!Array.isArray(v)||v.length>max)bad('Invalid list');
 const settingsFields=['first_name','last_name','title','role','headline','email','linkedin_url','twitter_url','behance_url','hero_image','about_image','benefits_silhouette_image','benefits_dark_image','benefits_light_image','footer_video','footer_video_poster','footer_heading','footer_subheading','footer_tech_label'];
 const aboutFields=['headline','who_i_am','approach','philosophy','awards','news2_img1','news2_img2','news2_img3','news3_img1','news3_img2',...Array.from({length:3},(_,i)=>[`news${i+1}_title`,`news${i+1}_desc`,`news${i+1}_link`]).flat()];
 function validate(section,body){
+  if(!body || typeof body!=='object')bad('Invalid content');
+  if(section==='content'){
+    const result={};
+    for(const [key,field] of Object.entries(contentCatalog)){
+      const value=body[key]??field.value;
+      text(value);
+      if(['image','video','url'].includes(field.type))url(value);
+      if(field.type==='link'&&value&&!/^(https?:\/\/[^\s]+|\/(?!\/)[^\s]*|#[^\s]*|mailto:[^\s]+|tel:[+\d\s()-]+)$/i.test(value))bad(`Invalid link: ${field.label}`);
+      result[key]=value;
+    }
+    return result;
+  }
   if(section==='theme'){
     if(!['light','dark','system'].includes(body.mode))bad('Choose a valid theme mode');
     const theme={mode:body.mode};
@@ -100,18 +115,22 @@ function validate(section,body){
   }
   bad('Unknown section');
 }
-app.put('/api/admin/:section',requireAuth,async(req,res,next)=>{
-  let conn;
-  try{
-    const section=req.params.section,value=validate(section,req.body);
-    conn=await pool.getConnection();await conn.beginTransaction();
-    const [[meta]]=await conn.query('SELECT revision FROM cms_meta WHERE id=1 FOR UPDATE');
-    if(req.body.revision!==meta.revision){await conn.rollback();return res.status(409).json({error:'Content changed in another session. Reload before saving.'});}
-    const previous=await portfolio(conn);
-    await conn.query('INSERT INTO cms_history (section,content) VALUES (?,?)',[section,JSON.stringify(previous[section])]);
+
+const documentSections=['settings','about','services','philosophy','projects','theme','content'];
+function validateDocument(body){
+  if(!body||typeof body!=='object')bad('Invalid document');
+  return Object.fromEntries(documentSections.map(section=>{
+    if(body[section]===undefined)bad('Missing section: '+section);
+    const payload=section==='services'?{services:body.services}:section==='projects'?{projects:body.projects}:section==='philosophy'?{points:body.philosophy}:body[section];
+    return [section,validate(section,payload)];
+  }));
+}
+async function persistSection(conn,section,value){
     if(section==='settings'||section==='about'){
       const table=section==='settings'?'site_settings':'about_content';
       await conn.query(`UPDATE ${table} SET ${Object.keys(value).map(k=>`${k}=?`).join(',')} WHERE id=1`,Object.values(value));
+    }else if(section==='content'){
+      await conn.query('UPDATE site_settings SET content_json=? WHERE id=1',[JSON.stringify(value)]);
     }else if(section==='theme'){
       await conn.query('UPDATE site_settings SET theme_json=? WHERE id=1',[JSON.stringify(value)]);
     }else if(section==='philosophy'){
@@ -129,6 +148,34 @@ app.put('/api/admin/:section',requireAuth,async(req,res,next)=>{
       }
       if(kept.length)await conn.query('DELETE FROM projects WHERE id NOT IN (?)',[kept]);else await conn.query('DELETE FROM projects');
     }
+
+}
+app.put('/api/admin/document',requireAuth,async(req,res,next)=>{
+  let conn;
+  try{
+    const values=validateDocument(req.body);
+    conn=await pool.getConnection();await conn.beginTransaction();
+    const [[meta]]=await conn.query('SELECT revision FROM cms_meta WHERE id=1 FOR UPDATE');
+    if(req.body.revision!==meta.revision){await conn.rollback();return res.status(409).json({error:'Another session published changes. Your draft is retained. Reload saved content before publishing again.'});}
+    const previous=await portfolio(conn);
+    await conn.query('INSERT INTO cms_history (section,content) VALUES (?,?)',['document',JSON.stringify(previous)]);
+    for(const section of documentSections)await persistSection(conn,section,values[section]);
+    await conn.query('UPDATE cms_meta SET revision=revision+1 WHERE id=1');
+    const saved=await portfolio(conn);
+    await conn.commit();res.json(saved);
+  }catch(e){if(conn)await conn.rollback();next(e)}finally{conn?.release();}
+});
+
+app.put('/api/admin/:section',requireAuth,async(req,res,next)=>{
+  let conn;
+  try{
+    const section=req.params.section,value=validate(section,req.body);
+    conn=await pool.getConnection();await conn.beginTransaction();
+    const [[meta]]=await conn.query('SELECT revision FROM cms_meta WHERE id=1 FOR UPDATE');
+    if(req.body.revision!==meta.revision){await conn.rollback();return res.status(409).json({error:'Content changed in another session. Reload before saving.'});}
+    const previous=await portfolio(conn);
+    await conn.query('INSERT INTO cms_history (section,content) VALUES (?,?)',[section,JSON.stringify(previous[section])]);
+    await persistSection(conn,section,value);
     await conn.query('UPDATE cms_meta SET revision=revision+1 WHERE id=1');
     await conn.commit();res.json({success:true,revision:meta.revision+1});
   }catch(e){if(conn)await conn.rollback();next(e)}finally{if(conn)conn.release();}
@@ -157,5 +204,8 @@ const frontendDist = path.join(root, '..', 'frontend', 'dist');
 app.use(express.static(frontendDist));
 app.get('/{*path}',(req,res)=>res.sendFile(path.join(frontendDist,'index.html')));
 app.use((err,req,res,next)=>{console.error(err.message);res.status(err.status||500).json({error:err.status===400?err.message:err.status===413?'File or request is too large.':'Unable to save or load content. Check the database connection.'});});
-if(require.main===module)migrate().then(()=>app.listen(port,'127.0.0.1',()=>console.log(`Portfolio API: http://localhost:${port}`))).catch(e=>{console.error('Database startup failed:',e.message);process.exitCode=1;pool.end();});
-module.exports={app,portfolio,validate};
+if(require.main===module){
+  const host = process.env.HOST || '0.0.0.0';
+  migrate().then(()=>app.listen(port,host,()=>console.log(`Portfolio API: http://${host}:${port}`))).catch(e=>{console.error('Database startup failed:',e.message);process.exitCode=1;pool.end();});
+}
+module.exports={app,portfolio,validate,validateDocument};
