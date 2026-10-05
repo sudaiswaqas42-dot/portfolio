@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import {resolveMediaUrl} from '../utils/media';
 function Field({label,value,onChange,multiline=false,type='text',...props}){
    return <label className="editor-field"><span>{label}</span>{multiline?<textarea rows={4} value={value??''} onChange={e=>onChange(e.target.value)} {...props}/>:<input type={type} value={value??''} onChange={e=>onChange(e.target.value)} {...props}/>}</label>;
 }
@@ -27,7 +28,7 @@ function Gallery({media=[],onChange,onBusy}){
   const move=(i,d)=>{const next=[...media];[next[i],next[i+d]]=[next[i+d],next[i]];onChange(next);};
   return <div className="gallery-editor"><div className="section-heading"><div><h3>Project gallery</h3><p>Upload, replace or reorder images and videos. Save changes to publish.</p></div><Upload onBusy={onBusy} onUpload={items=>onChange([...media,...items])}/></div>
     <div className="media-grid">{media.map((m,i)=><div className="media-card" key={i}>
-      {m.type==='image'?<img src={m.src} alt={m.alt||'Project preview'} loading="lazy"/>:<video src={m.src} poster={m.poster} controls preload="metadata"/>}
+      {m.type==='image'?<img src={resolveMediaUrl(m.src)} alt={m.alt||'Project preview'} loading="lazy"/>:<video src={resolveMediaUrl(m.src)} poster={resolveMediaUrl(m.poster)} controls preload="metadata"/>}
       <div className="media-fields"><Field label={`Media ${i+1} URL`} value={m.src} onChange={v=>update(i,{src:v,srcSet:''})}/><Field label="Description / alt text" value={m.alt} onChange={v=>update(i,{alt:v})}/>
       <label className="editor-field"><span>Media type</span><select value={m.type} onChange={e=>update(i,{type:e.target.value})}><option value="image">Image</option><option value="video">Video</option></select></label>
       {m.type==='video'&&<><Field label="Video poster URL" value={m.poster} onChange={v=>update(i,{poster:v})}/><Upload label="Upload poster" acceptType="image" onBusy={onBusy} onUpload={items=>update(i,{poster:items[0].src})}/></>}

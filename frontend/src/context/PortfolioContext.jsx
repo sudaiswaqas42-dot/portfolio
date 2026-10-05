@@ -1,6 +1,7 @@
 import React,{createContext,useContext,useState,useEffect,useLayoutEffect,useCallback} from 'react';
 import defaults from '../data/defaults.json';
 import {applyTheme,normalizeTheme} from '../utils/theme';
+import {normalizePortfolioMedia} from '../utils/media';
 import contentCatalog from '../../../shared/contentCatalog.json';
 const PortfolioContext=createContext(null);
 const cacheKey='portfolio-content-v1';
@@ -8,7 +9,7 @@ function readCachedData(){
   try{
     const cached=JSON.parse(localStorage.getItem(cacheKey));
     if(cached?.settings && Array.isArray(cached.projects) && cached.theme){
-      return {...cached,theme:normalizeTheme(cached.theme)};
+      return normalizePortfolioMedia({...cached,theme:normalizeTheme(cached.theme)});
     }
   }catch{}
   return null;
@@ -17,14 +18,16 @@ const cachedData=readCachedData();
 // Apply cached colors before React mounts any animated content.
 applyTheme(cachedData?.theme || normalizeTheme());
 export function PortfolioProvider({children}){
-  const [data,setData]=useState(cachedData || {...defaults,theme:normalizeTheme()}),[loading,setLoading]=useState(true),[error,setError]=useState('');
+  const [data,setData]=useState(cachedData || normalizePortfolioMedia({...defaults,theme:normalizeTheme()})),[loading,setLoading]=useState(true),[error,setError]=useState('');
   const refreshData=useCallback(async()=>{
     try{
       const defaultBackend = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) ? '' : 'https://portfolio-backend-production-9c68.up.railway.app';
       const apiBase = import.meta.env.VITE_API_URL || defaultBackend;
       const res=await fetch(`${apiBase}/api/portfolio`,{signal:AbortSignal.timeout(10000)});
       if(!res.ok)throw new Error('The content server is unavailable. Please retry.');
-      const next=await res.json();next.theme=normalizeTheme(next.theme);
+      let next=await res.json();
+      next.theme=normalizeTheme(next.theme);
+      next=normalizePortfolioMedia(next);
       try{localStorage.setItem(cacheKey,JSON.stringify(next));}catch{}
       applyTheme(next.theme);
       setData(current=>JSON.stringify(current)===JSON.stringify(next)?current:next);

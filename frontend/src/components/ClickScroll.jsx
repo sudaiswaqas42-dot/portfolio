@@ -20,14 +20,15 @@ export default function ClickScroll() {
   const hasClickedRef = useRef(false);
 
   const handleMouseEnter = () => {
-    if (hasClickedRef.current) return;
     const clickText = clickTextRef.current;
     const clickHuh = clickHuhRef.current;
     const hoverPill = hoverPillRef.current;
     const clickBtn = clickBtnRef.current;
     if (!clickText || !clickHuh || !hoverPill) return;
 
-    setCuriousText(content("intro.hover_button_text"));
+    if (!hasClickedRef.current) {
+      setCuriousText(content("intro.hover_button_text"));
+    }
 
     // 1. Move orange 'click' text up and out
     gsap.to(clickText, {
@@ -57,7 +58,7 @@ export default function ClickScroll() {
       });
     }
 
-    // 4. Reveal "Who is a little curious?" in center
+    // 4. Reveal text in center
     gsap.to(clickHuh, {
       opacity: 1,
       scale: 1,
@@ -70,7 +71,10 @@ export default function ClickScroll() {
   };
 
   const handleMouseLeave = () => {
-    if (hasClickedRef.current) return;
+    // When cursor leaves, reset click state so "Click" returns and "Another click!" does not stay
+    hasClickedRef.current = false;
+    setHasClicked(false);
+
     const clickText = clickTextRef.current;
     const clickHuh = clickHuhRef.current;
     const hoverPill = hoverPillRef.current;
@@ -105,16 +109,14 @@ export default function ClickScroll() {
       });
     }
 
-    // 4. Hide curious text
+    // 4. Hide curious/clicked text and reset curiousText
     gsap.to(clickHuh, {
       opacity: 0,
       duration: 0.2,
       ease: 'power2.in',
       overwrite: true,
       onComplete: () => {
-        if (!hasClickedRef.current) {
-          setCuriousText(content("intro.hover_button_text"));
-        }
+        setCuriousText(content("intro.hover_button_text"));
       }
     });
   };

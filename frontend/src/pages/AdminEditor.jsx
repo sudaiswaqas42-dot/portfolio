@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {usePortfolio} from '../context/PortfolioContext';
 import {Field, Upload, Gallery, request} from './AdminFields';
+import {resolveMediaUrl} from '../utils/media';
 import ThemeEditor from '../components/ThemeEditor';
 import catalog from '../../../shared/contentCatalog.json';
 import './admin.css';
@@ -54,7 +55,7 @@ const editable = ['settings','about','content','projects','services','philosophy
 function AssetField({label,value,type,onChange,onBusy}) {
   const media=['image','video'].includes(type);
   return <div className={media?'cms-asset':'cms-copy-field'}>
-    {media && value && value!=='none' && (type==='image'?<img className="photo-preview" src={value} alt={`${label} preview`} loading="lazy"/>:<video className="photo-preview" src={value} controls preload="metadata"/>)}
+    {media && value && value!=='none' && (type==='image'?<img className="photo-preview" src={resolveMediaUrl(value)} alt={`${label} preview`} loading="lazy"/>:<video className="photo-preview" src={resolveMediaUrl(value)} controls preload="metadata"/>)}
     <Field label={label} value={value} multiline={!media&&type==='text'&&(String(value).includes('\n')||String(value).length>110||/description|biography|philosophy|approach|who i am|awards|technologies/i.test(label))} onChange={onChange}/>
     {media&&<Upload label={`Upload ${type}`} onBusy={onBusy} acceptType={type} onUpload={items=>onChange(items[0].src)}/>}
   </div>;
