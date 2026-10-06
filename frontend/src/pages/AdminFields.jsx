@@ -16,12 +16,34 @@ function Upload({onUpload,label='Upload media',onBusy,acceptType}){
   const [busy,setBusy]=useState(false),[error,setError]=useState('');
   async function upload(e){
     const files=[...e.target.files];if(!files.length)return;
-    if(acceptType&&files.some(file=>!file.type.startsWith(acceptType+'/'))){setError(`Choose an ${acceptType} file.`);e.target.value='';return;}
+    const isFileAcceptable=(file)=>{
+      if(!acceptType)return true;
+      if(file.type&&file.type.startsWith(acceptType+'/'))return true;
+      const ext=(file.name||'').split('.').pop().toLowerCase();
+      if(acceptType==='image')return ['jpg','jpeg','png','webp','gif','svg','avif'].includes(ext);
+      if(acceptType==='video')return ['mp4','webm','mov','m4v'].includes(ext);
+      return false;
+    };
+    if(files.some(file=>!isFileAcceptable(file))){setError(`Choose a valid ${acceptType} file.`);e.target.value='';return;}
     setBusy(true);onBusy?.(true);setError('');
-    try{const uploaded=[];for(const file of files){if(file.size>50*1024*1024)throw new Error('Maximum file size is 50 MB.');const result=await request('/api/admin/upload',{method:'POST',headers:{'Content-Type':file.type},body:file});uploaded.push({type:result.type,src:result.url,alt:file.name.replace(/\.[^.]+$/,''),className:result.type==='image'?'img-project':'video-cont-p2'});}onUpload(uploaded);}
+    try{
+      const uploaded=[];
+      for(const file of files){
+        if(file.size>50*1024*1024)throw new Error('Maximum file size is 50 MB.');
+        let contentType=file.type;
+        if(!contentType){
+          const ext=(file.name||'').split('.').pop().toLowerCase();
+          const extMap={jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png',webp:'image/webp',gif:'image/gif',svg:'image/svg+xml',mp4:'video/mp4',webm:'video/webm',mov:'video/mp4',m4v:'video/mp4'};
+          contentType=extMap[ext]||'application/octet-stream';
+        }
+        const result=await request('/api/admin/upload',{method:'POST',headers:{'Content-Type':contentType},body:file});
+        uploaded.push({type:result.type,src:result.url,alt:file.name.replace(/\.[^.]+$/,''),className:result.type==='image'?'img-project':'video-cont-p2'});
+      }
+      onUpload(uploaded);
+    }
     catch(e){setError(e.message);}finally{setBusy(false);onBusy?.(false);e.target.value='';}
   }
-  return <div><label className="upload-button">{busy?'Uploading…':label}<input aria-label={label} type="file" accept={acceptType==='image'?'image/jpeg,image/png,image/webp,image/gif':acceptType==='video'?'video/mp4,video/webm':'image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm'} multiple={!acceptType} disabled={busy} onChange={upload}/></label>{error&&<p role="alert" className="editor-error">{error}</p>}</div>;
+  return <div><label className="upload-button">{busy?'Uploading…':label}<input aria-label={label} type="file" accept={acceptType==='image'?'image/jpeg,image/png,image/webp,image/gif,image/svg+xml,.jpg,.jpeg,.png,.webp,.gif,.svg':acceptType==='video'?'video/mp4,video/webm,video/quicktime,.mp4,.webm,.mov':'image/*,video/*,.jpg,.jpeg,.png,.webp,.gif,.mp4,.webm,.mov'} multiple={!acceptType} disabled={busy} onChange={upload}/></label>{error&&<p role="alert" className="editor-error">{error}</p>}</div>;
 }
 function Gallery({media=[],onChange,onBusy}){
   const update=(i,patch)=>onChange(media.map((m,j)=>i===j?{...m,...patch}:m));

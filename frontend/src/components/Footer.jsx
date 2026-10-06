@@ -1,6 +1,7 @@
 import { useContent } from '../utils/content';
 import React from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
+import { resolveMediaUrl } from '../utils/media';
 
 export default function Footer() {
   const content = useContent();
@@ -20,8 +21,8 @@ export default function Footer() {
   const headingText = (data?.settings?.footer_heading ?? `MR ${firstName} ${lastName}`).trim();
   const subheading = data?.settings?.footer_subheading ?? 'Morable Design Studio [Coming Soon]';
 
-  const footerVideo = data?.settings?.footer_video ?? '/videos-work/desk_jm3.mp4';
-  const footerPoster = data?.settings?.footer_video_poster ?? '/videos-work/juan-video-loading.jpg';
+  const footerVideo = resolveMediaUrl(data?.settings?.footer_video || '/videos-work/desk_jm3.mp4');
+  const footerPoster = resolveMediaUrl(data?.settings?.footer_video_poster || '/videos-work/juan-video-loading.jpg');
 
   const getHeadingParts = (text) => {
     if (!text) return ['', ''];

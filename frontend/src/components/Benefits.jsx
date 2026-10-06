@@ -2,6 +2,7 @@ import { useContent } from '../utils/content';
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { usePortfolio } from '../context/PortfolioContext';
+import { resolveMediaUrl } from '../utils/media';
 
 export default function Benefits() {
   const content = useContent();
@@ -14,9 +15,9 @@ export default function Benefits() {
     'I align your goals with my experience to make the right design decisions for your brand.'
   ];
 
-  let silhouetteImg = settings.benefits_silhouette_image ?? "/images/home-about-jm-2.png";
-  let darkImg = settings.benefits_dark_image ?? "/images/home-about-jm-1.jpg";
-  const lightImg = settings.benefits_light_image ?? "/images/home-about-jm-3.jpg";
+  let silhouetteImg = settings.benefits_silhouette_image ? resolveMediaUrl(settings.benefits_silhouette_image) : "/images/home-about-jm-2.png";
+  let darkImg = settings.benefits_dark_image ? resolveMediaUrl(settings.benefits_dark_image) : "/images/home-about-jm-1.jpg";
+  const lightImg = settings.benefits_light_image ? resolveMediaUrl(settings.benefits_light_image) : "/images/home-about-jm-3.jpg";
 
   // Auto-detect swapped images if silhouette was set to a jpg background and darkImg was set to a png cutout
   if (silhouetteImg && darkImg && /\.jpe?g($|\?)/i.test(silhouetteImg) && /\.png($|\?)/i.test(darkImg)) {

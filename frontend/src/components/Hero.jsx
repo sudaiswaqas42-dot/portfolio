@@ -4,12 +4,13 @@ import lottie from 'lottie-web';
 import { usePortfolio } from '../context/PortfolioContext';
 import { bindHeroName } from '../utils/heroName';
 import { configureHeroCards } from '../utils/heroCards.mjs';
+import { resolveMediaUrl } from '../utils/media';
 
 export default function Hero() {
   const content = useContent();
   const { data } = usePortfolio();
   const s = data.settings || {};
-  const cardImages=[1,2,3,4].map(index=>content(`hero.card_${index}`));
+  const cardImages=[1,2,3,4].map(index=>resolveMediaUrl(content(`hero.card_${index}`)));
   const cardSignature=JSON.stringify(cardImages);
 
   const heroWrapperRef = useRef(null);
@@ -104,12 +105,12 @@ export default function Hero() {
         <div
           className="img-hero-wrapper"
           style={{
-            backgroundImage: s.hero_image === '' ? 'none' : (s.hero_image ? `url(${s.hero_image}), url('/images/hero-photo-test2.jpg')` : "url('/images/hero-photo-test2.jpg')"),
+            backgroundImage: s.hero_image === '' ? 'none' : `url("${resolveMediaUrl(s.hero_image || '/images/hero-photo-test2.jpg')}")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}
         >
-          {content('hero.video')&&<video className="cms-background-video" src={content('hero.video')} poster={s.hero_image||undefined} autoPlay loop muted playsInline/>}
+          {content('hero.video')&&<video className="cms-background-video" src={resolveMediaUrl(content('hero.video'))} poster={s.hero_image ? resolveMediaUrl(s.hero_image) : undefined} autoPlay loop muted playsInline/>}
           <div className="black-overlay-top" />
           <div className="black-overlay" />
         </div>

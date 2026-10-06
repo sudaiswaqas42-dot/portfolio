@@ -1,6 +1,7 @@
 import { useContent } from '../utils/content';
 import React from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
+import { resolveMediaUrl } from '../utils/media';
 
 export default function Services() {
   const content = useContent();
@@ -28,7 +29,7 @@ export default function Services() {
             <div className="cont-imgs-service">
               {service.images && service.images[0] && (
                 <div className="mask-img-service">
-                  <img src={service.images[0]} alt={content("services.image_description_decorative")} className="img-service" />
+                  <img src={resolveMediaUrl(service.images[0])} alt={content("services.image_description_decorative")} className="img-service" />
                 </div>
               )}
               {service.videos && service.videos[0] && (
@@ -36,7 +37,7 @@ export default function Services() {
                   <div className="video-cont-p2 home">
                     <div className="code-video w-embed">
                       <video autoPlay loop muted playsInline width="100%" height="auto" preload="metadata" poster={content("services.juan_video_loading_jpg")}>
-                        <source src={service.videos[0]} />
+                        <source src={resolveMediaUrl(service.videos[0])} />
                       </video>
                     </div>
                   </div>
@@ -44,7 +45,7 @@ export default function Services() {
               )}
               {service.images && service.images[1] && (
                 <div className="mask-img-service">
-                  <img src={service.images[1]} alt={content("services.image_description_decorative")} className="img-service" />
+                  <img src={resolveMediaUrl(service.images[1])} alt={content("services.image_description_decorative")} className="img-service" />
                 </div>
               )}
               {service.videos && service.videos[1] && (
@@ -52,7 +53,7 @@ export default function Services() {
                   <div className="video-cont-p2 home">
                     <div className="code-video w-embed">
                       <video autoPlay loop muted playsInline width="100%" height="auto" preload="metadata" poster={content("services.juan_video_loading_jpg")}>
-                        <source src={service.videos[1]} />
+                        <source src={resolveMediaUrl(service.videos[1])} />
                       </video>
                     </div>
                   </div>
@@ -76,10 +77,10 @@ export default function Services() {
           </div>
           <div className="cont-imgs-service webflow">
             <div className="mask-img-service webflow">
-              {development?.videos?.[0]?<video className="tag-webflow" src={development.videos[0]} poster={development?.images?.[0]||content('services.juan_video_loading_jpg')} autoPlay loop muted playsInline/>:<img src={development?.images?.[0] ?? '/images/webflow-tag-juan-mora.svg'} alt={content("services.image_description_decorative")} className="tag-webflow" />}
+              {development?.videos?.[0]?<video className="tag-webflow" src={resolveMediaUrl(development.videos[0])} poster={resolveMediaUrl(development?.images?.[0]||content('services.juan_video_loading_jpg'))} autoPlay loop muted playsInline/>:<img src={resolveMediaUrl(development?.images?.[0] ?? '/images/webflow-tag-juan-mora.svg')} alt={content("services.image_description_decorative")} className="tag-webflow" />}
             </div>
             <div className="mask-img-service framer">
-              {development?.videos?.[1]?<video className="tag-framer" src={development.videos[1]} poster={development?.images?.[1]||content('services.juan_video_loading_jpg')} autoPlay loop muted playsInline/>:<img src={development?.images?.[1] ?? '/images/framer-tag-juan-mora.svg'} alt={content("services.image_description_decorative")} className="tag-framer" />}
+              {development?.videos?.[1]?<video className="tag-framer" src={resolveMediaUrl(development.videos[1])} poster={resolveMediaUrl(development?.images?.[1]||content('services.juan_video_loading_jpg'))} autoPlay loop muted playsInline/>:<img src={resolveMediaUrl(development?.images?.[1] ?? '/images/framer-tag-juan-mora.svg')} alt={content("services.image_description_decorative")} className="tag-framer" />}
             </div>
           </div>
         </li>

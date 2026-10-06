@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import CtaSection from '../components/CtaSection';
 import StudioScene from '../components/StudioScene';
 import BrandMark from '../components/BrandMark';
+import { resolveMediaUrl } from '../utils/media';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,12 +39,12 @@ export default function About() {
   const news3Desc = about.news3_desc ?? '';
   const news3Link = about.news3_link ?? '';
 
-  const news2Img1 = about.news2_img1 ?? '/images/domestika-juan-mora-1.png';
-  const news2Img2 = about.news2_img2 ?? '/images/domestika2.jpg';
-  const news2Img3 = about.news2_img3 ?? '/images/domestika-juan-mora-3.png';
+  const news2Img1 = resolveMediaUrl(about.news2_img1 || '/images/domestika-juan-mora-1.png');
+  const news2Img2 = resolveMediaUrl(about.news2_img2 || '/images/domestika2.jpg');
+  const news2Img3 = resolveMediaUrl(about.news2_img3 || '/images/domestika-juan-mora-3.png');
 
-  const news3Img1 = about.news3_img1 ?? '/images/dont-scroll-down-juanmora1.png';
-  const news3Img2 = about.news3_img2 ?? '/images/dont-scroll-down-juanmora2.png';
+  const news3Img1 = resolveMediaUrl(about.news3_img1 || '/images/dont-scroll-down-juanmora1.png');
+  const news3Img2 = resolveMediaUrl(about.news3_img2 || '/images/dont-scroll-down-juanmora2.png');
 
   const renderHeadline = () => {
     const text = headline;
@@ -102,7 +103,7 @@ export default function About() {
           <div className="wrapper-cont-50 _70">
             <div className="pill-hero-about-wrapper">
               <div className="img-pill-mask">
-                <div className="img-pill-full" style={{backgroundImage:content('aboutHero.pill_image')?`url(${content('aboutHero.pill_image')})`:'none'}}></div>
+                <div className="img-pill-full" style={{backgroundImage:content('aboutHero.pill_image')?`url("${resolveMediaUrl(content('aboutHero.pill_image'))}")`:'none'}}></div>
               </div>
               <div className="about-brand-icon"><BrandMark /></div>
               <div className="blue-dot-hero"></div>
@@ -120,7 +121,7 @@ export default function About() {
           <div className="sticky-cont-about">
             <div className="circle-lottie-cont"><div ref={lottieCircleRef} className="lottie-circles" /></div>
             <div className="cont-shine-mask"><div className="glow-orange" /></div>
-            <div className="big-about-cont" style={{backgroundImage: settings.about_image === '' ? 'none' : `url(${settings.about_image ?? '/images/about-juan-mora.jpg'})`}}>{content('aboutHero.video')&&<video className="cms-background-video" src={content('aboutHero.video')} autoPlay loop muted playsInline/>}</div>
+            <div className="big-about-cont" style={{backgroundImage: settings.about_image === '' ? 'none' : `url("${resolveMediaUrl(settings.about_image || '/images/about-juan-mora.jpg')}")`}}>{content('aboutHero.video')&&<video className="cms-background-video" src={resolveMediaUrl(content('aboutHero.video'))} autoPlay loop muted playsInline/>}</div>
           </div>
         </div>
       </section>

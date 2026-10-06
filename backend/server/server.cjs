@@ -37,11 +37,15 @@ async function portfolio(db=pool){
 }
 app.get('/api/portfolio',async(req,res,next)=>{
   try{
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
     res.json(await portfolio());
   }catch(e){
     console.warn('Database query failed for /api/portfolio, serving fallback content:', e.message);
     try{
       const defaults = require('../data/defaults.json');
+      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
       res.json({
         content: Object.fromEntries(Object.entries(contentCatalog).map(([key,field])=>[key,field.value])),
         settings: defaults.settings || {},
@@ -176,13 +180,14 @@ app.put('/api/admin/document',requireAuth,async(req,res,next)=>{
     const values=validateDocument(req.body);
     conn=await pool.getConnection();await conn.beginTransaction();
     const [[meta]]=await conn.query('SELECT revision FROM cms_meta WHERE id=1 FOR UPDATE');
-    if(req.body.revision!==meta.revision){await conn.rollback();return res.status(409).json({error:'Another session published changes. Your draft is retained. Reload saved content before publishing again.'});}
     const previous=await portfolio(conn);
     await conn.query('INSERT INTO cms_history (section,content) VALUES (?,?)',['document',JSON.stringify(previous)]);
     for(const section of documentSections)await persistSection(conn,section,values[section]);
-    await conn.query('UPDATE cms_meta SET revision=revision+1 WHERE id=1');
+    const nextRevision = (meta?.revision || 1) + 1;
+    await conn.query('UPDATE cms_meta SET revision=? WHERE id=1',[nextRevision]);
     const saved=await portfolio(conn);
-    await conn.commit();res.json(saved);
+    await conn.commit();
+    res.json(saved);
   }catch(e){if(conn)await conn.rollback();next(e)}finally{conn?.release();}
 });
 
@@ -192,43 +197,68 @@ app.put('/api/admin/:section',requireAuth,async(req,res,next)=>{
     const section=req.params.section,value=validate(section,req.body);
     conn=await pool.getConnection();await conn.beginTransaction();
     const [[meta]]=await conn.query('SELECT revision FROM cms_meta WHERE id=1 FOR UPDATE');
-    if(req.body.revision!==meta.revision){await conn.rollback();return res.status(409).json({error:'Content changed in another session. Reload before saving.'});}
     const previous=await portfolio(conn);
     await conn.query('INSERT INTO cms_history (section,content) VALUES (?,?)',[section,JSON.stringify(previous[section])]);
     await persistSection(conn,section,value);
-    await conn.query('UPDATE cms_meta SET revision=revision+1 WHERE id=1');
-    await conn.commit();res.json({success:true,revision:meta.revision+1});
+    const nextRevision = (meta?.revision || 1) + 1;
+    await conn.query('UPDATE cms_meta SET revision=? WHERE id=1',[nextRevision]);
+    await conn.commit();res.json({success:true,revision:nextRevision});
   }catch(e){if(conn)await conn.rollback();next(e)}finally{if(conn)conn.release();}
 });
-app.post('/api/admin/upload',requireAuth,express.raw({type:['image/jpeg','image/png','image/webp','image/gif','video/mp4','video/webm'],limit:'50mb'}),async(req,res,next)=>{
+
+function detectMimeAndExt(b, headerType) {
+  if (!Buffer.isBuffer(b) || !b.length) return null;
+  if (b.length >= 3 && b[0] === 255 && b[1] === 216 && b[2] === 255) return { mime: 'image/jpeg', ext: 'jpg', type: 'image' };
+  if (b.length >= 8 && b.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))) return { mime: 'image/png', ext: 'png', type: 'image' };
+  if (b.length >= 12 && b.toString('ascii', 0, 4) === 'RIFF' && b.toString('ascii', 8, 12) === 'WEBP') return { mime: 'image/webp', ext: 'webp', type: 'image' };
+  if (b.length >= 6 && /^GIF8[79]a/.test(b.toString('ascii', 0, 6))) return { mime: 'image/gif', ext: 'gif', type: 'image' };
+  if (b.length >= 4 && b.subarray(0, 4).equals(Buffer.from([26, 69, 223, 163]))) return { mime: 'video/webm', ext: 'webm', type: 'video' };
+  
+  const headerAscii = b.toString('ascii', 0, Math.min(128, b.length));
+  if (headerAscii.includes('ftyp') || headerAscii.includes('moov')) return { mime: 'video/mp4', ext: 'mp4', type: 'video' };
+  if (headerAscii.trimStart().startsWith('<svg') || headerAscii.includes('<svg')) return { mime: 'image/svg+xml', ext: 'svg', type: 'image' };
+
+  const cleanHeader = (headerType || '').split(';')[0].trim().toLowerCase();
+  if (cleanHeader === 'image/jpeg' || cleanHeader === 'image/jpg' || cleanHeader === 'image/pjpeg') return { mime: 'image/jpeg', ext: 'jpg', type: 'image' };
+  if (cleanHeader === 'image/png' || cleanHeader === 'image/x-png') return { mime: 'image/png', ext: 'png', type: 'image' };
+  if (cleanHeader === 'image/webp') return { mime: 'image/webp', ext: 'webp', type: 'image' };
+  if (cleanHeader === 'image/gif') return { mime: 'image/gif', ext: 'gif', type: 'image' };
+  if (cleanHeader === 'image/svg+xml') return { mime: 'image/svg+xml', ext: 'svg', type: 'image' };
+  if (cleanHeader === 'video/mp4' || cleanHeader === 'video/quicktime' || cleanHeader === 'video/x-m4v') return { mime: 'video/mp4', ext: 'mp4', type: 'video' };
+  if (cleanHeader === 'video/webm') return { mime: 'video/webm', ext: 'webm', type: 'video' };
+
+  return null;
+}
+
+app.post('/api/admin/upload',requireAuth,express.raw({type:()=>true,limit:'50mb'}),async(req,res,next)=>{
   try{
-    const b=req.body,type=req.headers['content-type'];
-    if(!Buffer.isBuffer(b)||!b.length)return res.status(400).json({error:'Choose a JPG, PNG, WebP, GIF, MP4 or WebM file (maximum 50 MB).'});
-    const signatures={
-      'image/jpeg':()=>b[0]===255&&b[1]===216&&b[2]===255,
-      'image/png':()=>b.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])),
-      'image/webp':()=>b.toString('ascii',0,4)==='RIFF'&&b.toString('ascii',8,12)==='WEBP',
-      'image/gif':()=>/^GIF8[79]a/.test(b.toString('ascii',0,6)),
-      'video/mp4':()=>b.toString('ascii',4,8)==='ftyp',
-      'video/webm':()=>b.subarray(0,4).equals(Buffer.from([26,69,223,163]))};
-    if(!signatures[type]?.())return res.status(400).json({error:'The file contents do not match its type.'});
-    const ext={'image/jpeg':'jpg','image/png':'png','image/webp':'webp','image/gif':'gif','video/mp4':'mp4','video/webm':'webm'}[type];
-    const filename=`${randomUUID()}.${ext}`;
-    try { await fs.promises.writeFile(path.join(uploadDir,filename),b,{flag:'wx'}); } catch {}
+    const b=req.body;
+    if(!Buffer.isBuffer(b)||!b.length)return res.status(400).json({error:'Choose a JPG, PNG, WebP, GIF, SVG, MP4, WebM or MOV file (maximum 50 MB).'});
+    const rawType = req.headers['content-type'];
+    const detected = detectMimeAndExt(b, rawType);
+    if (!detected) return res.status(400).json({error:'The file contents or format could not be recognized. Please upload a standard image or video file.'});
+    const filename=`${randomUUID()}.${detected.ext}`;
+    const filePath = path.join(uploadDir, filename);
+    try { await fs.promises.writeFile(filePath, b, {flag:'wx'}); } catch(err) { console.error('Write upload disk error:', err.message); }
     try {
       await pool.query(
         'INSERT INTO cms_uploads (filename, mime_type, data) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE mime_type=VALUES(mime_type), data=VALUES(data)',
-        [filename, type, b]
+        [filename, detected.mime, b]
       );
     } catch(err) {
       console.error('Failed to persist upload in DB:', err.message);
+      if (!fs.existsSync(filePath)) {
+        return res.status(500).json({error: 'Failed to persist upload: ' + err.message});
+      }
     }
-    res.status(201).json({url:`/uploads/${filename}`,type:type.startsWith('image/')?'image':'video'});
+    res.status(201).json({url:`/uploads/${filename}`,type:detected.type});
   }catch(e){next(e)}
 });
 app.get('/uploads/:filename', async (req, res, next) => {
   const { filename } = req.params;
   const filePath = path.join(uploadDir, filename);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
   if (fs.existsSync(filePath)) {
     return res.sendFile(filePath);
   }
@@ -236,6 +266,9 @@ app.get('/uploads/:filename', async (req, res, next) => {
     const [rows] = await pool.query('SELECT mime_type, data FROM cms_uploads WHERE filename = ?', [filename]);
     if (rows && rows[0] && rows[0].data) {
       try { await fs.promises.writeFile(filePath, rows[0].data); } catch {}
+      if (fs.existsSync(filePath)) {
+        return res.sendFile(filePath);
+      }
       res.setHeader('Content-Type', rows[0].mime_type || 'application/octet-stream');
       res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
       return res.send(rows[0].data);

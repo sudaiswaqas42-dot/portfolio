@@ -86,7 +86,8 @@ export default function AdminEditor() {
   async function save(e){
     e.preventDefault();if(busy)return;setSaving(true);setNotice(null);
     try{
-      const saved=await request('/api/admin/document',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(draft)});
+      const payload={...draft,revision:data.revision||draft.revision||1};
+      const saved=await request('/api/admin/document',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
       setDraft(normalize(saved));setBaseline(normalize(saved));
       setNotice({ok:true,text:'Published successfully. All your changes are saved to the database.'});
       await refreshData();

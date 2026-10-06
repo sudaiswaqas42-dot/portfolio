@@ -23,14 +23,18 @@ export function PortfolioProvider({children}){
     try{
       const defaultBackend = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) ? '' : 'https://portfolio-backend-production-9c68.up.railway.app';
       const apiBase = import.meta.env.VITE_API_URL || defaultBackend;
-      const res=await fetch(`${apiBase}/api/portfolio`,{signal:AbortSignal.timeout(10000)});
+      const res=await fetch(`${apiBase}/api/portfolio?_t=${Date.now()}`,{
+        cache: 'no-store',
+        headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' },
+        signal:AbortSignal.timeout(10000)
+      });
       if(!res.ok)throw new Error('The content server is unavailable. Please retry.');
       let next=await res.json();
       next.theme=normalizeTheme(next.theme);
       next=normalizePortfolioMedia(next);
       try{localStorage.setItem(cacheKey,JSON.stringify(next));}catch{}
       applyTheme(next.theme);
-      setData(current=>JSON.stringify(current)===JSON.stringify(next)?current:next);
+      setData(next);
       setError('');return next;
     }catch(e){setError(e.message);return null;}finally{setLoading(false);}
   },[]);

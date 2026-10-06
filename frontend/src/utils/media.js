@@ -7,11 +7,14 @@ export function getApiBase() {
 
 export function resolveMediaUrl(url) {
   if (!url || typeof url !== 'string') return url;
-  if (url.startsWith('/uploads/')) {
-    const apiBase = getApiBase();
-    return `${apiBase}${url}`;
-  }
-  return url;
+  const trimmed = url.trim();
+  if (!trimmed || trimmed === 'none') return trimmed;
+  if (/^(?:https?:|\/\/|data:|blob:)/i.test(trimmed)) return trimmed;
+  const apiBase = getApiBase();
+  if (trimmed.startsWith('/uploads/')) return `${apiBase}${trimmed}`;
+  if (trimmed.startsWith('uploads/')) return `${apiBase}/${trimmed}`;
+  if (trimmed.startsWith('/api/uploads/')) return `${apiBase}${trimmed}`;
+  return trimmed;
 }
 
 export function normalizePortfolioMedia(data) {

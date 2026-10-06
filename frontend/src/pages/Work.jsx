@@ -1,6 +1,7 @@
 import { useContent } from '../utils/content';
 import React, { useEffect, useState } from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
+import { resolveMediaUrl } from '../utils/media';
 
 import Footer from '../components/Footer';
 import CtaSection from '../components/CtaSection';
@@ -50,7 +51,7 @@ export default function Work() {
                   <div className="project-cont-nav">
                     <div>{p.nav_title || p.title}</div>
                     {p.media?.find(m => m.type === 'image') && (
-                      <img src={p.media.find(m => m.type === 'image').src} alt={content("work.image_description_decorative")} className="img-project-nav" loading="lazy" />
+                      <img src={resolveMediaUrl(p.media.find(m => m.type === 'image').src)} alt={content("work.image_description_decorative")} className="img-project-nav" loading="lazy" />
                     )}
                   </div>
                 </a>
@@ -108,14 +109,14 @@ export default function Work() {
                   m.type === 'video' ? (
                     <div id={m.id || undefined} className={m.className || 'video-cont-p2'} key={m.src + i}>
                       <div className="code-video w-embed">
-                        <video autoPlay loop muted playsInline width="100%" preload="none" poster={m.poster || undefined} src={m.src} />
+                        <video autoPlay loop muted playsInline width="100%" preload="none" poster={m.poster ? resolveMediaUrl(m.poster) : undefined} src={resolveMediaUrl(m.src)} />
                       </div>
                     </div>
                   ) : (
                     <img
                       id={m.id || undefined}
                       key={m.src + i}
-                      src={m.src}
+                      src={resolveMediaUrl(m.src)}
                       srcSet={m.srcSet || undefined}
                       sizes="(max-width: 767px) 100vw, 80vw"
                       alt={m.alt || p.title}
