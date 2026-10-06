@@ -53,6 +53,7 @@ export default function Benefits() {
             {silhouetteImg && silhouetteImg !== 'none' && (
               <img 
                 src={silhouetteImg} 
+                onError={e => { if (e.currentTarget.src !== window.location.origin + "/images/home-about-jm-2.png") e.currentTarget.src = "/images/home-about-jm-2.png"; }}
                 loading="lazy"
                 alt={content("benefits.image_description_benefits_silhouette")}
                 className="jm-siluete-img"
@@ -111,12 +112,14 @@ export default function Benefits() {
 
           <img
             src={darkImg}
+            onError={e => { if (e.currentTarget.src !== window.location.origin + "/images/home-about-jm-1.jpg") e.currentTarget.src = "/images/home-about-jm-1.jpg"; }}
             loading="lazy"
             alt={content("benefits.image_description_benefits_dark_background")}
             className="dark-jm-img"
           />
           <img
             src={lightImg}
+            onError={e => { if (e.currentTarget.src !== window.location.origin + "/images/home-about-jm-3.jpg") e.currentTarget.src = "/images/home-about-jm-3.jpg"; }}
             loading="lazy"
             data-wf-target='[[["6966d53e7b70efaabd0a6539","909c9f01-91bb-1942-d595-3871a9b5a7c1"],[]]]'
             alt={content("benefits.image_description_benefits_light_background")}

@@ -104,7 +104,7 @@ export default function Hero() {
         <div
           className="img-hero-wrapper"
           style={{
-            backgroundImage: s.hero_image === '' ? 'none' : `url(${s.hero_image ?? '/images/hero-photo-test2.jpg'})`,
+            backgroundImage: s.hero_image === '' ? 'none' : (s.hero_image ? `url(${s.hero_image}), url('/images/hero-photo-test2.jpg')` : "url('/images/hero-photo-test2.jpg')"),
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}

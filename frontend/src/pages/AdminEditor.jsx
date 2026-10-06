@@ -55,7 +55,7 @@ const editable = ['settings','about','content','projects','services','philosophy
 function AssetField({label,value,type,onChange,onBusy}) {
   const media=['image','video'].includes(type);
   return <div className={media?'cms-asset':'cms-copy-field'}>
-    {media && value && value!=='none' && (type==='image'?<img className="photo-preview" src={resolveMediaUrl(value)} alt={`${label} preview`} loading="lazy"/>:<video className="photo-preview" src={resolveMediaUrl(value)} controls preload="metadata"/>)}
+    {media && value && value!=='none' && (type==='image'?<img className="photo-preview" src={resolveMediaUrl(value)} alt={`${label} preview`} loading="lazy" onError={e => { e.currentTarget.style.opacity = '0.25'; }}/>:<video className="photo-preview" src={resolveMediaUrl(value)} controls preload="metadata"/>)}
     <Field label={label} value={value} multiline={!media&&type==='text'&&(String(value).includes('\n')||String(value).length>110||/description|biography|philosophy|approach|who i am|awards|technologies/i.test(label))} onChange={onChange}/>
     {media&&<Upload label={`Upload ${type}`} onBusy={onBusy} acceptType={type} onUpload={items=>onChange(items[0].src)}/>}
   </div>;
