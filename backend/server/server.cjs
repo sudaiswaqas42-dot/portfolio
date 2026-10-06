@@ -214,9 +214,36 @@ app.post('/api/admin/upload',requireAuth,express.raw({type:['image/jpeg','image/
     if(!signatures[type]?.())return res.status(400).json({error:'The file contents do not match its type.'});
     const ext={'image/jpeg':'jpg','image/png':'png','image/webp':'webp','image/gif':'gif','video/mp4':'mp4','video/webm':'webm'}[type];
     const filename=`${randomUUID()}.${ext}`;
-    await fs.promises.writeFile(path.join(uploadDir,filename),b,{flag:'wx'});
+    try { await fs.promises.writeFile(path.join(uploadDir,filename),b,{flag:'wx'}); } catch {}
+    try {
+      await pool.query(
+        'INSERT INTO cms_uploads (filename, mime_type, data) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE mime_type=VALUES(mime_type), data=VALUES(data)',
+        [filename, type, b]
+      );
+    } catch(err) {
+      console.error('Failed to persist upload in DB:', err.message);
+    }
     res.status(201).json({url:`/uploads/${filename}`,type:type.startsWith('image/')?'image':'video'});
   }catch(e){next(e)}
+});
+app.get('/uploads/:filename', async (req, res, next) => {
+  const { filename } = req.params;
+  const filePath = path.join(uploadDir, filename);
+  if (fs.existsSync(filePath)) {
+    return res.sendFile(filePath);
+  }
+  try {
+    const [rows] = await pool.query('SELECT mime_type, data FROM cms_uploads WHERE filename = ?', [filename]);
+    if (rows && rows[0] && rows[0].data) {
+      try { await fs.promises.writeFile(filePath, rows[0].data); } catch {}
+      res.setHeader('Content-Type', rows[0].mime_type || 'application/octet-stream');
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      return res.send(rows[0].data);
+    }
+  } catch (err) {
+    console.error('Failed to load upload from db:', err.message);
+  }
+  return res.status(404).json({ error: 'Media file not found' });
 });
 app.use('/uploads',express.static(uploadDir,{immutable:true,maxAge:'1y'}));
 app.use('/api',(req,res)=>res.status(404).json({error:'API route not found'}));

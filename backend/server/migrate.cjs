@@ -76,4 +76,5 @@ module.exports = async function migrate() {
   await pool.query('CREATE TABLE IF NOT EXISTS cms_meta (id INT PRIMARY KEY, revision INT NOT NULL DEFAULT 1)');
   await pool.query('INSERT IGNORE INTO cms_meta (id,revision) VALUES (1,1)');
   await pool.query('CREATE TABLE IF NOT EXISTS cms_history (id INT AUTO_INCREMENT PRIMARY KEY, section VARCHAR(30) NOT NULL, content LONGTEXT NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)');
+  await pool.query('CREATE TABLE IF NOT EXISTS cms_uploads (filename VARCHAR(255) PRIMARY KEY, mime_type VARCHAR(100) NOT NULL, data LONGBLOB NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)');
 };
