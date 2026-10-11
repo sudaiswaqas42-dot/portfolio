@@ -15,8 +15,16 @@
     "footer_heading": "MR USMAN GHANI",
     "footer_subheading": "Morable Design Studio [Coming Soon]",
     "footer_tech_label": "Website made using:",
-    "footer_technologies": ["Figma", "React / Vite", "Node.js / Express", "MySQL Database", "GSAP", "Lenis Scroll"],
-    "updated_at": "2026-09-21T15:36:36.000Z"
+    "footer_technologies": [
+      "Figma",
+      "React / Vite",
+      "Node.js / Express",
+      "MySQL Database",
+      "GSAP",
+      "Lenis Scroll"
+    ],
+    "updated_at": "2026-09-21T15:36:36.000Z",
+    "upwork_url": "https://www.upwork.com"
   },
   "services": [
     {

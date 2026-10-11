@@ -35,17 +35,17 @@ const pages = [
   {id:'site', name:'Site settings', icon:'✦', url:'/', sections:['social','brand','cursor','theme']},
 ];
 const bindings = {
-  social: {settings:['email','linkedin_url','twitter_url','behance_url']},
-  header: {settings:['first_name','last_name','email','linkedin_url','twitter_url','behance_url']},
+  social: {settings:['email','linkedin_url','twitter_url','behance_url','upwork_url']},
+  header: {settings:['first_name','last_name','email','linkedin_url','twitter_url','behance_url','upwork_url']},
   hero: {settings:['first_name','last_name','title','role','hero_image']},
   benefits: {settings:['benefits_dark_image','benefits_silhouette_image','benefits_light_image']},
   contact: {settings:['email']},
-  footer: {settings:['footer_heading','footer_subheading','footer_tech_label','footer_technologies','footer_video','footer_video_poster','email','linkedin_url','twitter_url','behance_url']},
+  footer: {settings:['footer_heading','footer_subheading','footer_tech_label','footer_technologies','footer_video','footer_video_poster','email','linkedin_url','twitter_url','behance_url','upwork_url']},
   aboutHero: {about:['headline'],settings:['about_image']},
   biography: {about:['who_i_am','approach','philosophy','awards']},
   news: {about:[1,2,3].flatMap(n=>[`news${n}_title`,`news${n}_desc`,`news${n}_link`]).concat(['news2_img1','news2_img2','news2_img3','news3_img1','news3_img2'])},
 };
-const labels = {title:'Hero heading',role:'Professional role',hero_image:'Hero background image',about_image:'About portrait',benefits_dark_image:'Step 1: Background room photo',benefits_silhouette_image:'Step 1: Foreground person cutout (Transparent PNG — sits in front of text; or "none")',benefits_light_image:'Step 2: Light background photo',footer_technologies:'Technologies — one per line',footer_video_poster:'Video poster',who_i_am:'Who I am',awards:'Awards — one per line'};
+const labels = {upwork_url:'Upwork profile URL',title:'Hero heading',role:'Professional role',hero_image:'Hero background image',about_image:'About portrait',benefits_dark_image:'Step 1: Background room photo',benefits_silhouette_image:'Step 1: Foreground person cutout (Transparent PNG — sits in front of text; or "none")',benefits_light_image:'Step 2: Light background photo',footer_technologies:'Technologies — one per line',footer_video_poster:'Video poster',who_i_am:'Who I am',awards:'Awards — one per line'};
 const human = key => labels[key] || key.replace(/_/g,' ').replace(/news(\d)/g,'News card $1').replace(/img(\d)/g,'image $1').replace(/^./,c=>c.toUpperCase());
 const boundType = key => /video$/.test(key)?'video':/image|img\d|poster/.test(key)?'image':/url|link/.test(key)?'link':'text';
 const fieldsFor = section => Object.entries(catalog).filter(([,field])=>field.group===section||(section==='hero'&&field.group==='heroCards'));

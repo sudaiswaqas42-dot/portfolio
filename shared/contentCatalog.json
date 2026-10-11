@@ -826,5 +826,11 @@
     "label": "Cursor card 4 image",
     "value": "/images/hero-cursor-card-4.jpg",
     "type": "image"
+  },
+  "header.upwork": {
+    "group": "header",
+    "label": "Upwork",
+    "value": "Upwork",
+    "type": "text"
   }
 }

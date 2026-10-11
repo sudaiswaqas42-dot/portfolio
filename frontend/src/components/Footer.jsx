@@ -12,6 +12,7 @@ export default function Footer() {
   const linkedin = data?.settings?.linkedin_url ?? 'https://www.linkedin.com/in/juanmmora/';
   const twitter = data?.settings?.twitter_url ?? 'https://x.com/ByMorable';
   const behance = data?.settings?.behance_url ?? 'https://www.behance.net/juanmora2';
+  const upwork = data?.settings?.upwork_url ?? 'https://www.upwork.com';
 
   const techLabel = data?.settings?.footer_tech_label ?? 'Website made using:';
   const technologies = Array.isArray(data?.settings?.footer_technologies)
@@ -86,6 +87,9 @@ export default function Footer() {
               </li>
               <li className="wrapper-item-column">
                 <a href={behance} target="_blank" rel="noreferrer" className="footer-social-link">{content("footer.behance")}</a>
+              </li>
+              <li className="wrapper-item-column">
+                <a href={upwork} target="_blank" rel="noreferrer" className="footer-social-link">Upwork</a>
               </li>
             </ul>
           </div>

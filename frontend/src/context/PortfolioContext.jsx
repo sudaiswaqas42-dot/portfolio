@@ -1,7 +1,7 @@
 import React,{createContext,useContext,useState,useEffect,useLayoutEffect,useCallback} from 'react';
 import defaults from '../data/defaults.json';
 import {applyTheme,normalizeTheme} from '../utils/theme';
-import {normalizePortfolioMedia} from '../utils/media';
+import {normalizePortfolioMedia, resolveMediaUrl} from '../utils/media';
 import contentCatalog from '../../../shared/contentCatalog.json';
 const PortfolioContext=createContext(null);
 const cacheKey='portfolio-content-v1';
@@ -60,10 +60,32 @@ export function PortfolioProvider({children}){
     let description=document.querySelector('meta[name="description"]');
     if(!description){description=document.createElement('meta');description.name='description';document.head.appendChild(description);}
     description.content=get('brand.description');
-    let icon=document.querySelector('link[rel="icon"]');
-    if(!icon){icon=document.createElement('link');icon.rel='icon';document.head.appendChild(icon);}
-    icon.href=get('brand.favicon');
-  },[data.settings,data.content]);
+
+    // Dynamic Favicon Update from CMS
+    const rawFavicon = get('brand.favicon') || '/images/favicon.png';
+    const resolvedFavicon = resolveMediaUrl(rawFavicon);
+    const ver = data.revision ? `?v=${data.revision}` : '';
+    const fullFaviconUrl = resolvedFavicon.includes('?') ? resolvedFavicon : `${resolvedFavicon}${ver}`;
+
+    // Remove all old icon tags so browser is forced to update
+    document.querySelectorAll('link[rel*="icon"]').forEach(el => el.parentNode?.removeChild(el));
+
+    const linkIcon = document.createElement('link');
+    linkIcon.rel = 'icon';
+    linkIcon.type = resolvedFavicon.endsWith('.svg') ? 'image/svg+xml' : 'image/x-icon';
+    linkIcon.href = fullFaviconUrl;
+    document.head.appendChild(linkIcon);
+
+    const linkShortcut = document.createElement('link');
+    linkShortcut.rel = 'shortcut icon';
+    linkShortcut.href = fullFaviconUrl;
+    document.head.appendChild(linkShortcut);
+
+    const linkApple = document.createElement('link');
+    linkApple.rel = 'apple-touch-icon';
+    linkApple.href = fullFaviconUrl;
+    document.head.appendChild(linkApple);
+  },[data.settings,data.content,data.revision]);
   return <PortfolioContext.Provider value={{data,loading,error,refreshData}}>{loading ? <div className="site-loading" role="status" aria-label="Loading portfolio"/> : children}</PortfolioContext.Provider>;
 }
 export const usePortfolio=()=>useContext(PortfolioContext);

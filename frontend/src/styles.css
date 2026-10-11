@@ -1195,3 +1195,85 @@ a:hover .brand-mark-dot, a:focus-visible .brand-mark-dot, .about-brand-icon:hove
 .cms-scene-fallback>img{width:42%;height:60%;object-fit:contain;z-index:1}
 .cms-scene-fallback>small{position:absolute;bottom:7%;font-size:10px}
 .cms-scene-captions{position:absolute;top:7%;left:5%;right:5%;display:flex;justify-content:space-between;font-size:9px}
+
+
+/* ==========================================================================
+   ENHANCED LOGO & SOCIAL ICONS REFINEMENTS
+   ========================================================================== */
+
+/* 1. Folder Logo Sizing - Clean proportion inside folder icon (Image 2) */
+.branded-work-folder .brand-mark,
+.folder-work .brand-mark {
+  width: 48% !important;
+  max-width: 48% !important;
+  height: auto !important;
+  max-height: 48% !important;
+  margin: auto !important;
+  display: block;
+}
+
+.folder-front-panel .brand-mark {
+  width: 30% !important;
+  max-width: 30% !important;
+}
+
+/* 2. Nav Social Links with Crisp Large SVG Icons & Upwork (Image 1 & 3) */
+.nav-social-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.nav-social-icon-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  color: var(--ink, #0E0E0E) !important;
+  background: color-mix(in srgb, var(--surface, #FFFFFF) 60%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--border, #E8E9EF) 80%, transparent) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+.nav-social-icon-btn:hover,
+.nav-social-icon-btn:focus-visible {
+  color: #FFFFFF !important;
+  background: var(--signal, #ff4d2e) !important;
+  border-color: var(--signal, #ff4d2e) !important;
+  transform: translateY(-2px) scale(1.12) !important;
+}
+
+.nav-social-svg {
+  display: block !important;
+  width: 20px !important;
+  height: 20px !important;
+  transition: transform 0.25s ease !important;
+}
+
+.nav-social-icon-btn:hover .nav-social-svg {
+  transform: scale(1.08) !important;
+}
+
+/* 3. 3D Logo Tile Orbit Container - NO GLOW, Flat Clean Dot */
+.logo-tile-container {
+  position: relative;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  perspective: 700px;
+}
+
+.orbit-satellite-dot {
+  pointer-events: none;
+  filter: none !important;
+  box-shadow: none !important;
+}

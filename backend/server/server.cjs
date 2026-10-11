@@ -81,7 +81,7 @@ function bad(message){const e=new Error(message);e.status=400;throw e;}
 function text(v,max=30000){if(typeof v!=='string'||v.length>max)bad('Invalid or overly long text');return v;}
 function url(v){text(v,2048);if(v&&!/^https?:\/\/[^\s]+$/i.test(v)&&!/^\/(?!\/)[^\s]*$/.test(v)&&v!=='none')bad('Use an https:// URL or a local /path');return v;}
 function list(v,max=200){if(!Array.isArray(v)||v.length>max)bad('Invalid list');return v;}
-const settingsFields=['first_name','last_name','title','role','headline','email','linkedin_url','twitter_url','behance_url','hero_image','about_image','benefits_silhouette_image','benefits_dark_image','benefits_light_image','footer_video','footer_video_poster','footer_heading','footer_subheading','footer_tech_label'];
+const settingsFields=['first_name','last_name','title','role','headline','email','linkedin_url','twitter_url','behance_url','upwork_url','hero_image','about_image','benefits_silhouette_image','benefits_dark_image','benefits_light_image','footer_video','footer_video_poster','footer_heading','footer_subheading','footer_tech_label'];
 const aboutFields=['headline','who_i_am','approach','philosophy','awards','news2_img1','news2_img2','news2_img3','news3_img1','news3_img2',...Array.from({length:3},(_,i)=>[`news${i+1}_title`,`news${i+1}_desc`,`news${i+1}_link`]).flat()];
 function validate(section,body){
   if(!body || typeof body!=='object')bad('Invalid content');
@@ -181,7 +181,7 @@ app.put('/api/admin/document',requireAuth,async(req,res,next)=>{
     conn=await pool.getConnection();await conn.beginTransaction();
     const [[meta]]=await conn.query('SELECT revision FROM cms_meta WHERE id=1 FOR UPDATE');
     const previous=await portfolio(conn);
-    await conn.query('INSERT INTO cms_history (section,content) VALUES (?,?)',['document',JSON.stringify(previous)]);
+    try { await conn.query('INSERT INTO cms_history (section,content) VALUES (?,?)',['document',JSON.stringify(previous)]); await conn.query('DELETE FROM cms_history WHERE id NOT IN (SELECT id FROM (SELECT id FROM cms_history ORDER BY id DESC LIMIT 15) as t)'); } catch (histErr) { console.warn('cms_history warning:', histErr.message); }
     for(const section of documentSections)await persistSection(conn,section,values[section]);
     const nextRevision = (meta?.revision || 1) + 1;
     await conn.query('UPDATE cms_meta SET revision=? WHERE id=1',[nextRevision]);
@@ -198,7 +198,7 @@ app.put('/api/admin/:section',requireAuth,async(req,res,next)=>{
     conn=await pool.getConnection();await conn.beginTransaction();
     const [[meta]]=await conn.query('SELECT revision FROM cms_meta WHERE id=1 FOR UPDATE');
     const previous=await portfolio(conn);
-    await conn.query('INSERT INTO cms_history (section,content) VALUES (?,?)',[section,JSON.stringify(previous[section])]);
+    try { await conn.query('INSERT INTO cms_history (section,content) VALUES (?,?)',[section,JSON.stringify(previous[section])]); await conn.query('DELETE FROM cms_history WHERE id NOT IN (SELECT id FROM (SELECT id FROM cms_history ORDER BY id DESC LIMIT 15) as t)'); } catch (histErr) { console.warn('cms_history warning:', histErr.message); }
     await persistSection(conn,section,value);
     const nextRevision = (meta?.revision || 1) + 1;
     await conn.query('UPDATE cms_meta SET revision=? WHERE id=1',[nextRevision]);
@@ -285,7 +285,7 @@ const frontendDist = fs.existsSync(path.join(root, '..', 'dist'))
   : path.join(root, '..', 'frontend', 'dist');
 app.use(express.static(frontendDist));
 app.get('/{*path}',(req,res)=>res.sendFile(path.join(frontendDist,'index.html')));
-app.use((err,req,res,next)=>{console.error(err.message);res.status(err.status||500).json({error:err.status===400?err.message:err.status===413?'File or request is too large.':'Unable to save or load content. Check the database connection.'});});
+app.use((err,req,res,next)=>{console.error(err.message);res.status(err.status||500).json({error:err.status===400?err.message:err.status===413?'File or request is too large.':(err.message || 'Unable to save or load content. Check the database connection.')});});
 if(require.main===module){
   const host = process.env.HOST || '0.0.0.0';
   migrate()

@@ -20,6 +20,7 @@ export default function AdminDashboard() {
     linkedin_url: '',
     twitter_url: '',
     behance_url: '',
+    upwork_url: '',
     footer_video: '',
     footer_video_poster: '',
     footer_heading: '',
@@ -399,6 +400,16 @@ export default function AdminDashboard() {
                     type="text"
                     value={settings.behance_url || ''}
                     onChange={(e) => setSettings({ ...settings, behance_url: e.target.value })}
+                    style={inputStyle}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', marginBottom: '0.5rem', color: '#ccc' }}>Upwork URL</label>
+                  <input
+                    type="text"
+                    placeholder="https://www.upwork.com"
+                    value={settings.upwork_url || ''}
+                    onChange={(e) => setSettings({ ...settings, upwork_url: e.target.value })}
                     style={inputStyle}
                   />
                 </div>
