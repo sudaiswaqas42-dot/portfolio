@@ -10,7 +10,7 @@ export default function Services() {
   const development=services.find(s=>s.service_key==='development');
 
   return (
-    <section className="section" id="services">
+    <section className="section" id="services" data-nav="grey">
       <div className="service-headline-wrapper">
         <div className="tag-text">{content("services.design_expert")}</div>
         <h1 className="service-headline">{content("services.i_help_companies_to_succeed_on_projects_like")}</h1>
