@@ -180,7 +180,7 @@ export default function About() {
       </section>
 
       {/* News & Updates Section */}
-      <section data-nav="peach" className="section">
+      <section data-nav="grey" className="section">
         <div className="about-news-wrapper">
           <div className="news-cont-top">
             <div className="square-news"></div>
