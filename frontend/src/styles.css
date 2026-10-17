@@ -1191,7 +1191,7 @@ a:hover .brand-mark-dot, a:focus-visible .brand-mark-dot, .about-brand-icon:hove
 .cont-morable{position:relative;overflow:hidden}
 .cms-scene-canvas{position:absolute;inset:0;width:100%;height:100%}
 .cms-scene-fallback{position:absolute;inset:0;background:#f4f4f4;color:#353535;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.cms-scene-fallback>strong{position:absolute;white-space:nowrap;font-size:clamp(35px,8vw,180px);opacity:.18;letter-spacing:-.06em}
+.cms-scene-fallback>strong{position:absolute;z-index:2;white-space:nowrap;font-size:clamp(35px,8vw,180px);letter-spacing:-.06em}
 .cms-scene-fallback>img{width:42%;height:60%;object-fit:contain;z-index:1}
 .cms-scene-fallback>small{position:absolute;bottom:7%;font-size:10px}
 .cms-scene-captions{position:absolute;top:7%;left:5%;right:5%;display:flex;justify-content:space-between;font-size:9px}
