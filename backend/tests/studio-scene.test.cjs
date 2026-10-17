@@ -1,6 +1,7 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const template=require('../../frontend/public/documents/studio-scene.json');
+
 test('studio card edits replace the image and all text without changing effect layers',async()=>{
  const {configureStudioScene}=await import('../../frontend/src/utils/studioScene.mjs');
  const values={'studio.logo_image':'/uploads/custom-brand.png','studio.animated_text':'DESIGN WITHOUT LIMITS','studio.top_left':'HELLO','studio.top_center':'WORLD','studio.top_right':'2027'};
@@ -18,23 +19,22 @@ test('studio card edits replace the image and all text without changing effect l
  assert.equal(configureStudioScene(template,{'studio.animated_text':''}).history.find(l=>l.id==='text').textContent,'');
 });
 
-test('distortion is scoped to transparent text and leaves the original image animation intact',async()=>{
+test('logo image tilts in 3D without position translation or noise distortion',async()=>{
  const {configureStudioScene}=await import('../../frontend/src/utils/studioScene.mjs');
  const output=configureStudioScene(template,{});
- const text=output.history.find(layer=>layer.id==='text');
+ const image=output.history.find(layer=>layer.id==='image');
  const noise=output.history.find(layer=>layer.id==='noise');
- assert.deepEqual(text.effects,[noise.parentLayer]);
- assert.ok(noise.parentLayer);
- assert.deepEqual(output.history.find(layer=>layer.id==='image'),template.history.find(layer=>layer.id==='image'));
- assert.deepEqual(noise.compiledFragmentShaders,template.history.find(layer=>layer.id==='noise').compiledFragmentShaders);
- assert.equal(text.data.compositeShader.fragmentShader,template.history.find(layer=>layer.id==='text').compiledFragmentShaders[0]);
+ assert.equal(image.trackMouse, 0);
+ assert.ok(image.axisTilt > 0);
+ assert.equal(image.data.uniforms.axisTilt.value, image.axisTilt);
+ assert.equal(noise.parentLayer, undefined);
 });
 
-test('studio text and distortion render above the logo, with captions and halftone last',async()=>{
+test('studio layers preserve authored order with image rendered after noise distortion',async()=>{
  const {configureStudioScene}=await import('../../frontend/src/utils/studioScene.mjs');
  const original=structuredClone(template);
  const output=configureStudioScene(template,{});
- assert.deepEqual(output.history.map(layer=>layer.id),['gradient','image','text','noise','text1','text2','text3','halftone']);
+ assert.deepEqual(output.history.map(layer=>layer.id),['gradient','text','noise','image','text1','text2','text3','halftone']);
  assert.deepEqual(template,original);
  assert.deepEqual(configureStudioScene(output,{}),output);
  const layered={layers:structuredClone(template.history)};
