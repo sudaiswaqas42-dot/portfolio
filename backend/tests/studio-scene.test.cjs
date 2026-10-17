@@ -19,26 +19,25 @@ test('studio card edits replace the image and all text without changing effect l
  assert.equal(configureStudioScene(template,{'studio.animated_text':''}).history.find(l=>l.id==='text').textContent,'');
 });
 
-test('distortion is scoped to transparent text and leaves the background image animation intact',async()=>{
+test('logo image tilts strictly horizontally in 3D and blends authentic wave distorted text in front',async()=>{
  const {configureStudioScene}=await import('../../frontend/src/utils/studioScene.mjs');
  const output=configureStudioScene(template,{});
- const text=output.history.find(layer=>layer.id==='text');
- const noise=output.history.find(layer=>layer.id==='noise');
  const image=output.history.find(layer=>layer.id==='image');
- assert.deepEqual(text.effects,[noise.parentLayer]);
- assert.ok(noise.parentLayer);
+ const noise=output.history.find(layer=>layer.id==='noise');
  assert.equal(image.trackMouse, 0);
  assert.ok(image.axisTilt > 0);
  assert.equal(image.data.uniforms.axisTilt.value, image.axisTilt);
- assert.deepEqual(noise.compiledFragmentShaders,template.history.find(layer=>layer.id==='noise').compiledFragmentShaders);
- assert.equal(text.data.compositeShader.fragmentShader,template.history.find(layer=>layer.id==='text').compiledFragmentShaders[0]);
+ assert.ok(image.compiledFragmentShaders[0].includes('vec2((uMousePos.x - 0.5) * uAxisTilt * PI * 0.5, 0.0);'));
+ assert.ok(image.compiledFragmentShaders[0].includes('mix(logoOnBg, background, textAlpha);'));
+ assert.ok(image.compiledVertexShaders[0].includes('float angleX = 0.0;'));
+ assert.deepEqual(noise.compiledFragmentShaders, template.history.find(layer=>layer.id==='noise').compiledFragmentShaders);
 });
 
-test('studio text and distortion render in front above the background logo',async()=>{
+test('studio layers preserve authored order with authentic noise animation loop intact',async()=>{
  const {configureStudioScene}=await import('../../frontend/src/utils/studioScene.mjs');
  const original=structuredClone(template);
  const output=configureStudioScene(template,{});
- assert.deepEqual(output.history.map(layer=>layer.id),['gradient','image','text','noise','text1','text2','text3','halftone']);
+ assert.deepEqual(output.history.map(layer=>layer.id),['gradient','text','noise','image','text1','text2','text3','halftone']);
  assert.deepEqual(template,original);
  assert.deepEqual(configureStudioScene(output,{}),output);
  const layered={layers:structuredClone(template.history)};

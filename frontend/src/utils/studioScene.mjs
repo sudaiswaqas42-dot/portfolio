@@ -1,6 +1,6 @@
 // Keep the authored layout and shaders intact.
-// The logo is layered in the back and tilts in 3D with cursor movement,
-// while the animated text and wave distortion render in front above the logo.
+// The logo is layered in the back and tilts strictly left/right with cursor movement (no up/down/left/right translation),
+// while the animated text and its authentic Perlin wave distortion effect render in front above the logo.
 export function configureStudioScene(template, values) {
   const scene = structuredClone(template);
   const textFields = {
@@ -42,36 +42,30 @@ export function configureStudioScene(template, values) {
           }
         }
       }
-    }
-  }
 
-  // The scene paints back to front. Place the logo in the background
-  // and keep text + distortion in the foreground above the logo.
-  const textIndex = layers.findIndex(layer => layer.id === 'text' && layer.layerType === 'text');
-  const imageIndex = layers.findIndex(layer => layer.id === 'image' && layer.layerType === 'image');
-  if (textIndex !== -1 && imageIndex > textIndex) {
-    const [image] = layers.splice(imageIndex, 1);
-    layers.splice(textIndex, 0, image);
-  }
+      // Lock tilt strictly to horizontal (left/right) without vertical tilting or moving
+      if (layer.compiledFragmentShaders && layer.compiledFragmentShaders[0]) {
+        layer.compiledFragmentShaders[0] = layer.compiledFragmentShaders[0].replace(
+          'vec2 mouseRotOffset = (uMousePos - 0.5) * uAxisTilt * PI * 0.5;',
+          'vec2 mouseRotOffset = vec2((uMousePos.x - 0.5) * uAxisTilt * PI * 0.5, 0.0);'
+        );
 
-  // Scope the distortion effect to the text layer so the wave distortion renders
-  // in front with the text without warping the background logo.
-  const text = layers.find(layer => layer.id === 'text' && layer.layerType === 'text');
-  const distortion = layers.find(layer => layer.id === 'noise' && layer.layerType === 'effect');
-  if (text && distortion && !distortion.parentLayer) {
-    distortion.parentLayer = 'studio-text-distortion';
-    text.effects = [...(text.effects || []), distortion.parentLayer];
-    text.data = {
-      ...text.data,
-      compositeShader: {
-        vertexShader: text.compiledVertexShaders[0],
-        fragmentShader: text.compiledFragmentShaders[0],
-      },
-      compositeUniforms: {
-        resolution: { name: 'uResolution', type: '2f', value: { type: 'Vec2', _x: 1440, _y: 900 } },
-        mousePos: { name: 'uMousePos', type: '2f', value: { type: 'Vec2', _x: 0.5, _y: 0.5 } },
+        // Blend distorted text in front of the logo image:
+        // The distorted text from the noise effect pass (uBgTexture) is blended on top of the logo,
+        // so the logo stays in the background and only tilts horizontally in 3D, while the
+        // animated text and its authentic Perlin wave distortion effect render in front above the logo.
+        layer.compiledFragmentShaders[0] = layer.compiledFragmentShaders[0].replace(
+          'return getOutputByMode(color, background);',
+          'vec4 baseBg = vec4(0.9568627, 0.9568627, 0.9568627, 1.0); vec4 logoOnBg = mix(baseBg, color + baseBg * (1.0 - color.a), 1.0); float textAlpha = clamp((0.9568627 - dot(background.rgb, vec3(0.299, 0.587, 0.114))) / (0.9568627 - 0.2078431), 0.0, 1.0); return mix(logoOnBg, background, textAlpha);'
+        );
       }
-    };
+      if (layer.compiledVertexShaders && layer.compiledVertexShaders[0]) {
+        layer.compiledVertexShaders[0] = layer.compiledVertexShaders[0].replace(
+          'float angleX = uMousePos.y * 0.5 - 0.25;',
+          'float angleX = 0.0;'
+        );
+      }
+    }
   }
 
   return scene;
